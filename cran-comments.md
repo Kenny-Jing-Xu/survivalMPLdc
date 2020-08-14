@@ -8,7 +8,7 @@
 There were no ERRORs or WARNINGs.
 
 There was 1 NOTE:
- * Non-standard file/directory found at top level: 'LICENSE.md' and '_config.yml'
+ * Non-standard file/directory found at top level: '_config.yml'
  
 This is a new release.
 
