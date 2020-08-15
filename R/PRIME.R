@@ -35,8 +35,7 @@
 #'
 #' @docType data
 #' @keywords datasets
-#' @usage
-#' data
+#' @usage data(PRIME)
 #' @references
 #' Brodaty H, Woodward M, Boundy K, Ames D, Balshaw R. (2011). \emph{"Patients in Australian memory clinics:
 #' baseline characteristics and predictors of decline at six months"}. Int Psychogeriatr 23, 1086-1096.
