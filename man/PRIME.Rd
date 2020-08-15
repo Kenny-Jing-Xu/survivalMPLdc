@@ -29,7 +29,7 @@ A data frame with 583 observations on 18 variables.
 }
 }
 \usage{
-data
+data(PRIME)
 }
 \description{
 This data set is from a longitudinal study called "Prospective Research in Memory Clinics" (PRIME),
