@@ -78,25 +78,28 @@ coxMPLests <- coxph_mpl_dc(surv, cova, ordSp=4, binCount=binCount, tie='No', tau
                             tol.thga=1e-5, tol.bph=1e-5, tol.smpar=1e-2,
                             cat.smpar='No'
 )
-mpl_beta_phi_zp <- coxMPLests$mpl_beta_phi_zp
-mpl_h0t <- coxMPLests$mpl_h0t
-mpl_h0Ti <- approx( X, mpl_h0t, xout = seq(0, 5.4, 0.01),
-                     method="constant", rule = 2, ties = mean)$y
+mpl_beta_phi_zp <- rbind( coef(object = coxMPLests, parameter = "beta",),
+                          coef(object = coxMPLests, parameter = "phi",)
+)
 
 
-##-- Plot the true and estimated baseline hazards for T
-plot(seq(0, 5.4, 0.01), mpl_h0Ti,
-     type="l", col="grey", lty=4, lwd=1, cex.axis=1, cex.lab=1, ylim=c(0, 3),
-     xlab='Time', ylab='Hazard')
+##-- Plot the true and estimated baseline hazards (95% confidence interval) for T
+plot(x = coxMPLests, parameter = "theta", funtype="hazard",
+     xout = seq(0, 5.4, 0.01), se = TRUE,
+     cols=c("blue", "red"), ltys=c(4, 2), type="l", lwd=1, cex=1, cex.axis=1, cex.lab=1,
+     xlab="Time", ylab="Hazard",
+     xlim=c(0, 5.4), ylim=c(0, 4)
+)
 par(new=TRUE)
 plot(seq(0, 5.4, 0.01), ht0b,
      type="l", col="green",
-     lty=1, lwd=1, cex.axis=1, cex.lab=1, ylim=c(0, 3),
+     lty=1, lwd=1, cex.axis=1, cex.lab=1, xlim=c(0, 5.4), ylim=c(0, 4),
      xlab='Time', ylab='Hazard')
-legend(x = 0, y =3,
-       col = c("green","grey"), lty = c(1,4), legend = c( "True", "MPL" ),
-       cex = 0.5
-       )
+title("MPL Hazard", cex.main=1)
+legend( 'topleft',legend = c( "MPL", "95% Confidence Interval", "True"),
+        col = c("blue", "red", "green"),
+        lty = c(4, 2, 1),
+        cex = 1)
 
 expect_equal(
   round(aics,2),

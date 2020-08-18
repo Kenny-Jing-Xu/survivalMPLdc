@@ -29,4 +29,4 @@ library(survivalMPLdc)
 A reference manual is available at [kenny-jing-xu.github.io/survivalMPLdc](https://kenny-jing-xu.github.io/survivalMPLdc/).
 
 ## Citation
-Xu, J., Ma, J. and Fung, T. (2020). survivalMPLdc: Survival Analysis under Dependent Right Censoring using Maximum Penalised Likelihood. R package version 0.1.1.
+Xu, J., Ma, J. and Fung, T. (2020). survivalMPLdc: Survival Analysis under Dependent Right Censoring using Maximum Penalised Likelihood. R package version 0.1.0.
