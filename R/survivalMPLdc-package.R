@@ -1,11 +1,11 @@
-#' Survival analysis under dependent right censoring using maximum Penalised
-#' likelihood method
+#' Survival Analysis under Dependent Right Censoring using Maximum Penalised
+#' Likelihood Method
 #'
 #' @name survivalMPLdc-package
 #' @aliases survivalMPLdc
 #' @docType package
-#' @title Survival analysis under dependent right censoring using maximum Penalised
-#' likelihood method
+#' @title Survival Analysis under Dependent Right Censoring using Maximum Penalised
+#' Likelihood Method
 #' @keywords package
 #' @references
 #' Ma, J. (2010). \emph{"Positively constrained multiplicative iterative algorithm

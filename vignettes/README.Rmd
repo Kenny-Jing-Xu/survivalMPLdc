@@ -4,7 +4,7 @@ author: "Jing Xu, Thomas Fung and Jun Ma"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{my}
+  %\VignetteIndexEntry{survivalMPLdc}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

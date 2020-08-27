@@ -1,4 +1,4 @@
-## `survivalMPLdc`: Survival Analysis under Dependent Right Censoring using Maximum Penalised Likelihood
+## `survivalMPLdc`: Survival Analysis under Dependent Right Censoring using Maximum Penalised Likelihood Method
 
 ## survivalMPLdc
 The `survivalMPLdc` package provides the estimating and plotting function for the Cox hazard models under dependent right censoring using maximum penalised likelihood method [Xu et al (2018)](https://onlinelibrary.wiley.com/doi/abs/10.1002/sim.7651).
