@@ -1,7 +1,7 @@
 Package: survivalMPLdc
 Type: Package
-Title: Survival analysis under dependent right censoring using maximum Penalised 
-       likelihood method 
+Title: Survival Analysis under Dependent Right Censoring using Maximum Penalised 
+       Likelihood Method 
 Version: 0.1.0
 Author: Jing Xu, Jun Ma, Thomas Fung
 Maintainer: Jing Xu <kenny.xu@duke-nus.edu.sg>
