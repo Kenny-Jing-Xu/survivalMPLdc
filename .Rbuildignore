@@ -3,3 +3,6 @@
 ^cran-comments\.md$
 ^LICENSE\.md$
 ^\.travis\.yml$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
