@@ -44,40 +44,22 @@ X <- surv[,1] # Observed time
 del<-surv[,2] # failure status
 eta<-surv[,3] # dependent censoring status
 
+##-- Inputs
+control=coxph_mpl_dc.control(ordSp=4, binCount=2500, tie='No', tau=0.8, copula=copula3,
+                               pent='penalty_mspl', smpart='REML', penc='penalty_mspl', smparc='REML',
+                               maxit2=100, maxit=10000, mid=1, asy=1, ac=1, cv=1,
+                               ac.theta=1e-5, ac.gamma=1e-5, ac.Utheta=-1e-2, ac.Ugamma=-1e-2,
+                               min.theta=1e-7, min.gamma=1e-7, min.ht=1e-7, min.hc=1e-7,
+                               min.St=1e-7, min.Sc=1e-7,
+                               min.C=1e-7, min.dC=1e-7, eps=1e-5,
+                               tol.thga=1e-5, tol.bph=1e-5, tol.smpar=1e-2,
+                               cat.smpar='No')
+
+##-- Perform MPL estimation
+coxMPLests <- coxph_mpl_dc(surv, cova, control = control, )
 
 
-##-- Selecting bin sample or number of knots using AIC vs binCounts plot
-binCounts <- c(500, 1000, 1500, 2000, 2500)
-bn <- length(binCounts)
-aics<-rep(0, bn)
-for (j in 1:bn)
-{ control=coxph_mpl_dc.control(ordSp = 4,
-                               binCount = binCounts[j], tie = 'No',
-                               tau = 0.8, copula = copula3,
-                               pent = 'penalty_mspl', smpart = 0, penc = 'penalty_mspl', smparc = 0,
-                               maxit2 = 100, maxit = 5000,
-                               mid = 1, asy = 0, ac = 1, cv = 0,
-                               ac.theta = 1e-5, ac.gamma = 1e-5, ac.Utheta = -1e-2, ac.Ugamma = -1e-2,
-                               min.theta = 1e-7, min.gamma = 1e-7, min.ht = 1e-7, min.hc = 1e-7,
-                               min.St = 1e-7, min.Sc = 1e-7, min.C = 1e-7, min.dC = 1e-7,
-                               eps = 1e-5, tol.thga = 1e-5, tol.bph = 1e-5, tol.smpar = 1e-2,
-                               cat.smpar = 'No')
-aics[j]<-coxph_mpl_dc(surv, cova, control)$mpl_aic
-#print(j)
-}
-binCount <- binCounts[ which.min( aics ) ]
-plot(binCounts, aics)
-
-coxMPLests <- coxph_mpl_dc(surv, cova, ordSp=4, binCount=binCount, tie='No', tau=0.8, copula=copula3,
-                            pent='penalty_mspl', smpart='REML', penc='penalty_mspl', smparc='REML',
-                            maxit2=100, maxit=10000, mid=1, asy=1, ac=1, cv=1,
-                            ac.theta=1e-5, ac.gamma=1e-5, ac.Utheta=-1e-2, ac.Ugamma=-1e-2,
-                            min.theta=1e-7, min.gamma=1e-7, min.ht=1e-7, min.hc=1e-7,
-                            min.St=1e-7, min.Sc=1e-7,
-                            min.C=1e-7, min.dC=1e-7, eps=1e-5,
-                            tol.thga=1e-5, tol.bph=1e-5, tol.smpar=1e-2,
-                            cat.smpar='No'
-)
+##-- Obtain the MPL coefficient estimates
 mpl_beta_phi_zp <- rbind( coef(object = coxMPLests, parameter = "beta",),
                           coef(object = coxMPLests, parameter = "phi",)
 )
@@ -100,11 +82,6 @@ legend( 'topleft',legend = c( "MPL", "95% Confidence Interval", "True"),
         col = c("blue", "red", "green"),
         lty = c(4, 2, 1),
         cex = 1)
-
-expect_equal(
-  round(aics,2),
-  c(12772.98, 12766.93, 12761.98, 12759.81, 12755.97)
-)
 
 expect_equal(
   round( mpl_beta_phi_zp[,1], 8 ),
