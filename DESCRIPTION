@@ -3,7 +3,7 @@ Type: Package
 Title: Survival Analysis under Dependent Right Censoring using Maximum Penalised 
        Likelihood Method 
 Version: 0.1.0
-Authors@R: c(person("Jiang", "Xu", role = c("aut", "cre"),
+Authors@R: c(person("Jing", "Xu", role = c("aut", "cre"),
   email = "kenny.xu@duke-nus.edu.sg"), 
   person("Jun", "Ma", role = c("aut"),
   email = "jun.ma@mq.edu.au"),
