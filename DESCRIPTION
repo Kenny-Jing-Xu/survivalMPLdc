@@ -3,8 +3,13 @@ Type: Package
 Title: Survival Analysis under Dependent Right Censoring using Maximum Penalised 
        Likelihood Method 
 Version: 0.1.0
-Author: Jing Xu, Jun Ma, Thomas Fung
-Maintainer: Jing Xu <kenny.xu@duke-nus.edu.sg>
+Authors@R: c(person("Jiang", "Xu", role = c("aut", "cre"),
+  email = "kenny.xu@duke-nus.edu.sg"), 
+  person("Jun", "Ma", role = c("aut"),
+  email = "jun.ma@mq.edu.au"),
+  person("Thomas", "Fung", role = c("aut"),
+         email = "thomas.fung.dr@gmail.com",
+         comment =c(ORCID = "0000-0003-2601-0728")))
 Description: Fitting Cox proportional hazard model under dependent right censoring using copula and maximum penalised likelihood methods.
 Depends: R (>= 3.5)
 License: GPL-3
