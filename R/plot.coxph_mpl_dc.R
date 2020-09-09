@@ -21,9 +21,9 @@
 #'
 #'
 #' @details When the input is of class \code{coxph_mpl_dc} and \code{parameters=="theta"}, the baseline estimates
-#' base on \eqn{theta} and xout (with the corresponding 95\% confidence interval if se=TRUE ) are ploted.
+#' base on \eqn{\theta} and xout (with the corresponding 95\% confidence interval if se=TRUE ) are ploted.
 #' When the input is of class \code{coxph_mpl_dc} and \code{parameters=="gamma"}, the baseline hazard estimates
-#' based on \eqn{gamma} and xout (with the corresponding 95\% confidence interval if se=TRUE ) are ploted.
+#' based on \eqn{\gamma} and xout (with the corresponding 95\% confidence interval if se=TRUE ) are ploted.
 #'
 #' @return the baseline hazard plot
 #'
