@@ -47,12 +47,7 @@ eta<-surv[,3] # dependent censoring status
 ##-- Inputs
 control=coxph_mpl_dc.control(ordSp=4, binCount=2500, tie='No', tau=0.8, copula=copula3,
                                pent='penalty_mspl', smpart='REML', penc='penalty_mspl', smparc='REML',
-                               maxit2=100, maxit=10000, mid=1, asy=1, ac=1, cv=1,
-                               ac.theta=1e-5, ac.gamma=1e-5, ac.Utheta=-1e-2, ac.Ugamma=-1e-2,
-                               min.theta=1e-7, min.gamma=1e-7, min.ht=1e-7, min.hc=1e-7,
-                               min.St=1e-7, min.Sc=1e-7,
-                               min.C=1e-7, min.dC=1e-7, eps=1e-5,
-                               tol.thga=1e-5, tol.bph=1e-5, tol.smpar=1e-2,
+                               maxit2=100, maxit=10000,
                                cat.smpar='No')
 
 ##-- Perform MPL estimation
