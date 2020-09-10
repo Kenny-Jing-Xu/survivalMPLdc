@@ -28,7 +28,7 @@ distr.ce <- 'exponential'
 ht0b <- a * (seq(0, 5.4, 0.01) ^ (a - 1)) / (lambda ^ a)
 
 ##-- Sample size 200
-n <- 5000
+n <- 200
 set.seed(0)
 ##-- One sample Monte Carlo dataset
 cova <- cbind(rbinom(n, 1, 0.5), runif(n, min=-10, max=10))
@@ -45,9 +45,9 @@ del<-surv[,2] # failure status
 eta<-surv[,3] # dependent censoring status
 
 ##-- Inputs
-control=coxph_mpl_dc.control(ordSp=4, binCount=2500, tie='No', tau=0.8, copula=copula3,
-                               pent='penalty_mspl', smpart='REML', penc='penalty_mspl', smparc='REML',
-                               maxit2=100, maxit=10000,
+control=coxph_mpl_dc.control(ordSp=1, binCount=20, tie='No', tau=0.8, copula=copula3,
+                               pent='mat1', smpart="REML", penc='mat1', smparc="REML",
+                               maxit2=50, maxit=5000,
                                cat.smpar='No')
 
 ##-- Perform MPL estimation
@@ -65,12 +65,12 @@ plot(x = coxMPLests, parameter = "theta", funtype="hazard",
      xout = seq(0, 5.4, 0.01), se = TRUE,
      cols=c("blue", "red"), ltys=c(4, 2), type="l", lwd=1, cex=1, cex.axis=1, cex.lab=1,
      xlab="Time", ylab="Hazard",
-     xlim=c(0, 5.4), ylim=c(0, 4)
+     xlim=c(0, 5.4), ylim=c(0, 3)
 )
 par(new=TRUE)
 plot(seq(0, 5.4, 0.01), ht0b,
      type="l", col="green",
-     lty=1, lwd=1, cex.axis=1, cex.lab=1, xlim=c(0, 5.4), ylim=c(0, 4),
+     lty=1, lwd=1, cex.axis=1, cex.lab=1, xlim=c(0, 5.4), ylim=c(0, 3),
      xlab='Time', ylab='Hazard')
 title("MPL Hazard", cex.main=1)
 legend( 'topleft',legend = c( "MPL", "95% Confidence Interval", "True"),
@@ -79,13 +79,13 @@ legend( 'topleft',legend = c( "MPL", "95% Confidence Interval", "True"),
         cex = 1)
 
 expect_equal(
-  round( mpl_beta_phi_zp[,1], 8 ),
-  c(-0.49690106, 0.09671272, 0.33270738, 0.19981402)
+  round( mpl_beta_phi_zp[,1], 7 ),
+  c(-0.5367184, 0.1258855, 0.2217520, 0.1782889)
   )
 
 expect_equal(
   round( mpl_beta_phi_zp[,2], 8 ),
-  c(0.033302473, 0.003093199, 0.037263795, 0.004401592)
+  c(0.16322076, 0.01784505, 0.21279377, 0.02124492)
 )
 
 })
