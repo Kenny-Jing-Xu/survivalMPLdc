@@ -78,7 +78,7 @@ Baseline hazard parameter estimates and covariance matrix are then respectively 
 
 The estimates of zero are possible for baseline hazard parameters (e.g., when number of knots is relatively large to sample size) and
 will correspond to active constraints as defined by Moore and Sadler (2008). Inference, as described by Ma et al (2014) or Xu et al (2018),
-is then corrected accordingly (refer to Moore and Sadler (2008)) by adequately ’cutting’ the corresponding covariance matrix.
+is then corrected accordingly (refer to Moore and Sadler (2008)) by adequately cutting the corresponding covariance matrix.
 
 There are currently three ways to perform inference on model parameters: Let \eqn{H} denote the negative of Hessian matrix of the non-penalized likelihood,
 \eqn{Q} denote the product of the first order derivative of the penalized likelihood by its transpose,

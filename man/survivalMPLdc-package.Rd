@@ -4,11 +4,9 @@
 \name{survivalMPLdc-package}
 \alias{survivalMPLdc-package}
 \alias{survivalMPLdc}
-\title{Survival Analysis under Dependent Right Censoring using Maximum Penalised
-Likelihood Method}
+\title{Penalised Likelihood for Survival Analysis with Dependent Censoring}
 \description{
-Survival Analysis under Dependent Right Censoring using Maximum Penalised
-Likelihood Method
+Penalised Likelihood for Survival Analysis with Dependent Censoring
 }
 \references{
 Ma, J. (2010). \emph{"Positively constrained multiplicative iterative algorithm
