@@ -10,4 +10,8 @@ There were no ERRORs or WARNINGs.
 There was 1 NOTE:
 * checking for future file timestamps ... NOTE unable to verify current time
 
-This is a new release.
+## Resubmission
+
+This is a resubmission. In this version I have:
+
+* Converted the DESCRIPTION title to "Penalised Likelihood for Survival Analysis with Dependent Censoring".
