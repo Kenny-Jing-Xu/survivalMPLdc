@@ -1,7 +1,6 @@
 Package: survivalMPLdc
 Type: Package
-Title: Survival Analysis under Dependent Right Censoring using Maximum Penalised 
-       Likelihood Method 
+Title: Penalised Likelihood for Survival Analysis with Dependent Censoring
 Version: 0.1.0
 Authors@R: c(person("Jing", "Xu", role = c("aut", "cre"),
   email = "kenny.xu@duke-nus.edu.sg"), 
