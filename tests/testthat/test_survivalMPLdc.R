@@ -2,11 +2,7 @@ context("Testing the regression cofficients estimation")
 
 
 library(survivalMPLdc)
-library(copula)
-library(survival)
-library(splines2)
-library(matrixcalc)
-library(testthat)
+
 
 test_that("Testing the MPL estimated regression coefficients versus the true values", {
 
@@ -45,7 +41,7 @@ del<-surv[,2] # failure status
 eta<-surv[,3] # dependent censoring status
 
 ##-- Inputs
-control=coxph_mpl_dc.control(ordSp=1, binCount=20, tie='No', tau=0.8, copula=copula3,
+control=coxph_mpl_dc.control(ordSp=1, binCount=20, tau=0.8, copula=copula3,
                                pent='mat1', smpart="REML", penc='mat1', smparc="REML",
                                maxit2=50, maxit=5000,
                                cat.smpar='No')
