@@ -42,13 +42,10 @@
 #'
 #' @seealso \code{\link{coxph_mpl_dc}}
 #'
-#' @import copula
-#'
+#' @importFrom copula indepCopula claytonCopula gumbelCopula frankCopula iTau rCopula
 #' @importFrom stats pnorm qexp qweibull runif
 #'
 #' @examples
-#'  library(copula)
-#'
 #'  ##-- Copula types
 #'  copula1 <- 'clayton'
 #'  copula2 <- 'gumbel'

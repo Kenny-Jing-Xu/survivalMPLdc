@@ -28,16 +28,12 @@
 #'
 #' @seealso \code{\link{plot.coxph_mpl_dc}}, \code{\link{coxph_mpl_dc.control}}, \code{\link{coxph_mpl_dc}}
 #'
-#' @import copula
-#'
-#' @importFrom survival coxph
+#' @importFrom copula indepCopula claytonCopula gumbelCopula frankCopula iTau rCopula
+#' @importFrom survival coxph Surv
 #' @importFrom splines2 iSpline mSpline
 #'
 #' @examples
 #' \donttest{
-#'  library(copula)
-#'  library(survival)
-#'  library(splines2)
 #'
 #'  ##-- Copula types
 #'  copula1 <- 'clayton'

@@ -38,19 +38,14 @@
 #'
 #' @seealso \code{\link{coef.coxph_mpl_dc}}, \code{\link{coxph_mpl_dc.control}}, \code{\link{coxph_mpl_dc}}
 #'
-#' @import copula
-#'
-#' @importFrom survival coxph
+#' @importFrom copula indepCopula claytonCopula gumbelCopula frankCopula iTau rCopula
+#' @importFrom survival coxph Surv
 #' @importFrom splines2 iSpline mSpline
 #' @importFrom graphics par
 #' @importFrom stats approx
 #'
 #' @examples
 #' \donttest{
-#'  library(copula)
-#'  library(survival)
-#'  library(splines2)
-#'
 #'  ##-- Copula types
 #'  copula1 <- 'clayton'
 #'  copula2 <- 'gumbel'
