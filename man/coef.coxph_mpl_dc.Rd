@@ -28,9 +28,6 @@ the matrix of phi estimates with corresponding standar errors, \eqn{z}-statistic
 }
 \examples{
 \donttest{
- library(copula)
- library(survival)
- library(splines2)
 
  ##-- Copula types
  copula1 <- 'clayton'

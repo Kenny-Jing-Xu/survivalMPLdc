@@ -54,8 +54,6 @@ where the baseline hazard can take weibull form, i.e. \eqn{h_{0T}(x) = ax^{a-1} 
  \eqn{h_{0C}(x)=cons7}, or weibull form, i.e. \eqn{h_{0C}(x) = ax^{a-1} / \lambda^a}.'A' represents the administrative or independent censoring time, where A~U(0, cons9).
 }
 \examples{
- library(copula)
-
  ##-- Copula types
  copula1 <- 'clayton'
  copula2 <- 'gumbel'

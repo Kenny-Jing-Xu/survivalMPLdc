@@ -52,10 +52,6 @@ based on \eqn{\gamma} and xout (with the corresponding 95\% confidence interval 
 }
 \examples{
 \donttest{
- library(copula)
- library(survival)
- library(splines2)
-
  ##-- Copula types
  copula1 <- 'clayton'
  copula2 <- 'gumbel'

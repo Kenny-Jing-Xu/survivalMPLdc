@@ -91,11 +91,6 @@ and that \eqn{M_{2}^{-1}QM_{2}^{-1}}  performs better when using other bases.
 }
 \examples{
 \donttest{
- library(copula)
- library(survival)
- library(splines2)
- library(matrixcalc)
-
  ##-- Copula types
  copula1 <- 'clayton'
  copula2 <- 'gumbel'
