@@ -15,3 +15,5 @@ There was 1 NOTE:
 This is a resubmission. In this version I have:
 
 * Converted the DESCRIPTION title to "Penalised Likelihood for Survival Analysis with Dependent Censoring".
+* For each function in R folder, replaced "import copula" by "importFrom copula indepCopula claytonCopula gumbelCopula frankCopula iTau rCopula".
+* Deleted loading the packages that are imported in the R functions for the examples and testthat file.
