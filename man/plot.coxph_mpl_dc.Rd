@@ -94,7 +94,8 @@ for (j in 1:bn)
                                min.theta = 1e-7, min.gamma = 1e-7,
                                min.ht = 1e-7, min.hc = 1e-7,
                                min.St = 1e-7, min.Sc = 1e-7, min.C = 1e-7, min.dC = 1e-7,
-                               eps = 1e-5, tol.thga = 1e-5, tol.bph = 1e-5, tol.smpar = 1e-2 )
+                               eps = 1e-5, tol.thga = 1e-5, tol.bph = 1e-5, tol.smpar = 1e-2,
+                               cat.smpar = 'No' )
 aics[j]<-coxph_mpl_dc(surv, cova, control)$mpl_aic
 print(j) }
 binCount = min.binCount + ( which.min( aics ) - 1 )*incr.binCount
@@ -112,7 +113,8 @@ control <- coxph_mpl_dc.control(ordSp = 4,
                                 ac.Utheta = -1e-2, ac.Ugamma = -1e-2,
                                 min.theta = 1e-7, min.gamma = 1e-7, min.ht = 1e-7, min.hc = 1e-7,
                                 min.St = 1e-7, min.Sc = 1e-7, min.C = 1e-7, min.dC = 1e-7,
-                                eps = 1e-5, tol.thga = 1e-5, tol.bph = 1e-5, tol.smpar = 1e-2 )
+                                eps = 1e-5, tol.thga = 1e-5, tol.bph = 1e-5, tol.smpar = 1e-2,
+                                cat.smpar = 'No' )
 
 coxMPLests_tau <- coxph_mpl_dc(surv=surv, cova=cova, control=control, )
 
