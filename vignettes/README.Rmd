@@ -160,26 +160,24 @@ For the plot below, at each of the $\tau$ values, the baseline hazard function o
 #The plots for the sensitivity analysis of the baseline hazard estimates at different tau values
 t_up <- max(surv[,1])
 y_uplim <- max(mpl_h0Ti_tau0)
-plot(seq(0, max(surv[,1]), 0.01)[seq(0, max(surv[,1]), 0.01)<=t_up],
-     mpl_h0Ti_tau0[seq(0, max(surv[,1]), 0.01)<=t_up],
+Ti=seq(0, max(surv[,1]), 0.01)[seq(0, max(surv[,1]), 0.01)<=t_up]
+h0Ti0=mpl_h0Ti_tau0[seq(0, max(surv[,1]), 0.01)<=t_up]
+h0Ti0.2=mpl_h0Ti_tau0.2[seq(0, max(surv[,1]), 0.01)<=t_up]
+h0Ti0.5=mpl_h0Ti_tau0.5[seq(0, max(surv[,1]), 0.01)<=t_up]
+h0Ti0.8=mpl_h0Ti_tau0.8[seq(0, max(surv[,1]), 0.01)<=t_up]
+
+plot(x = Ti, y = h0Ti0,
      type="l", col="black", lty=1, lwd=1, cex.axis=1, cex.lab=1, ylim=c(0, y_uplim),
      xlab='Time (Month)', ylab='Hazard')
-par(new=TRUE)
-plot(seq(0, max(surv[,1]), 0.01)[seq(0, max(surv[,1]), 0.01)<=t_up],
-     mpl_h0Ti_tau0.2[seq(0, max(surv[,1]), 0.01)<=t_up],
-     type="l", col="grey", lty=2, lwd=1, cex.axis=1, cex.lab=1, ylim=c(0, y_uplim),
-     xlab='Time (Month)', ylab='Hazard')
-par(new=TRUE)
-plot(seq(0, max(surv[,1]), 0.01)[seq(0, max(surv[,1]), 0.01)<=t_up],
-     mpl_h0Ti_tau0.5[seq(0, max(surv[,1]), 0.01)<=t_up],
-     type="l", col="green", lty=3, lwd=1, cex.axis=1, cex.lab=1, ylim=c(0, y_uplim),
-     xlab='Time (Month)', ylab='Hazard')
-par(new=TRUE)
-plot(seq(0, max(surv[,1]), 0.01)[seq(0, max(surv[,1]), 0.01)<=t_up],
-     mpl_h0Ti_tau0.8[seq(0, max(surv[,1]), 0.01)<=t_up],
-     type="l", col="blue", lty=4, lwd=1, cex.axis=1, cex.lab=1, ylim=c(0, y_uplim),
-     xlab='Time (Month)', ylab='Hazard')
-par(new=TRUE)
+lines(x = Ti, y = h0Ti0.2,
+      col="grey", lty=2, lwd=1, cex.axis=1, cex.lab=1, ylim=c(0, y_uplim)
+)    
+lines(x = Ti, y = h0Ti0.5,
+     col="green", lty=3, lwd=1, cex.axis=1, cex.lab=1, ylim=c(0, y_uplim)
+)    
+lines(x = Ti, y = h0Ti0.8,
+     col="blue", lty=4, lwd=1, cex.axis=1, cex.lab=1, ylim=c(0, y_uplim)
+)
 
 title("MPL Hazard", cex.main=1)
 legend( 'topleft',
@@ -214,12 +212,11 @@ plot(ta, c(MPL_beta_tau0[j,1],
                                    MPL_beta_tau0.8[j,1] + 1.96*MPL_beta_tau0.8[j,2]
                                    ) + 0.1 ), 
      xlab='Tau', ylab='Estimate and 95% CI')
-par(new=TRUE)
-plot(ta, c(MPL_beta_tau0[j,1],
+points(ta, c(MPL_beta_tau0[j,1],
            MPL_beta_tau0.2[j,1],
            MPL_beta_tau0.5[j,1],
            MPL_beta_tau0.8[j,1]
-          ), type="p", pch=19, cex=1, cex.axis=1, cex.lab=1, 
+          ), pch=19, cex=1, cex.axis=1, cex.lab=1, 
      xlim=c(-0.1, 0.9), ylim=c( min(MPL_beta_tau0[j,1] - 1.96*MPL_beta_tau0[j,2],
                                     MPL_beta_tau0.2[j,1] - 1.96*MPL_beta_tau0.2[j,2],
                                     MPL_beta_tau0.5[j,1] - 1.96*MPL_beta_tau0.5[j,2],
@@ -229,15 +226,14 @@ plot(ta, c(MPL_beta_tau0[j,1],
                                     MPL_beta_tau0.2[j,1] + 1.96*MPL_beta_tau0.2[j,2],
                                     MPL_beta_tau0.5[j,1] + 1.96*MPL_beta_tau0.5[j,2],
                                     MPL_beta_tau0.8[j,1] + 1.96*MPL_beta_tau0.8[j,2]
-                                    ) + 0.1 ), 
-     xlab='Tau', ylab='Estimate and 95% CI')
-par(new=TRUE)
-plot(ta, c(MPL_beta_tau0[j,1] - 1.96*MPL_beta_tau0[j,2],
+                                    ) + 0.1 )
+     )
+points(ta, c(MPL_beta_tau0[j,1] - 1.96*MPL_beta_tau0[j,2],
            MPL_beta_tau0.2[j,1] - 1.96*MPL_beta_tau0.2[j,2],
            MPL_beta_tau0.5[j,1] - 1.96*MPL_beta_tau0.5[j,2],
            MPL_beta_tau0.8[j,1] - 1.96*MPL_beta_tau0.8[j,2]
           ), 
-     type="p", pch=4, cex=1, cex.axis=1, cex.lab=1, 
+     pch=4, cex=1, cex.axis=1, cex.lab=1, 
      xlim=c(-0.1, 0.9), ylim=c(min(MPL_beta_tau0[j,1] - 1.96*MPL_beta_tau0[j,2],
                                    MPL_beta_tau0.2[j,1] - 1.96*MPL_beta_tau0.2[j,2],
                                    MPL_beta_tau0.5[j,1] - 1.96*MPL_beta_tau0.5[j,2],
@@ -247,15 +243,14 @@ plot(ta, c(MPL_beta_tau0[j,1] - 1.96*MPL_beta_tau0[j,2],
                                    MPL_beta_tau0.2[j,1] + 1.96*MPL_beta_tau0.2[j,2],
                                    MPL_beta_tau0.5[j,1] + 1.96*MPL_beta_tau0.5[j,2],
                                    MPL_beta_tau0.8[j,1] + 1.96*MPL_beta_tau0.8[j,2]
-                                   ) + 0.1 ), 
-     xlab='Tau', ylab='Estimate and 95% CI')
-par(new=TRUE)
-plot(ta, c(MPL_beta_tau0[j,1] + 1.96*MPL_beta_tau0[j,2],
+                                   ) + 0.1 )
+     )
+points(ta, c(MPL_beta_tau0[j,1] + 1.96*MPL_beta_tau0[j,2],
            MPL_beta_tau0.2[j,1] + 1.96*MPL_beta_tau0.2[j,2],
            MPL_beta_tau0.5[j,1] + 1.96*MPL_beta_tau0.5[j,2],
            MPL_beta_tau0.8[j,1] + 1.96*MPL_beta_tau0.8[j,2]
           ), 
-     type="p", pch=4, cex=1, cex.axis=1, cex.lab=1, 
+     pch=4, cex=1, cex.axis=1, cex.lab=1, 
      xlim=c(-0.1, 0.9), ylim=c(min(MPL_beta_tau0[j,1] - 1.96*MPL_beta_tau0[j,2],
                                    MPL_beta_tau0.2[j,1] - 1.96*MPL_beta_tau0.2[j,2],
                                    MPL_beta_tau0.5[j,1] - 1.96*MPL_beta_tau0.5[j,2],
@@ -265,8 +260,8 @@ plot(ta, c(MPL_beta_tau0[j,1] + 1.96*MPL_beta_tau0[j,2],
                                    MPL_beta_tau0.2[j,1] + 1.96*MPL_beta_tau0.2[j,2],
                                    MPL_beta_tau0.5[j,1] + 1.96*MPL_beta_tau0.5[j,2],
                                    MPL_beta_tau0.8[j,1] + 1.96*MPL_beta_tau0.8[j,2]
-                                   ) + 0.1 ), 
-     xlab='Tau', ylab='Estimate and 95% CI')
+                                   ) + 0.1 )
+     )
 lines(c(ta[1], ta[1]), c( MPL_beta_tau0[j,1] - 1.96*MPL_beta_tau0[j,2], 
                           MPL_beta_tau0[j,1] + 1.96*MPL_beta_tau0[j,2] ), 
       lty=3)
