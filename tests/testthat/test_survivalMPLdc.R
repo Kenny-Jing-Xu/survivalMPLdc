@@ -2,7 +2,7 @@ context("Testing the regression cofficients estimation")
 
 
 library(survivalMPLdc)
-
+library(testthat)
 
 test_that("Testing the MPL estimated regression coefficients versus the true values", {
 
@@ -21,7 +21,8 @@ distr.ev <- 'weibull'
 distr.ce <- 'exponential'
 
 ##-- Real marginal baseline hazard for T
-ht0b <- a * (seq(0, 5.4, 0.01) ^ (a - 1)) / (lambda ^ a)
+xi=seq(0, 5.4, 0.01)
+ht0b <- a * ( xi^ (a - 1)) / (lambda ^ a)
 
 ##-- Sample size 200
 n <- 200
@@ -58,16 +59,17 @@ mpl_beta_phi_zp <- rbind( coef(object = coxMPLests, parameter = "beta",),
 
 ##-- Plot the true and estimated baseline hazards (95% confidence interval) for T
 plot(x = coxMPLests, parameter = "theta", funtype="hazard",
-     xout = seq(0, 5.4, 0.01), se = TRUE,
+     xout = xi, se = TRUE,
      cols=c("blue", "red"), ltys=c(4, 2), type="l", lwd=1, cex=1, cex.axis=1, cex.lab=1,
      xlab="Time", ylab="Hazard",
      xlim=c(0, 5.4), ylim=c(0, 3)
 )
-par(new=TRUE)
-plot(seq(0, 5.4, 0.01), ht0b,
-     type="l", col="green",
-     lty=1, lwd=1, cex.axis=1, cex.lab=1, xlim=c(0, 5.4), ylim=c(0, 3),
-     xlab='Time', ylab='Hazard')
+lines(x = xi, y = ht0b,
+      col="green",
+      lty=1, lwd=1,
+      cex.axis=1, cex.lab=1,
+      xlim=c(0, 5.4), ylim=c(0, 3)
+      )
 title("MPL Hazard", cex.main=1)
 legend( 'topleft',legend = c( "MPL", "95% Confidence Interval", "True"),
         col = c("blue", "red", "green"),
