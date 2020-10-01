@@ -246,27 +246,18 @@ Statistics in Medicine 37, 2238–2251.</p>
                                <span class='kw'>min.theta</span> <span class='kw'>=</span> <span class='fl'>1e-7</span>, <span class='kw'>min.gamma</span> <span class='kw'>=</span> <span class='fl'>1e-7</span>,
                                <span class='kw'>min.ht</span> <span class='kw'>=</span> <span class='fl'>1e-7</span>, <span class='kw'>min.hc</span> <span class='kw'>=</span> <span class='fl'>1e-7</span>,
                                <span class='kw'>min.St</span> <span class='kw'>=</span> <span class='fl'>1e-7</span>, <span class='kw'>min.Sc</span> <span class='kw'>=</span> <span class='fl'>1e-7</span>, <span class='kw'>min.C</span> <span class='kw'>=</span> <span class='fl'>1e-7</span>, <span class='kw'>min.dC</span> <span class='kw'>=</span> <span class='fl'>1e-7</span>,
-                               <span class='kw'>eps</span> <span class='kw'>=</span> <span class='fl'>1e-5</span>, <span class='kw'>tol.thga</span> <span class='kw'>=</span> <span class='fl'>1e-5</span>, <span class='kw'>tol.bph</span> <span class='kw'>=</span> <span class='fl'>1e-5</span>, <span class='kw'>tol.smpar</span> <span class='kw'>=</span> <span class='fl'>1e-2</span> )
+                               <span class='kw'>eps</span> <span class='kw'>=</span> <span class='fl'>1e-5</span>, <span class='kw'>tol.thga</span> <span class='kw'>=</span> <span class='fl'>1e-5</span>, <span class='kw'>tol.bph</span> <span class='kw'>=</span> <span class='fl'>1e-5</span>, <span class='kw'>tol.smpar</span> <span class='kw'>=</span> <span class='fl'>1e-2</span>,
+                               <span class='kw'>cat.smpar</span> <span class='kw'>=</span> <span class='st'>'No'</span> )
 <span class='no'>aics</span>[<span class='no'>j</span>]<span class='kw'>&lt;-</span><span class='fu'><a href='coxph_mpl_dc.html'>coxph_mpl_dc</a></span>(<span class='no'>surv</span>, <span class='no'>cova</span>, <span class='no'>control</span>)$<span class='no'>mpl_aic</span>
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>j</span>) }</div><div class='output co'>#&gt; 1 	smpart = 0 	smparc = 0 	dft= 33 	dfc= 33 	iter = 158 
-#&gt; [1] 1
-#&gt; 1 	smpart = 0 	smparc = 0 	dft= 18 	dfc= 18 	iter = 116 
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>j</span>) }</div><div class='output co'>#&gt; [1] 1
 #&gt; [1] 2
-#&gt; 1 	smpart = 0 	smparc = 0 	dft= 13 	dfc= 13 	iter = 82 
 #&gt; [1] 3
-#&gt; 1 	smpart = 0 	smparc = 0 	dft= 11 	dfc= 11 	iter = 221 
 #&gt; [1] 4
-#&gt; 1 	smpart = 0 	smparc = 0 	dft= 9 	dfc= 9 	iter = 95 
 #&gt; [1] 5
-#&gt; 1 	smpart = 0 	smparc = 0 	dft= 8 	dfc= 8 	iter = 145 
 #&gt; [1] 6
-#&gt; 1 	smpart = 0 	smparc = 0 	dft= 8 	dfc= 8 	iter = 165 
 #&gt; [1] 7
-#&gt; 1 	smpart = 0 	smparc = 0 	dft= 7 	dfc= 7 	iter = 140 
 #&gt; [1] 8
-#&gt; 1 	smpart = 0 	smparc = 0 	dft= 7 	dfc= 7 	iter = 142 
 #&gt; [1] 9
-#&gt; 1 	smpart = 0 	smparc = 0 	dft= 6 	dfc= 6 	iter = 202 
 #&gt; [1] 10</div><div class='input'><span class='no'>binCount</span> <span class='kw'>=</span> <span class='no'>min.binCount</span> + ( <span class='fu'><a href='https://rdrr.io/r/base/which.min.html'>which.min</a></span>( <span class='no'>aics</span> ) - <span class='fl'>1</span> )*<span class='no'>incr.binCount</span>
 <span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span>(<span class='no'>binCounts</span>, <span class='no'>aics</span>)</div><div class='img'><img src='plot.coxph_mpl_dc-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'>##--MPL estimate Cox proportional hazard model for institutionalization under medium positive</span>
 <span class='co'>##--dependent censoring</span>
@@ -281,108 +272,11 @@ Statistics in Medicine 37, 2238–2251.</p>
                                 <span class='kw'>ac.Utheta</span> <span class='kw'>=</span> -<span class='fl'>1e-2</span>, <span class='kw'>ac.Ugamma</span> <span class='kw'>=</span> -<span class='fl'>1e-2</span>,
                                 <span class='kw'>min.theta</span> <span class='kw'>=</span> <span class='fl'>1e-7</span>, <span class='kw'>min.gamma</span> <span class='kw'>=</span> <span class='fl'>1e-7</span>, <span class='kw'>min.ht</span> <span class='kw'>=</span> <span class='fl'>1e-7</span>, <span class='kw'>min.hc</span> <span class='kw'>=</span> <span class='fl'>1e-7</span>,
                                 <span class='kw'>min.St</span> <span class='kw'>=</span> <span class='fl'>1e-7</span>, <span class='kw'>min.Sc</span> <span class='kw'>=</span> <span class='fl'>1e-7</span>, <span class='kw'>min.C</span> <span class='kw'>=</span> <span class='fl'>1e-7</span>, <span class='kw'>min.dC</span> <span class='kw'>=</span> <span class='fl'>1e-7</span>,
-                                <span class='kw'>eps</span> <span class='kw'>=</span> <span class='fl'>1e-5</span>, <span class='kw'>tol.thga</span> <span class='kw'>=</span> <span class='fl'>1e-5</span>, <span class='kw'>tol.bph</span> <span class='kw'>=</span> <span class='fl'>1e-5</span>, <span class='kw'>tol.smpar</span> <span class='kw'>=</span> <span class='fl'>1e-2</span> )
+                                <span class='kw'>eps</span> <span class='kw'>=</span> <span class='fl'>1e-5</span>, <span class='kw'>tol.thga</span> <span class='kw'>=</span> <span class='fl'>1e-5</span>, <span class='kw'>tol.bph</span> <span class='kw'>=</span> <span class='fl'>1e-5</span>, <span class='kw'>tol.smpar</span> <span class='kw'>=</span> <span class='fl'>1e-2</span>,
+                                <span class='kw'>cat.smpar</span> <span class='kw'>=</span> <span class='st'>'No'</span> )
 
-<span class='no'>coxMPLests_tau</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='coxph_mpl_dc.html'>coxph_mpl_dc</a></span>(<span class='kw'>surv</span><span class='kw'>=</span><span class='no'>surv</span>, <span class='kw'>cova</span><span class='kw'>=</span><span class='no'>cova</span>, <span class='kw'>control</span><span class='kw'>=</span><span class='no'>control</span>, )</div><div class='output co'>#&gt; 1 	smpart = 13454090 	smparc = 55489476 	dft= 6 	dfc= 6 	iter = 201 
-#&gt; 2 	smpart = 159670298 	smparc = 70424878 	dft= 4.050809 	dfc= 3.923666 	iter = 907 
-#&gt; 3 	smpart = 10966018259 	smparc = 78333352 	dft= 3.370491 	dfc= 3.875549 	iter = 720 
-#&gt; 4 	smpart = 1.736158e+12 	smparc = 77751671 	dft= 3.008066 	dfc= 3.847774 	iter = 12 
-#&gt; 5 	smpart = 1.858718e+12 	smparc = 77797590 	dft= 3.000051 	dfc= 3.85007 	iter = 3 
-#&gt; 6 	smpart = 1.858935e+12 	smparc = 77793949 	dft= 3.000048 	dfc= 3.84989 	iter = 1 
-#&gt; 7 	smpart = 1.858936e+12 	smparc = 77794237 	dft= 3.000048 	dfc= 3.849904 	iter = 1 
-#&gt; 8 	smpart = 1.858936e+12 	smparc = 77794214 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 9 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 10 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 11 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 12 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 13 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 14 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 15 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 16 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 17 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 18 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 19 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 20 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 21 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 22 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 23 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 24 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 25 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 26 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 27 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 28 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 29 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 30 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 31 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 32 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 33 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 34 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 35 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 36 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 37 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 38 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 39 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 40 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 41 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 42 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 43 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 44 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 45 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 46 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 47 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 48 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 49 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 50 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 51 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 52 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 53 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 54 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 55 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 56 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 57 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 58 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 59 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 60 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 61 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 62 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 63 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 64 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 65 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 66 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 67 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 68 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 69 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 70 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 71 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 72 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 73 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 74 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 75 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 76 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 77 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 78 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 79 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 80 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 81 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 82 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 83 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 84 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 85 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 86 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 87 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 88 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 89 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 90 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 91 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 92 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 93 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 94 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 95 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 96 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 97 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 98 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 99 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 
-#&gt; 100 	smpart = 1.858936e+12 	smparc = 77794216 	dft= 3.000048 	dfc= 3.849903 	iter = 1 </div><div class='input'>
+<span class='no'>coxMPLests_tau</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='coxph_mpl_dc.html'>coxph_mpl_dc</a></span>(<span class='kw'>surv</span><span class='kw'>=</span><span class='no'>surv</span>, <span class='kw'>cova</span><span class='kw'>=</span><span class='no'>cova</span>, <span class='kw'>control</span><span class='kw'>=</span><span class='no'>control</span>, )
+
 <span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>coxMPLests_tau</span>, <span class='kw'>parameter</span> <span class='kw'>=</span> <span class='st'>"theta"</span>, <span class='kw'>funtype</span><span class='kw'>=</span><span class='st'>"hazard"</span>,
      <span class='kw'>xout</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>0</span>, <span class='fl'>36</span>, <span class='fl'>0.01</span>), <span class='kw'>se</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
      <span class='kw'>cols</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"blue"</span>, <span class='st'>"red"</span>), <span class='kw'>ltys</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>2</span>), <span class='kw'>type</span><span class='kw'>=</span><span class='st'>"l"</span>, <span class='kw'>lwd</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>cex</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>cex.axis</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>cex.lab</span><span class='kw'>=</span><span class='fl'>1</span>,

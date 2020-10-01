@@ -280,27 +280,18 @@ Statistics in Medicine 37, 2238–2251.</p>
                              <span class='kw'>ac.theta</span> <span class='kw'>=</span> <span class='fl'>1e-5</span>, <span class='kw'>ac.gamma</span> <span class='kw'>=</span> <span class='fl'>1e-5</span>, <span class='kw'>ac.Utheta</span> <span class='kw'>=</span> -<span class='fl'>1e-2</span>, <span class='kw'>ac.Ugamma</span> <span class='kw'>=</span> -<span class='fl'>1e-2</span>,
                              <span class='kw'>min.theta</span> <span class='kw'>=</span> <span class='fl'>1e-7</span>, <span class='kw'>min.gamma</span> <span class='kw'>=</span> <span class='fl'>1e-7</span>, <span class='kw'>min.ht</span> <span class='kw'>=</span> <span class='fl'>1e-7</span>, <span class='kw'>min.hc</span> <span class='kw'>=</span> <span class='fl'>1e-7</span>,
                              <span class='kw'>min.St</span> <span class='kw'>=</span> <span class='fl'>1e-7</span>, <span class='kw'>min.Sc</span> <span class='kw'>=</span> <span class='fl'>1e-7</span>, <span class='kw'>min.C</span> <span class='kw'>=</span> <span class='fl'>1e-7</span>, <span class='kw'>min.dC</span> <span class='kw'>=</span> <span class='fl'>1e-7</span>,
-                             <span class='kw'>eps</span> <span class='kw'>=</span> <span class='fl'>1e-5</span>, <span class='kw'>tol.thga</span> <span class='kw'>=</span> <span class='fl'>1e-5</span>, <span class='kw'>tol.bph</span> <span class='kw'>=</span> <span class='fl'>1e-5</span>, <span class='kw'>tol.smpar</span> <span class='kw'>=</span> <span class='fl'>1e-2</span> )
+                             <span class='kw'>eps</span> <span class='kw'>=</span> <span class='fl'>1e-5</span>, <span class='kw'>tol.thga</span> <span class='kw'>=</span> <span class='fl'>1e-5</span>, <span class='kw'>tol.bph</span> <span class='kw'>=</span> <span class='fl'>1e-5</span>, <span class='kw'>tol.smpar</span> <span class='kw'>=</span> <span class='fl'>1e-2</span>,
+                             <span class='kw'>cat.smpar</span> <span class='kw'>=</span> <span class='st'>'No'</span> )
 <span class='no'>aics</span>[<span class='no'>j</span>]<span class='kw'>&lt;-</span><span class='fu'>coxph_mpl_dc</span>(<span class='no'>surv</span>, <span class='no'>cova</span>, <span class='no'>control</span>)$<span class='no'>mpl_aic</span>
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>j</span>) }</div><div class='output co'>#&gt; 1 	smpart = 0 	smparc = 0 	dft= 23 	dfc= 23 	iter = 996 
-#&gt; [1] 1
-#&gt; 1 	smpart = 0 	smparc = 0 	dft= 13 	dfc= 13 	iter = 596 
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>j</span>) }</div><div class='output co'>#&gt; [1] 1
 #&gt; [1] 2
-#&gt; 1 	smpart = 0 	smparc = 0 	dft= 10 	dfc= 10 	iter = 265 
 #&gt; [1] 3
-#&gt; 1 	smpart = 0 	smparc = 0 	dft= 8 	dfc= 8 	iter = 682 
 #&gt; [1] 4
-#&gt; 1 	smpart = 0 	smparc = 0 	dft= 7 	dfc= 7 	iter = 389 
 #&gt; [1] 5
-#&gt; 1 	smpart = 0 	smparc = 0 	dft= 7 	dfc= 7 	iter = 520 
 #&gt; [1] 6
-#&gt; 1 	smpart = 0 	smparc = 0 	dft= 6 	dfc= 6 	iter = 540 
 #&gt; [1] 7
-#&gt; 1 	smpart = 0 	smparc = 0 	dft= 6 	dfc= 6 	iter = 438 
 #&gt; [1] 8
-#&gt; 1 	smpart = 0 	smparc = 0 	dft= 6 	dfc= 6 	iter = 433 
 #&gt; [1] 9
-#&gt; 1 	smpart = 0 	smparc = 0 	dft= 5 	dfc= 5 	iter = 1054 
 #&gt; [1] 10</div><div class='input'> <span class='no'>binCount</span> <span class='kw'>&lt;-</span> <span class='fl'>10</span> + ( <span class='fu'><a href='https://rdrr.io/r/base/which.min.html'>which.min</a></span>( <span class='no'>aics</span> ) - <span class='fl'>1</span> ) * <span class='fl'>10</span>
  <span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span>(<span class='no'>binCounts</span>, <span class='no'>aics</span>)</div><div class='img'><img src='coxph_mpl_dc-1.png' alt='' width='700' height='433' /></div><div class='input'>
  <span class='co'>##-- control inputs for the coxph_mpl_dc function</span>
@@ -315,110 +306,13 @@ Statistics in Medicine 37, 2238–2251.</p>
                              <span class='kw'>ac.Utheta</span> <span class='kw'>=</span> -<span class='fl'>1e-2</span>, <span class='kw'>ac.Ugamma</span> <span class='kw'>=</span> -<span class='fl'>1e-2</span>,
                              <span class='kw'>min.theta</span> <span class='kw'>=</span> <span class='fl'>1e-7</span>, <span class='kw'>min.gamma</span> <span class='kw'>=</span> <span class='fl'>1e-7</span>, <span class='kw'>min.ht</span> <span class='kw'>=</span> <span class='fl'>1e-7</span>, <span class='kw'>min.hc</span> <span class='kw'>=</span> <span class='fl'>1e-7</span>,
                              <span class='kw'>min.St</span> <span class='kw'>=</span> <span class='fl'>1e-7</span>, <span class='kw'>min.Sc</span> <span class='kw'>=</span> <span class='fl'>1e-7</span>, <span class='kw'>min.C</span> <span class='kw'>=</span> <span class='fl'>1e-7</span>, <span class='kw'>min.dC</span> <span class='kw'>=</span> <span class='fl'>1e-7</span>,
-                             <span class='kw'>eps</span> <span class='kw'>=</span> <span class='fl'>1e-5</span>, <span class='kw'>tol.thga</span> <span class='kw'>=</span> <span class='fl'>1e-5</span>, <span class='kw'>tol.bph</span> <span class='kw'>=</span> <span class='fl'>1e-5</span>, <span class='kw'>tol.smpar</span> <span class='kw'>=</span> <span class='fl'>1e-2</span> )
+                             <span class='kw'>eps</span> <span class='kw'>=</span> <span class='fl'>1e-5</span>, <span class='kw'>tol.thga</span> <span class='kw'>=</span> <span class='fl'>1e-5</span>, <span class='kw'>tol.bph</span> <span class='kw'>=</span> <span class='fl'>1e-5</span>, <span class='kw'>tol.smpar</span> <span class='kw'>=</span> <span class='fl'>1e-2</span>,
+                             <span class='kw'>cat.smpar</span> <span class='kw'>=</span> <span class='st'>'No'</span> )
 
  <span class='co'>##-- Fitting cox ph hazard model for T using MPL and an correct copula</span>
  <span class='co'>#with REML smoothing parameters</span>
- <span class='no'>coxMPLests5</span> <span class='kw'>&lt;-</span> <span class='fu'>coxph_mpl_dc</span>(<span class='no'>surv</span>, <span class='no'>cova</span>, <span class='no'>control</span>, )</div><div class='output co'>#&gt; 1 	smpart = 2.806255 	smparc = 73.2311 	dft= 5 	dfc= 5 	iter = 1054 
-#&gt; 2 	smpart = 46.72781 	smparc = 5811.713 	dft= 3.766098 	dfc= 3.083504 	iter = 297 
-#&gt; 3 	smpart = 1188.14 	smparc = 33831646 	dft= 3.05074 	dfc= 3.001163 	iter = 2948 
-#&gt; 4 	smpart = 1171.034 	smparc = 97299526158 	dft= 3.002087 	dfc= 3 	iter = 9 
-#&gt; 5 	smpart = 1171.033 	smparc = 92745973623 	dft= 3.002117 	dfc= 3.000001 	iter = 1 
-#&gt; 6 	smpart = 1171.032 	smparc = 92740983154 	dft= 3.002116 	dfc= 3.000001 	iter = 1 
-#&gt; 7 	smpart = 1171.032 	smparc = 92741021776 	dft= 3.002116 	dfc= 3.000001 	iter = 1 
-#&gt; 8 	smpart = 1171.032 	smparc = 92740909285 	dft= 3.002115 	dfc= 2.999999 	iter = 1 
-#&gt; 9 	smpart = 1171.033 	smparc = 92741030578 	dft= 3.002117 	dfc= 3.000001 	iter = 1 
-#&gt; 10 	smpart = 1171.033 	smparc = 92740889293 	dft= 3.002118 	dfc= 3 	iter = 1 
-#&gt; 11 	smpart = 1171.033 	smparc = 92740963317 	dft= 3.002117 	dfc= 3 	iter = 1 
-#&gt; 12 	smpart = 1171.032 	smparc = 92741013759 	dft= 3.002116 	dfc= 3 	iter = 1 
-#&gt; 13 	smpart = 1171.032 	smparc = 92741095935 	dft= 3.002116 	dfc= 3 	iter = 1 
-#&gt; 14 	smpart = 1171.033 	smparc = 92741044061 	dft= 3.002117 	dfc= 3 	iter = 1 
-#&gt; 15 	smpart = 1171.032 	smparc = 92741062484 	dft= 3.002116 	dfc= 3 	iter = 1 
-#&gt; 16 	smpart = 1171.032 	smparc = 92740962116 	dft= 3.002116 	dfc= 3 	iter = 1 
-#&gt; 17 	smpart = 1171.033 	smparc = 92740982996 	dft= 3.002117 	dfc= 3 	iter = 1 
-#&gt; 18 	smpart = 1171.032 	smparc = 92740992235 	dft= 3.002117 	dfc= 3 	iter = 1 
-#&gt; 19 	smpart = 1171.032 	smparc = 92740976032 	dft= 3.002116 	dfc= 3 	iter = 1 
-#&gt; 20 	smpart = 1171.032 	smparc = 92741037529 	dft= 3.002116 	dfc= 3 	iter = 1 
-#&gt; 21 	smpart = 1171.033 	smparc = 92740949377 	dft= 3.002117 	dfc= 2.999999 	iter = 1 
-#&gt; 22 	smpart = 1171.033 	smparc = 92740927009 	dft= 3.002117 	dfc= 3 	iter = 1 
-#&gt; 23 	smpart = 1171.033 	smparc = 92741074262 	dft= 3.002118 	dfc= 3.000001 	iter = 1 
-#&gt; 24 	smpart = 1171.032 	smparc = 92741068635 	dft= 3.002116 	dfc= 3.000001 	iter = 1 
-#&gt; 25 	smpart = 1171.033 	smparc = 92740938386 	dft= 3.002117 	dfc= 3 	iter = 1 
-#&gt; 26 	smpart = 1171.032 	smparc = 92741014931 	dft= 3.002117 	dfc= 3.000001 	iter = 1 
-#&gt; 27 	smpart = 1171.033 	smparc = 92740963341 	dft= 3.002118 	dfc= 2.999999 	iter = 1 
-#&gt; 28 	smpart = 1171.033 	smparc = 92741010169 	dft= 3.002118 	dfc= 3 	iter = 1 
-#&gt; 29 	smpart = 1171.033 	smparc = 9.2741e+10 	dft= 3.002118 	dfc= 3 	iter = 1 
-#&gt; 30 	smpart = 1171.032 	smparc = 92740949131 	dft= 3.002116 	dfc= 3 	iter = 1 
-#&gt; 31 	smpart = 1171.032 	smparc = 92740898577 	dft= 3.002116 	dfc= 2.999999 	iter = 1 
-#&gt; 32 	smpart = 1171.032 	smparc = 92740932123 	dft= 3.002116 	dfc= 3 	iter = 1 
-#&gt; 33 	smpart = 1171.033 	smparc = 92741020905 	dft= 3.002118 	dfc= 3 	iter = 1 
-#&gt; 34 	smpart = 1171.033 	smparc = 92740921642 	dft= 3.002117 	dfc= 3 	iter = 1 
-#&gt; 35 	smpart = 1171.033 	smparc = 92741043614 	dft= 3.002118 	dfc= 2.999999 	iter = 1 
-#&gt; 36 	smpart = 1171.033 	smparc = 92741052641 	dft= 3.002117 	dfc= 3 	iter = 1 
-#&gt; 37 	smpart = 1171.032 	smparc = 92740986962 	dft= 3.002115 	dfc= 2.999999 	iter = 1 
-#&gt; 38 	smpart = 1171.032 	smparc = 92740991225 	dft= 3.002116 	dfc= 3.000001 	iter = 1 
-#&gt; 39 	smpart = 1171.032 	smparc = 92740976475 	dft= 3.002116 	dfc= 3 	iter = 1 
-#&gt; 40 	smpart = 1171.032 	smparc = 92741033346 	dft= 3.002116 	dfc= 3 	iter = 1 
-#&gt; 41 	smpart = 1171.033 	smparc = 92741020411 	dft= 3.002117 	dfc= 3.000001 	iter = 1 
-#&gt; 42 	smpart = 1171.032 	smparc = 92740898953 	dft= 3.002116 	dfc= 2.999998 	iter = 1 
-#&gt; 43 	smpart = 1171.033 	smparc = 92740945626 	dft= 3.002118 	dfc= 3 	iter = 1 
-#&gt; 44 	smpart = 1171.033 	smparc = 92740979360 	dft= 3.002118 	dfc= 3.000001 	iter = 1 
-#&gt; 45 	smpart = 1171.033 	smparc = 92740893210 	dft= 3.002117 	dfc= 3 	iter = 1 
-#&gt; 46 	smpart = 1171.032 	smparc = 92740958048 	dft= 3.002116 	dfc= 3 	iter = 1 
-#&gt; 47 	smpart = 1171.033 	smparc = 9.2741e+10 	dft= 3.002118 	dfc= 3 	iter = 1 
-#&gt; 48 	smpart = 1171.032 	smparc = 92740923931 	dft= 3.002116 	dfc= 3 	iter = 1 
-#&gt; 49 	smpart = 1171.033 	smparc = 92740924080 	dft= 3.002118 	dfc= 3 	iter = 1 
-#&gt; 50 	smpart = 1171.033 	smparc = 92740891926 	dft= 3.002117 	dfc= 2.999999 	iter = 1 
-#&gt; 51 	smpart = 1171.032 	smparc = 92741013481 	dft= 3.002115 	dfc= 3.000001 	iter = 1 
-#&gt; 52 	smpart = 1171.032 	smparc = 92740951820 	dft= 3.002116 	dfc= 3 	iter = 1 
-#&gt; 53 	smpart = 1171.033 	smparc = 9.2741e+10 	dft= 3.002119 	dfc= 2.999999 	iter = 1 
-#&gt; 54 	smpart = 1171.033 	smparc = 92740951071 	dft= 3.002117 	dfc= 3.000001 	iter = 1 
-#&gt; 55 	smpart = 1171.032 	smparc = 92741044571 	dft= 3.002117 	dfc= 3 	iter = 1 
-#&gt; 56 	smpart = 1171.033 	smparc = 92741080986 	dft= 3.002117 	dfc= 3.000001 	iter = 1 
-#&gt; 57 	smpart = 1171.033 	smparc = 92740853591 	dft= 3.002117 	dfc= 2.999999 	iter = 1 
-#&gt; 58 	smpart = 1171.033 	smparc = 92741052051 	dft= 3.002118 	dfc= 3 	iter = 1 
-#&gt; 59 	smpart = 1171.033 	smparc = 92740954941 	dft= 3.002117 	dfc= 3.000001 	iter = 1 
-#&gt; 60 	smpart = 1171.033 	smparc = 92740973085 	dft= 3.002118 	dfc= 2.999998 	iter = 1 
-#&gt; 61 	smpart = 1171.033 	smparc = 92741049920 	dft= 3.002119 	dfc= 3 	iter = 1 
-#&gt; 62 	smpart = 1171.032 	smparc = 92741037202 	dft= 3.002116 	dfc= 3 	iter = 1 
-#&gt; 63 	smpart = 1171.033 	smparc = 92741021983 	dft= 3.002117 	dfc= 3.000001 	iter = 1 
-#&gt; 64 	smpart = 1171.033 	smparc = 92740932382 	dft= 3.002117 	dfc= 3 	iter = 1 
-#&gt; 65 	smpart = 1171.032 	smparc = 92741014011 	dft= 3.002116 	dfc= 3 	iter = 1 
-#&gt; 66 	smpart = 1171.033 	smparc = 92741075446 	dft= 3.002117 	dfc= 2.999999 	iter = 1 
-#&gt; 67 	smpart = 1171.032 	smparc = 92741014744 	dft= 3.002116 	dfc= 3 	iter = 1 
-#&gt; 68 	smpart = 1171.032 	smparc = 92741081950 	dft= 3.002116 	dfc= 3 	iter = 1 
-#&gt; 69 	smpart = 1171.033 	smparc = 92740988971 	dft= 3.002117 	dfc= 3 	iter = 1 
-#&gt; 70 	smpart = 1171.033 	smparc = 92740962270 	dft= 3.002117 	dfc= 2.999999 	iter = 1 
-#&gt; 71 	smpart = 1171.033 	smparc = 92741011839 	dft= 3.002117 	dfc= 3.000001 	iter = 1 
-#&gt; 72 	smpart = 1171.033 	smparc = 92741006214 	dft= 3.002117 	dfc= 3 	iter = 1 
-#&gt; 73 	smpart = 1171.032 	smparc = 92741040429 	dft= 3.002116 	dfc= 3.000001 	iter = 1 
-#&gt; 74 	smpart = 1171.032 	smparc = 92740932237 	dft= 3.002117 	dfc= 2.999999 	iter = 1 
-#&gt; 75 	smpart = 1171.032 	smparc = 92741013252 	dft= 3.002116 	dfc= 3 	iter = 1 
-#&gt; 76 	smpart = 1171.033 	smparc = 92740972373 	dft= 3.002118 	dfc= 3 	iter = 1 
-#&gt; 77 	smpart = 1171.033 	smparc = 92741050398 	dft= 3.002117 	dfc= 3 	iter = 1 
-#&gt; 78 	smpart = 1171.032 	smparc = 92740922981 	dft= 3.002116 	dfc= 3 	iter = 1 
-#&gt; 79 	smpart = 1171.032 	smparc = 92740963866 	dft= 3.002117 	dfc= 3 	iter = 1 
-#&gt; 80 	smpart = 1171.033 	smparc = 92740978867 	dft= 3.002117 	dfc= 3 	iter = 1 
-#&gt; 81 	smpart = 1171.032 	smparc = 92740936979 	dft= 3.002117 	dfc= 3.000001 	iter = 1 
-#&gt; 82 	smpart = 1171.033 	smparc = 92740962063 	dft= 3.002118 	dfc= 2.999999 	iter = 1 
-#&gt; 83 	smpart = 1171.033 	smparc = 92740927004 	dft= 3.002118 	dfc= 2.999998 	iter = 1 
-#&gt; 84 	smpart = 1171.033 	smparc = 92741050214 	dft= 3.002117 	dfc= 3.000001 	iter = 1 
-#&gt; 85 	smpart = 1171.032 	smparc = 92741052158 	dft= 3.002116 	dfc= 3.000001 	iter = 1 
-#&gt; 86 	smpart = 1171.033 	smparc = 92741056819 	dft= 3.002117 	dfc= 3 	iter = 1 
-#&gt; 87 	smpart = 1171.033 	smparc = 92740974563 	dft= 3.002118 	dfc= 2.999999 	iter = 1 
-#&gt; 88 	smpart = 1171.033 	smparc = 92740942027 	dft= 3.002117 	dfc= 3 	iter = 1 
-#&gt; 89 	smpart = 1171.033 	smparc = 92741087260 	dft= 3.002117 	dfc= 3 	iter = 1 
-#&gt; 90 	smpart = 1171.032 	smparc = 92741013752 	dft= 3.002116 	dfc= 3.000001 	iter = 1 
-#&gt; 91 	smpart = 1171.032 	smparc = 92741138835 	dft= 3.002116 	dfc= 3.000001 	iter = 1 
-#&gt; 92 	smpart = 1171.032 	smparc = 92740916967 	dft= 3.002117 	dfc= 2.999999 	iter = 1 
-#&gt; 93 	smpart = 1171.032 	smparc = 92741125840 	dft= 3.002116 	dfc= 3.000001 	iter = 1 
-#&gt; 94 	smpart = 1171.032 	smparc = 9.2741e+10 	dft= 3.002117 	dfc= 2.999999 	iter = 1 
-#&gt; 95 	smpart = 1171.033 	smparc = 92741051806 	dft= 3.002117 	dfc= 3.000001 	iter = 1 
-#&gt; 96 	smpart = 1171.033 	smparc = 92740909295 	dft= 3.002117 	dfc= 3 	iter = 1 
-#&gt; 97 	smpart = 1171.033 	smparc = 92741010328 	dft= 3.002117 	dfc= 3 	iter = 1 
-#&gt; 98 	smpart = 1171.032 	smparc = 92741007225 	dft= 3.002116 	dfc= 3 	iter = 1 
-#&gt; 99 	smpart = 1171.032 	smparc = 92741005306 	dft= 3.002117 	dfc= 3 	iter = 1 
-#&gt; 100 	smpart = 1171.033 	smparc = 92740907306 	dft= 3.002118 	dfc= 3 	iter = 1 </div><div class='input'> <span class='no'>mpl_beta_phi_zp5</span> <span class='kw'>&lt;-</span> <span class='no'>coxMPLests5</span>$<span class='no'>mpl_beta_phi_zp</span>
+ <span class='no'>coxMPLests5</span> <span class='kw'>&lt;-</span> <span class='fu'>coxph_mpl_dc</span>(<span class='no'>surv</span>, <span class='no'>cova</span>, <span class='no'>control</span>, )
+ <span class='no'>mpl_beta_phi_zp5</span> <span class='kw'>&lt;-</span> <span class='no'>coxMPLests5</span>$<span class='no'>mpl_beta_phi_zp</span>
  <span class='no'>mpl_h0t5</span> <span class='kw'>&lt;-</span> <span class='no'>coxMPLests5</span>$<span class='no'>mpl_h0t</span>
  <span class='no'>mpl_h0Ti5</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/approxfun.html'>approx</a></span>( <span class='no'>X</span>, <span class='no'>mpl_h0t5</span>, <span class='kw'>xout</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>0</span>, <span class='fl'>5.4</span>, <span class='fl'>0.01</span>),
                     <span class='kw'>method</span><span class='kw'>=</span><span class='st'>"constant"</span>, <span class='kw'>rule</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>ties</span> <span class='kw'>=</span> <span class='no'>mean</span>)$<span class='no'>y</span>
@@ -445,27 +339,18 @@ Statistics in Medicine 37, 2238–2251.</p>
                                 <span class='kw'>min.theta</span><span class='kw'>=</span><span class='fl'>1e-7</span>, <span class='kw'>min.gamma</span><span class='kw'>=</span><span class='fl'>1e-7</span>,
                                 <span class='kw'>min.ht</span><span class='kw'>=</span><span class='fl'>1e-7</span>, <span class='kw'>min.hc</span><span class='kw'>=</span><span class='fl'>1e-7</span>,
                                 <span class='kw'>min.St</span><span class='kw'>=</span><span class='fl'>1e-7</span>, <span class='kw'>min.Sc</span><span class='kw'>=</span><span class='fl'>1e-7</span>, <span class='kw'>min.C</span><span class='kw'>=</span><span class='fl'>1e-7</span>, <span class='kw'>min.dC</span><span class='kw'>=</span><span class='fl'>1e-7</span>,
-                                <span class='kw'>eps</span><span class='kw'>=</span><span class='fl'>1e-5</span>, <span class='kw'>tol.thga</span><span class='kw'>=</span><span class='fl'>1e-5</span>, <span class='kw'>tol.bph</span><span class='kw'>=</span><span class='fl'>1e-5</span>, <span class='kw'>tol.smpar</span><span class='kw'>=</span><span class='fl'>1e-2</span>)
+                                <span class='kw'>eps</span><span class='kw'>=</span><span class='fl'>1e-5</span>, <span class='kw'>tol.thga</span><span class='kw'>=</span><span class='fl'>1e-5</span>, <span class='kw'>tol.bph</span><span class='kw'>=</span><span class='fl'>1e-5</span>, <span class='kw'>tol.smpar</span><span class='kw'>=</span><span class='fl'>1e-2</span>,
+                                <span class='kw'>cat.smpar</span> <span class='kw'>=</span> <span class='st'>'No'</span>)
  <span class='no'>cvls</span>[<span class='no'>j</span>]<span class='kw'>&lt;-</span><span class='fu'>coxph_mpl_dc</span>(<span class='no'>surv</span>, <span class='no'>cova</span>, <span class='no'>control</span>)$<span class='no'>mpl_cvl</span>
- <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>j</span>) }</div><div class='output co'>#&gt; 1 	smpart = 10 	smparc = 0 	dft= 5 	dfc= 5 	iter = 757 
-#&gt; [1] 1
-#&gt; 1 	smpart = 20 	smparc = 0 	dft= 5 	dfc= 5 	iter = 755 
+ <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>j</span>) }</div><div class='output co'>#&gt; [1] 1
 #&gt; [1] 2
-#&gt; 1 	smpart = 30 	smparc = 0 	dft= 5 	dfc= 5 	iter = 764 
 #&gt; [1] 3
-#&gt; 1 	smpart = 40 	smparc = 0 	dft= 5 	dfc= 5 	iter = 761 
 #&gt; [1] 4
-#&gt; 1 	smpart = 50 	smparc = 0 	dft= 5 	dfc= 5 	iter = 775 
 #&gt; [1] 5
-#&gt; 1 	smpart = 60 	smparc = 0 	dft= 5 	dfc= 5 	iter = 775 
 #&gt; [1] 6
-#&gt; 1 	smpart = 70 	smparc = 0 	dft= 5 	dfc= 5 	iter = 772 
 #&gt; [1] 7
-#&gt; 1 	smpart = 80 	smparc = 0 	dft= 5 	dfc= 5 	iter = 851 
 #&gt; [1] 8
-#&gt; 1 	smpart = 90 	smparc = 0 	dft= 5 	dfc= 5 	iter = 958 
 #&gt; [1] 9
-#&gt; 1 	smpart = 100 	smparc = 0 	dft= 5 	dfc= 5 	iter = 1072 
 #&gt; [1] 10</div><div class='input'> <span class='no'>smpart</span> <span class='kw'>&lt;-</span> <span class='fl'>10</span> + ( <span class='fu'><a href='https://rdrr.io/r/base/which.min.html'>which.max</a></span>( <span class='no'>cvls</span> ) - <span class='fl'>1</span> ) * <span class='fl'>10</span>
  <span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span>(<span class='no'>smparts</span>, <span class='no'>cvls</span>)</div><div class='img'><img src='coxph_mpl_dc-2.png' alt='' width='700' height='433' /></div><div class='input'>
  <span class='co'>##-- Fitting cox ph hazard model for T using MPL and an correct copula</span>
@@ -479,7 +364,9 @@ Statistics in Medicine 37, 2238–2251.</p>
                           <span class='kw'>min.theta</span><span class='kw'>=</span><span class='fl'>1e-7</span>, <span class='kw'>min.gamma</span><span class='kw'>=</span><span class='fl'>1e-7</span>, <span class='kw'>min.ht</span><span class='kw'>=</span><span class='fl'>1e-7</span>, <span class='kw'>min.hc</span><span class='kw'>=</span><span class='fl'>1e-7</span>,
                           <span class='kw'>min.St</span><span class='kw'>=</span><span class='fl'>1e-7</span>, <span class='kw'>min.Sc</span><span class='kw'>=</span><span class='fl'>1e-7</span>,
                           <span class='kw'>min.C</span><span class='kw'>=</span><span class='fl'>1e-7</span>, <span class='kw'>min.dC</span><span class='kw'>=</span><span class='fl'>1e-7</span>, <span class='kw'>eps</span><span class='kw'>=</span><span class='fl'>1e-5</span>,
-                          <span class='kw'>tol.thga</span><span class='kw'>=</span><span class='fl'>1e-5</span>, <span class='kw'>tol.bph</span><span class='kw'>=</span><span class='fl'>1e-5</span>, <span class='kw'>tol.smpar</span><span class='kw'>=</span><span class='fl'>1e-2</span>)</div><div class='output co'>#&gt; 1 	smpart = 10 	smparc = 0 	dft= 5 	dfc= 5 	iter = 757 </div><div class='input'> <span class='no'>mpl_beta_phi_zp4</span> <span class='kw'>&lt;-</span> <span class='no'>coxMPLests4</span>$<span class='no'>mpl_beta_phi_zp</span>
+                          <span class='kw'>tol.thga</span><span class='kw'>=</span><span class='fl'>1e-5</span>, <span class='kw'>tol.bph</span><span class='kw'>=</span><span class='fl'>1e-5</span>, <span class='kw'>tol.smpar</span><span class='kw'>=</span><span class='fl'>1e-2</span>,
+                          <span class='kw'>cat.smpar</span> <span class='kw'>=</span> <span class='st'>'No'</span>)
+ <span class='no'>mpl_beta_phi_zp4</span> <span class='kw'>&lt;-</span> <span class='no'>coxMPLests4</span>$<span class='no'>mpl_beta_phi_zp</span>
  <span class='no'>mpl_h0t4</span> <span class='kw'>&lt;-</span> <span class='no'>coxMPLests4</span>$<span class='no'>mpl_h0t</span>
  <span class='no'>mpl_h0Ti4</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/approxfun.html'>approx</a></span>( <span class='no'>X</span>, <span class='no'>mpl_h0t4</span>, <span class='kw'>xout</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>0</span>, <span class='fl'>5.4</span>, <span class='fl'>0.01</span>),
                     <span class='kw'>method</span><span class='kw'>=</span><span class='st'>"constant"</span>, <span class='kw'>rule</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>ties</span> <span class='kw'>=</span> <span class='no'>mean</span>)$<span class='no'>y</span>
@@ -495,7 +382,9 @@ Statistics in Medicine 37, 2238–2251.</p>
                           <span class='kw'>min.theta</span><span class='kw'>=</span><span class='fl'>1e-7</span>, <span class='kw'>min.gamma</span><span class='kw'>=</span><span class='fl'>1e-7</span>,
                           <span class='kw'>min.ht</span><span class='kw'>=</span><span class='fl'>1e-7</span>, <span class='kw'>min.hc</span><span class='kw'>=</span><span class='fl'>1e-7</span>, <span class='kw'>min.St</span><span class='kw'>=</span><span class='fl'>1e-7</span>, <span class='kw'>min.Sc</span><span class='kw'>=</span><span class='fl'>1e-7</span>,
                           <span class='kw'>min.C</span><span class='kw'>=</span><span class='fl'>1e-7</span>, <span class='kw'>min.dC</span><span class='kw'>=</span><span class='fl'>1e-7</span>, <span class='kw'>eps</span><span class='kw'>=</span><span class='fl'>1e-5</span>,
-                          <span class='kw'>tol.thga</span><span class='kw'>=</span><span class='fl'>1e-5</span>, <span class='kw'>tol.bph</span><span class='kw'>=</span><span class='fl'>1e-5</span>, <span class='kw'>tol.smpar</span><span class='kw'>=</span><span class='fl'>1e-2</span>)</div><div class='output co'>#&gt; 1 	smpart = 0 	smparc = 0 	dft= 5 	dfc= 5 	iter = 1054 </div><div class='input'> <span class='no'>mpl_beta_phi_zp3</span> <span class='kw'>&lt;-</span> <span class='no'>coxMPLests3</span>$<span class='no'>mpl_beta_phi_zp</span>
+                          <span class='kw'>tol.thga</span><span class='kw'>=</span><span class='fl'>1e-5</span>, <span class='kw'>tol.bph</span><span class='kw'>=</span><span class='fl'>1e-5</span>, <span class='kw'>tol.smpar</span><span class='kw'>=</span><span class='fl'>1e-2</span>,
+                          <span class='kw'>cat.smpar</span> <span class='kw'>=</span> <span class='st'>'No'</span>)
+ <span class='no'>mpl_beta_phi_zp3</span> <span class='kw'>&lt;-</span> <span class='no'>coxMPLests3</span>$<span class='no'>mpl_beta_phi_zp</span>
  <span class='no'>mpl_h0t3</span> <span class='kw'>&lt;-</span> <span class='no'>coxMPLests3</span>$<span class='no'>mpl_h0t</span>
  <span class='no'>mpl_h0Ti3</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/approxfun.html'>approx</a></span>( <span class='no'>X</span>, <span class='no'>mpl_h0t3</span>, <span class='kw'>xout</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>0</span>, <span class='fl'>5.4</span>, <span class='fl'>0.01</span>),
  <span class='kw'>method</span><span class='kw'>=</span><span class='st'>"constant"</span>, <span class='kw'>rule</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>ties</span> <span class='kw'>=</span> <span class='no'>mean</span>)$<span class='no'>y</span>
@@ -505,19 +394,16 @@ Statistics in Medicine 37, 2238–2251.</p>
  <span class='no'>y_uplim</span> <span class='kw'>&lt;-</span> <span class='fl'>2</span>
  <span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>0</span>, <span class='fl'>5.4</span>, <span class='fl'>0.01</span>)[<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>0</span>, <span class='fl'>5.4</span>, <span class='fl'>0.01</span>)<span class='kw'>&lt;=</span><span class='no'>t_up</span>], <span class='no'>mpl_h0Ti5</span>[<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>0</span>, <span class='fl'>5.4</span>, <span class='fl'>0.01</span>)<span class='kw'>&lt;=</span><span class='no'>t_up</span>],
       <span class='kw'>type</span><span class='kw'>=</span><span class='st'>"l"</span>, <span class='kw'>col</span><span class='kw'>=</span><span class='st'>"grey"</span>, <span class='kw'>lty</span><span class='kw'>=</span><span class='fl'>4</span>, <span class='kw'>lwd</span><span class='kw'>=</span><span class='fl'>3</span>, <span class='kw'>cex.axis</span><span class='kw'>=</span><span class='fl'>1.6</span>, <span class='kw'>cex.lab</span><span class='kw'>=</span><span class='fl'>1.6</span>, <span class='kw'>ylim</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='no'>y_uplim</span>),
-      <span class='kw'>xlab</span><span class='kw'>=</span><span class='st'>'Time'</span>, <span class='kw'>ylab</span><span class='kw'>=</span><span class='st'>'Hazard'</span>)</div><div class='input'> <span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span>(<span class='kw'>new</span><span class='kw'>=</span><span class='fl'>TRUE</span>)
- <span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>0</span>, <span class='fl'>5.4</span>, <span class='fl'>0.01</span>)[<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>0</span>, <span class='fl'>5.4</span>, <span class='fl'>0.01</span>)<span class='kw'>&lt;=</span><span class='no'>t_up</span>], <span class='no'>ht0b</span>[<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>0</span>, <span class='fl'>5.4</span>, <span class='fl'>0.01</span>)<span class='kw'>&lt;=</span><span class='no'>t_up</span>],
-      <span class='kw'>type</span><span class='kw'>=</span><span class='st'>"l"</span>, <span class='kw'>col</span><span class='kw'>=</span><span class='st'>"green"</span>,
-      <span class='kw'>lty</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>lwd</span><span class='kw'>=</span><span class='fl'>3</span>, <span class='kw'>cex.axis</span><span class='kw'>=</span><span class='fl'>1.6</span>, <span class='kw'>cex.lab</span><span class='kw'>=</span><span class='fl'>1.6</span>, <span class='kw'>ylim</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='no'>y_uplim</span>),
-      <span class='kw'>xlab</span><span class='kw'>=</span><span class='st'>'Time'</span>, <span class='kw'>ylab</span><span class='kw'>=</span><span class='st'>'Hazard'</span>)</div><div class='input'> <span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span>(<span class='kw'>new</span><span class='kw'>=</span><span class='fl'>TRUE</span>)
- <span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>0</span>, <span class='fl'>5.4</span>, <span class='fl'>0.01</span>)[<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>0</span>, <span class='fl'>5.4</span>, <span class='fl'>0.01</span>)<span class='kw'>&lt;=</span><span class='no'>t_up</span>], <span class='no'>mpl_h0Ti4</span>[<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>0</span>, <span class='fl'>5.4</span>, <span class='fl'>0.01</span>)<span class='kw'>&lt;=</span><span class='no'>t_up</span>],
-      <span class='kw'>type</span><span class='kw'>=</span><span class='st'>"l"</span>, <span class='kw'>col</span><span class='kw'>=</span><span class='st'>"red"</span>,
-      <span class='kw'>lty</span><span class='kw'>=</span><span class='fl'>4</span>, <span class='kw'>lwd</span><span class='kw'>=</span><span class='fl'>3</span>, <span class='kw'>cex.axis</span><span class='kw'>=</span><span class='fl'>1.6</span>, <span class='kw'>cex.lab</span><span class='kw'>=</span><span class='fl'>1.6</span>, <span class='kw'>ylim</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='no'>y_uplim</span>),
-      <span class='kw'>xlab</span><span class='kw'>=</span><span class='st'>'Time'</span>, <span class='kw'>ylab</span><span class='kw'>=</span><span class='st'>'Hazard'</span>)</div><div class='input'> <span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span>(<span class='kw'>new</span><span class='kw'>=</span><span class='fl'>TRUE</span>)
- <span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>0</span>, <span class='fl'>5.4</span>, <span class='fl'>0.01</span>)[<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>0</span>, <span class='fl'>5.4</span>, <span class='fl'>0.01</span>)<span class='kw'>&lt;=</span><span class='no'>t_up</span>], <span class='no'>mpl_h0Ti3</span>[<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>0</span>, <span class='fl'>5.4</span>, <span class='fl'>0.01</span>)<span class='kw'>&lt;=</span><span class='no'>t_up</span>],
-      <span class='kw'>type</span><span class='kw'>=</span><span class='st'>"l"</span>, <span class='kw'>col</span><span class='kw'>=</span><span class='st'>"blue"</span>,
-      <span class='kw'>lty</span><span class='kw'>=</span><span class='fl'>4</span>, <span class='kw'>lwd</span><span class='kw'>=</span><span class='fl'>3</span>, <span class='kw'>cex.axis</span><span class='kw'>=</span><span class='fl'>1.6</span>, <span class='kw'>cex.lab</span><span class='kw'>=</span><span class='fl'>1.6</span>, <span class='kw'>ylim</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='no'>y_uplim</span>),
-      <span class='kw'>xlab</span><span class='kw'>=</span><span class='st'>'Time'</span>, <span class='kw'>ylab</span><span class='kw'>=</span><span class='st'>'Hazard'</span>)</div><div class='img'><img src='coxph_mpl_dc-3.png' alt='' width='700' height='433' /></div><div class='input'>
+      <span class='kw'>xlab</span><span class='kw'>=</span><span class='st'>'Time'</span>, <span class='kw'>ylab</span><span class='kw'>=</span><span class='st'>'Hazard'</span>)</div><div class='input'> <span class='fu'><a href='https://rdrr.io/r/graphics/lines.html'>lines</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>0</span>, <span class='fl'>5.4</span>, <span class='fl'>0.01</span>)[<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>0</span>, <span class='fl'>5.4</span>, <span class='fl'>0.01</span>)<span class='kw'>&lt;=</span><span class='no'>t_up</span>], <span class='no'>ht0b</span>[<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>0</span>, <span class='fl'>5.4</span>, <span class='fl'>0.01</span>)<span class='kw'>&lt;=</span><span class='no'>t_up</span>],
+      <span class='kw'>col</span><span class='kw'>=</span><span class='st'>"green"</span>,
+      <span class='kw'>lty</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>lwd</span><span class='kw'>=</span><span class='fl'>3</span>, <span class='kw'>cex.axis</span><span class='kw'>=</span><span class='fl'>1.6</span>, <span class='kw'>cex.lab</span><span class='kw'>=</span><span class='fl'>1.6</span>, <span class='kw'>ylim</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='no'>y_uplim</span>)
+      )</div><div class='input'> <span class='fu'><a href='https://rdrr.io/r/graphics/lines.html'>lines</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>0</span>, <span class='fl'>5.4</span>, <span class='fl'>0.01</span>)[<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>0</span>, <span class='fl'>5.4</span>, <span class='fl'>0.01</span>)<span class='kw'>&lt;=</span><span class='no'>t_up</span>], <span class='no'>mpl_h0Ti4</span>[<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>0</span>, <span class='fl'>5.4</span>, <span class='fl'>0.01</span>)<span class='kw'>&lt;=</span><span class='no'>t_up</span>],
+      <span class='kw'>col</span><span class='kw'>=</span><span class='st'>"red"</span>,
+      <span class='kw'>lty</span><span class='kw'>=</span><span class='fl'>4</span>, <span class='kw'>lwd</span><span class='kw'>=</span><span class='fl'>3</span>, <span class='kw'>cex.axis</span><span class='kw'>=</span><span class='fl'>1.6</span>, <span class='kw'>cex.lab</span><span class='kw'>=</span><span class='fl'>1.6</span>, <span class='kw'>ylim</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='no'>y_uplim</span>)
+      )</div><div class='input'> <span class='fu'><a href='https://rdrr.io/r/graphics/lines.html'>lines</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>0</span>, <span class='fl'>5.4</span>, <span class='fl'>0.01</span>)[<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>0</span>, <span class='fl'>5.4</span>, <span class='fl'>0.01</span>)<span class='kw'>&lt;=</span><span class='no'>t_up</span>], <span class='no'>mpl_h0Ti3</span>[<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>0</span>, <span class='fl'>5.4</span>, <span class='fl'>0.01</span>)<span class='kw'>&lt;=</span><span class='no'>t_up</span>],
+      <span class='kw'>col</span><span class='kw'>=</span><span class='st'>"blue"</span>,
+      <span class='kw'>lty</span><span class='kw'>=</span><span class='fl'>4</span>, <span class='kw'>lwd</span><span class='kw'>=</span><span class='fl'>3</span>, <span class='kw'>cex.axis</span><span class='kw'>=</span><span class='fl'>1.6</span>, <span class='kw'>cex.lab</span><span class='kw'>=</span><span class='fl'>1.6</span>, <span class='kw'>ylim</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='no'>y_uplim</span>)
+      )</div><div class='img'><img src='coxph_mpl_dc-3.png' alt='' width='700' height='433' /></div><div class='input'>
 # }
 
 
