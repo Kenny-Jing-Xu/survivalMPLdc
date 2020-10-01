@@ -43,6 +43,7 @@
 #' @importFrom splines2 iSpline mSpline
 #' @importFrom graphics par
 #' @importFrom stats approx
+#' @importFrom graphics lines
 #'
 #' @examples
 #' \donttest{
@@ -88,7 +89,8 @@
 #'                                min.theta = 1e-7, min.gamma = 1e-7,
 #'                                min.ht = 1e-7, min.hc = 1e-7,
 #'                                min.St = 1e-7, min.Sc = 1e-7, min.C = 1e-7, min.dC = 1e-7,
-#'                                eps = 1e-5, tol.thga = 1e-5, tol.bph = 1e-5, tol.smpar = 1e-2 )
+#'                                eps = 1e-5, tol.thga = 1e-5, tol.bph = 1e-5, tol.smpar = 1e-2,
+#'                                cat.smpar = 'No' )
 #' aics[j]<-coxph_mpl_dc(surv, cova, control)$mpl_aic
 #' print(j) }
 #' binCount = min.binCount + ( which.min( aics ) - 1 )*incr.binCount
@@ -107,7 +109,8 @@
 #'                                 ac.Utheta = -1e-2, ac.Ugamma = -1e-2,
 #'                                 min.theta = 1e-7, min.gamma = 1e-7, min.ht = 1e-7, min.hc = 1e-7,
 #'                                 min.St = 1e-7, min.Sc = 1e-7, min.C = 1e-7, min.dC = 1e-7,
-#'                                 eps = 1e-5, tol.thga = 1e-5, tol.bph = 1e-5, tol.smpar = 1e-2 )
+#'                                 eps = 1e-5, tol.thga = 1e-5, tol.bph = 1e-5, tol.smpar = 1e-2,
+#'                                 cat.smpar = 'No' )
 #'
 #' coxMPLests_tau <- coxph_mpl_dc(surv=surv, cova=cova, control=control, )
 #'
@@ -264,10 +267,8 @@ plot.coxph_mpl_dc<-function(x, parameter="theta", funtype="hazard", xout, se=TRU
   if(se==TRUE){
 
     plot( x = xout, y = yout, col=cols[1], lty=ltys[1],... )
-    par(new=TRUE)
-    plot( x = xout, y = youtu, col=cols[2], lty=ltys[2],... )
-    par(new=TRUE)
-    plot( x = xout, y = youtl, col=cols[2], lty=ltys[2],... )
+    lines( x = xout, y = youtu, col=cols[2], lty=ltys[2],... )
+    lines( x = xout, y = youtl, col=cols[2], lty=ltys[2],... )
 
   }else if(se==FALSE){
 

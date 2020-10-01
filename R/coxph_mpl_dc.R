@@ -146,7 +146,8 @@
 #'                              ac.theta = 1e-5, ac.gamma = 1e-5, ac.Utheta = -1e-2, ac.Ugamma = -1e-2,
 #'                              min.theta = 1e-7, min.gamma = 1e-7, min.ht = 1e-7, min.hc = 1e-7,
 #'                              min.St = 1e-7, min.Sc = 1e-7, min.C = 1e-7, min.dC = 1e-7,
-#'                              eps = 1e-5, tol.thga = 1e-5, tol.bph = 1e-5, tol.smpar = 1e-2 )
+#'                              eps = 1e-5, tol.thga = 1e-5, tol.bph = 1e-5, tol.smpar = 1e-2,
+#'                              cat.smpar = 'No' )
 #' aics[j]<-coxph_mpl_dc(surv, cova, control)$mpl_aic
 #' print(j) }
 #'  binCount <- 10 + ( which.min( aics ) - 1 ) * 10
@@ -164,7 +165,8 @@
 #'                              ac.Utheta = -1e-2, ac.Ugamma = -1e-2,
 #'                              min.theta = 1e-7, min.gamma = 1e-7, min.ht = 1e-7, min.hc = 1e-7,
 #'                              min.St = 1e-7, min.Sc = 1e-7, min.C = 1e-7, min.dC = 1e-7,
-#'                              eps = 1e-5, tol.thga = 1e-5, tol.bph = 1e-5, tol.smpar = 1e-2 )
+#'                              eps = 1e-5, tol.thga = 1e-5, tol.bph = 1e-5, tol.smpar = 1e-2,
+#'                              cat.smpar = 'No' )
 #'
 #'  ##-- Fitting cox ph hazard model for T using MPL and an correct copula
 #'  #with REML smoothing parameters
@@ -196,7 +198,8 @@
 #'                                 min.theta=1e-7, min.gamma=1e-7,
 #'                                 min.ht=1e-7, min.hc=1e-7,
 #'                                 min.St=1e-7, min.Sc=1e-7, min.C=1e-7, min.dC=1e-7,
-#'                                 eps=1e-5, tol.thga=1e-5, tol.bph=1e-5, tol.smpar=1e-2)
+#'                                 eps=1e-5, tol.thga=1e-5, tol.bph=1e-5, tol.smpar=1e-2,
+#'                                 cat.smpar = 'No')
 #'  cvls[j]<-coxph_mpl_dc(surv, cova, control)$mpl_cvl
 #'  print(j) }
 #'  smpart <- 10 + ( which.max( cvls ) - 1 ) * 10
@@ -213,7 +216,8 @@
 #'                           min.theta=1e-7, min.gamma=1e-7, min.ht=1e-7, min.hc=1e-7,
 #'                           min.St=1e-7, min.Sc=1e-7,
 #'                           min.C=1e-7, min.dC=1e-7, eps=1e-5,
-#'                           tol.thga=1e-5, tol.bph=1e-5, tol.smpar=1e-2)
+#'                           tol.thga=1e-5, tol.bph=1e-5, tol.smpar=1e-2,
+#'                           cat.smpar = 'No')
 #'  mpl_beta_phi_zp4 <- coxMPLests4$mpl_beta_phi_zp
 #'  mpl_h0t4 <- coxMPLests4$mpl_h0t
 #'  mpl_h0Ti4 <- approx( X, mpl_h0t4, xout = seq(0, 5.4, 0.01),
@@ -230,7 +234,8 @@
 #'                           min.theta=1e-7, min.gamma=1e-7,
 #'                           min.ht=1e-7, min.hc=1e-7, min.St=1e-7, min.Sc=1e-7,
 #'                           min.C=1e-7, min.dC=1e-7, eps=1e-5,
-#'                           tol.thga=1e-5, tol.bph=1e-5, tol.smpar=1e-2)
+#'                           tol.thga=1e-5, tol.bph=1e-5, tol.smpar=1e-2,
+#'                           cat.smpar = 'No')
 #'  mpl_beta_phi_zp3 <- coxMPLests3$mpl_beta_phi_zp
 #'  mpl_h0t3 <- coxMPLests3$mpl_h0t
 #'  mpl_h0Ti3 <- approx( X, mpl_h0t3, xout = seq(0, 5.4, 0.01),
@@ -242,21 +247,18 @@
 #'  plot(seq(0, 5.4, 0.01)[seq(0, 5.4, 0.01)<=t_up], mpl_h0Ti5[seq(0, 5.4, 0.01)<=t_up],
 #'       type="l", col="grey", lty=4, lwd=3, cex.axis=1.6, cex.lab=1.6, ylim=c(0, y_uplim),
 #'       xlab='Time', ylab='Hazard')
-#'  par(new=TRUE)
-#'  plot(seq(0, 5.4, 0.01)[seq(0, 5.4, 0.01)<=t_up], ht0b[seq(0, 5.4, 0.01)<=t_up],
-#'       type="l", col="green",
-#'       lty=1, lwd=3, cex.axis=1.6, cex.lab=1.6, ylim=c(0, y_uplim),
-#'       xlab='Time', ylab='Hazard')
-#'  par(new=TRUE)
-#'  plot(seq(0, 5.4, 0.01)[seq(0, 5.4, 0.01)<=t_up], mpl_h0Ti4[seq(0, 5.4, 0.01)<=t_up],
-#'       type="l", col="red",
-#'       lty=4, lwd=3, cex.axis=1.6, cex.lab=1.6, ylim=c(0, y_uplim),
-#'       xlab='Time', ylab='Hazard')
-#'  par(new=TRUE)
-#'  plot(seq(0, 5.4, 0.01)[seq(0, 5.4, 0.01)<=t_up], mpl_h0Ti3[seq(0, 5.4, 0.01)<=t_up],
-#'       type="l", col="blue",
-#'       lty=4, lwd=3, cex.axis=1.6, cex.lab=1.6, ylim=c(0, y_uplim),
-#'       xlab='Time', ylab='Hazard')
+#'  lines(seq(0, 5.4, 0.01)[seq(0, 5.4, 0.01)<=t_up], ht0b[seq(0, 5.4, 0.01)<=t_up],
+#'       col="green",
+#'       lty=1, lwd=3, cex.axis=1.6, cex.lab=1.6, ylim=c(0, y_uplim)
+#'       )
+#'  lines(seq(0, 5.4, 0.01)[seq(0, 5.4, 0.01)<=t_up], mpl_h0Ti4[seq(0, 5.4, 0.01)<=t_up],
+#'       col="red",
+#'       lty=4, lwd=3, cex.axis=1.6, cex.lab=1.6, ylim=c(0, y_uplim)
+#'       )
+#'  lines(seq(0, 5.4, 0.01)[seq(0, 5.4, 0.01)<=t_up], mpl_h0Ti3[seq(0, 5.4, 0.01)<=t_up],
+#'       col="blue",
+#'       lty=4, lwd=3, cex.axis=1.6, cex.lab=1.6, ylim=c(0, y_uplim)
+#'       )
 #'
 #'}
 #'
