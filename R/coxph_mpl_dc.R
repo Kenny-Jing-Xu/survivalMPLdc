@@ -101,10 +101,7 @@
 #' @examples
 #' \donttest{
 #'  ##-- Copula types
-#'  copula1 <- 'clayton'
-#'  copula2 <- 'gumbel'
 #'  copula3 <- 'frank'
-#'  copula4 <- 'independent'
 #'
 #'  ##-- Marginal distribution for T, C, and A
 #'  a <- 2
@@ -132,40 +129,12 @@
 #'  del<-surv[,2] # failure status
 #'  eta<-surv[,3] # dependent censoring status
 #'
-#'  ##-- Selecting bin sample or number of knots using AIC vs binCounts plot
-#'  binCounts <- seq(10, 100, 10)
-#'  bn <- length(binCounts)
-#'  aics<-rep(0, bn)
-#'  for (j in 1:bn)
-#'  { control=coxph_mpl_dc.control(ordSp = 4,
-#'                              binCount = binCounts[j], tie = 'No',
-#'                              tau = 0.8, copula = copula3,
-#'                              pent = 'penalty_mspl', smpart = 0, penc = 'penalty_mspl', smparc = 0,
-#'                              maxit2 = 100, maxit = 5000,
-#'                              mid = 1, asy = 0, ac = 1, cv = 0,
-#'                              ac.theta = 1e-5, ac.gamma = 1e-5, ac.Utheta = -1e-2, ac.Ugamma = -1e-2,
-#'                              min.theta = 1e-7, min.gamma = 1e-7, min.ht = 1e-7, min.hc = 1e-7,
-#'                              min.St = 1e-7, min.Sc = 1e-7, min.C = 1e-7, min.dC = 1e-7,
-#'                              eps = 1e-5, tol.thga = 1e-5, tol.bph = 1e-5, tol.smpar = 1e-2,
-#'                              cat.smpar = 'No' )
-#' aics[j]<-coxph_mpl_dc(surv, cova, control)$mpl_aic
-#' print(j) }
-#'  binCount <- 10 + ( which.min( aics ) - 1 ) * 10
-#'  plot(binCounts, aics)
-#'
 #'  ##-- control inputs for the coxph_mpl_dc function
 #'  control <- coxph_mpl_dc.control(ordSp = 4,
-#'                              binCount = binCount, tie = 'No',
+#'                              binCount = 100,
 #'                              tau = 0.8, copula = copula3,
 #'                              pent = 'penalty_mspl', smpart = 'REML',
 #'                              penc = 'penalty_mspl', smparc = 'REML',
-#'                              maxit2 = 100, maxit = 100000,
-#'                              mid = 1, asy = 1, ac = 1, cv = 1,
-#'                              ac.theta = 1e-5, ac.gamma = 1e-5,
-#'                              ac.Utheta = -1e-2, ac.Ugamma = -1e-2,
-#'                              min.theta = 1e-7, min.gamma = 1e-7, min.ht = 1e-7, min.hc = 1e-7,
-#'                              min.St = 1e-7, min.Sc = 1e-7, min.C = 1e-7, min.dC = 1e-7,
-#'                              eps = 1e-5, tol.thga = 1e-5, tol.bph = 1e-5, tol.smpar = 1e-2,
 #'                              cat.smpar = 'No' )
 #'
 #'  ##-- Fitting cox ph hazard model for T using MPL and an correct copula
@@ -179,62 +148,13 @@
 #'  ##-- Real marginal baseline hazard for T
 #'  ht0b <- a * (seq(0, 5.4, 0.01) ^ (a - 1)) / (lambda ^ a)
 #'
-#'  ##-- Selectiong a smoothing parameter for T using CV method
-#'  #given zero for the smoothing parameter of C
-#'  smparts <- seq(10, 100, 10)
-#'  smn <- length(smparts)
-#'  smparcs <- rep(0, smn)
-#'  cvls<-rep(0, smn)
-#'  for (j in 1:smn){
-#'  control <- coxph_mpl_dc.control(ordSp = 4,
-#'                                 binCount = binCount, tie = 'No',
-#'                                 tau = 0.8, copula = copula3,
-#'                                 pent = 'penalty_mspl', smpart = smparts[j],
-#'                                 penc = 'penalty_mspl', smparc = smparcs[j],
-#'                                 maxit2 = 100, maxit = 10000,
-#'                                 mid = 1, asy = 0, ac = 0, cv = 1,
-#'                                 ac.theta=1e-5, ac.gamma=1e-5, ac.Utheta=-1e-2,
-#'                                 ac.Ugamma=-1e-2,
-#'                                 min.theta=1e-7, min.gamma=1e-7,
-#'                                 min.ht=1e-7, min.hc=1e-7,
-#'                                 min.St=1e-7, min.Sc=1e-7, min.C=1e-7, min.dC=1e-7,
-#'                                 eps=1e-5, tol.thga=1e-5, tol.bph=1e-5, tol.smpar=1e-2,
-#'                                 cat.smpar = 'No')
-#'  cvls[j]<-coxph_mpl_dc(surv, cova, control)$mpl_cvl
-#'  print(j) }
-#'  smpart <- 10 + ( which.max( cvls ) - 1 ) * 10
-#'  plot(smparts, cvls)
-#'
-#'  ##-- Fitting cox ph hazard model for T using MPL and an correct copula
-#'  #with a cv smoothing parameter of T
-#'  coxMPLests4 <- coxph_mpl_dc(surv, cova,
-#'                           ordSp=4, binCount=binCount, tie='No',
-#'                           tau=0.8, copula=copula3,
-#'                           pent='penalty_mspl', smpart=smpart, penc='penalty_mspl', smparc=0,
-#'                           maxit2=100, maxit=100000, mid=1, asy=1, ac=1, cv=1,
-#'                           ac.theta=1e-5, ac.gamma=1e-5, ac.Utheta=-1e-2, ac.Ugamma=-1e-2,
-#'                           min.theta=1e-7, min.gamma=1e-7, min.ht=1e-7, min.hc=1e-7,
-#'                           min.St=1e-7, min.Sc=1e-7,
-#'                           min.C=1e-7, min.dC=1e-7, eps=1e-5,
-#'                           tol.thga=1e-5, tol.bph=1e-5, tol.smpar=1e-2,
-#'                           cat.smpar = 'No')
-#'  mpl_beta_phi_zp4 <- coxMPLests4$mpl_beta_phi_zp
-#'  mpl_h0t4 <- coxMPLests4$mpl_h0t
-#'  mpl_h0Ti4 <- approx( X, mpl_h0t4, xout = seq(0, 5.4, 0.01),
-#'                     method="constant", rule = 2, ties = mean)$y
 #'
 #'  ##-- Fitting cox ph hazard model for T using MPL and an correct copula
 #'  #with zero smoothing parameters
 #'  coxMPLests3 <- coxph_mpl_dc(surv, cova,
-#'                           ordSp=4, binCount=binCount, tie='No',
+#'                           ordSp=4, binCount=100,
 #'                           tau=0.8, copula=copula3,
 #'                           pent='penalty_mspl', smpart=0, penc='penalty_mspl', smparc=0,
-#'                           maxit2=100, maxit=100000, mid=1, asy=1, ac=1, cv=1,
-#'                           ac.theta=1e-5, ac.gamma=1e-5, ac.Utheta=-1e-2, ac.Ugamma=-1e-2,
-#'                           min.theta=1e-7, min.gamma=1e-7,
-#'                           min.ht=1e-7, min.hc=1e-7, min.St=1e-7, min.Sc=1e-7,
-#'                           min.C=1e-7, min.dC=1e-7, eps=1e-5,
-#'                           tol.thga=1e-5, tol.bph=1e-5, tol.smpar=1e-2,
 #'                           cat.smpar = 'No')
 #'  mpl_beta_phi_zp3 <- coxMPLests3$mpl_beta_phi_zp
 #'  mpl_h0t3 <- coxMPLests3$mpl_h0t
@@ -244,18 +164,19 @@
 #'  ##-- Plot the true and estimated baseline hazards for T
 #'  t_up <- 3.5
 #'  y_uplim <- 2
-#'  plot(seq(0, 5.4, 0.01)[seq(0, 5.4, 0.01)<=t_up], mpl_h0Ti5[seq(0, 5.4, 0.01)<=t_up],
+#'  Ti<-seq(0, 5.4, 0.01)[seq(0, 5.4, 0.01)<=t_up]
+#'  h0Ti<-ht0b[seq(0, 5.4, 0.01)<=t_up]
+#'  h0Ti5<-mpl_h0Ti5[seq(0, 5.4, 0.01)<=t_up]
+#'  h0Ti3<-mpl_h0Ti3[seq(0, 5.4, 0.01)<=t_up]
+#'
+#'  plot( x = Ti, y = h0Ti5,
 #'       type="l", col="grey", lty=4, lwd=3, cex.axis=1.6, cex.lab=1.6, ylim=c(0, y_uplim),
 #'       xlab='Time', ylab='Hazard')
-#'  lines(seq(0, 5.4, 0.01)[seq(0, 5.4, 0.01)<=t_up], ht0b[seq(0, 5.4, 0.01)<=t_up],
+#'  lines(x = Ti, y = h0Ti,
 #'       col="green",
 #'       lty=1, lwd=3, cex.axis=1.6, cex.lab=1.6, ylim=c(0, y_uplim)
 #'       )
-#'  lines(seq(0, 5.4, 0.01)[seq(0, 5.4, 0.01)<=t_up], mpl_h0Ti4[seq(0, 5.4, 0.01)<=t_up],
-#'       col="red",
-#'       lty=4, lwd=3, cex.axis=1.6, cex.lab=1.6, ylim=c(0, y_uplim)
-#'       )
-#'  lines(seq(0, 5.4, 0.01)[seq(0, 5.4, 0.01)<=t_up], mpl_h0Ti3[seq(0, 5.4, 0.01)<=t_up],
+#'  lines(x = Ti, y = h0Ti3,
 #'       col="blue",
 #'       lty=4, lwd=3, cex.axis=1.6, cex.lab=1.6, ylim=c(0, y_uplim)
 #'       )

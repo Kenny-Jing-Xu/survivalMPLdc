@@ -47,10 +47,7 @@
 #'
 #' @examples
 #'  ##-- Copula types
-#'  copula1 <- 'clayton'
-#'  copula2 <- 'gumbel'
 #'  copula3 <- 'frank'
-#'  copula4 <- 'independent'
 #'
 #'  ##-- Marginal distribution for T, C, and A
 #'  a <- 2

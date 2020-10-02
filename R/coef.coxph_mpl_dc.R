@@ -36,10 +36,7 @@
 #' \donttest{
 #'
 #'  ##-- Copula types
-#'  copula1 <- 'clayton'
-#'  copula2 <- 'gumbel'
 #'  copula3 <- 'frank'
-#'  copula4 <- 'independent'
 #'
 #' ##-- A real example
 #' ##-- One dataset from Prospective Research in Memory Clinics (PRIME) study
@@ -56,54 +53,16 @@
 #' p=dim(PRIME)[2]-3;print(p)
 #' names(PRIME)
 #'
-#' ##-- Selecting number of knots under independent censoring assumption using AIC vs binCounts plot
-#' min.binCount=20
-#' max.binCount=200
-#' incr.binCount=20
-#' binCounts <- seq(min.binCount, max.binCount, incr.binCount)
-#' bn <- length(binCounts)
-#' aics<-rep(0, bn)
-#'
-#' for (j in 1:bn)
-#' { control=coxph_mpl_dc.control(ordSp = 4,
-#'                                binCount = binCounts[j], tie = 'Yes',
-#'                                tau = 0.5, copula = copula3,
-#'                                pent = 'penalty_mspl', smpart = 0,
-#'                                penc = 'penalty_mspl', smparc = 0,
-#'                                maxit2 = 100, maxit = 5000,
-#'                                mid = 1, asy = 0, ac = 1, cv = 0,
-#'                                ac.theta = 1e-5, ac.gamma = 1e-5,
-#'                                ac.Utheta = -1e-2, ac.Ugamma = -1e-2,
-#'                                min.theta = 1e-7, min.gamma = 1e-7,
-#'                                min.ht = 1e-7, min.hc = 1e-7,
-#'                                min.St = 1e-7, min.Sc = 1e-7, min.C = 1e-7, min.dC = 1e-7,
-#'                                eps = 1e-5, tol.thga = 1e-5, tol.bph = 1e-5, tol.smpar = 1e-2,
-#'                                cat.smpar = 'No' )
-#' aics[j]<-coxph_mpl_dc(surv, cova, control)$mpl_aic
-#' print(j) }
-#' binCount = min.binCount + ( which.min( aics ) - 1 )*incr.binCount
-#' plot(binCounts, aics)
-
 #' ##--MPL estimate Cox proportional hazard model for institutionalization under independent censoring
 #' control <- coxph_mpl_dc.control(ordSp = 4,
-#'                                 binCount = binCount, tie = 'Yes',
+#'                                 binCount = 200, tie = 'Yes',
 #'                                 tau = 0.5, copula = copula3,
 #'                                 pent = 'penalty_mspl', smpart = 'REML',
 #'                                 penc = 'penalty_mspl', smparc = 'REML',
-#'                                 maxit2 = 100, maxit = 5000,
-#'                                 mid = 1, asy = 1, ac = 1, cv = 1,
-#'                                 ac.theta = 1e-5, ac.gamma = 1e-5,
-#'                                 ac.Utheta = -1e-2, ac.Ugamma = -1e-2,
-#'                                 min.theta = 1e-7, min.gamma = 1e-7, min.ht = 1e-7, min.hc = 1e-7,
-#'                                 min.St = 1e-7, min.Sc = 1e-7, min.C = 1e-7, min.dC = 1e-7,
-#'                                 eps = 1e-5, tol.thga = 1e-5, tol.bph = 1e-5, tol.smpar = 1e-2,
 #'                                 cat.smpar = 'No' )
 #'
 #' coxMPLests_tau <- coxph_mpl_dc(surv=surv, cova=cova, control=control, )
-#' mpl_beta_phi_zp_tau <- coxMPLests_tau$mpl_beta_phi_zp;print(mpl_beta_phi_zp_tau)
-#'
 #' MPL_beta=coef(object = coxMPLests_tau, parameter = "beta",)
-#'
 #' MPL_phi=coef(object = coxMPLests_tau, parameter = "phi",)
 #'
 #' }
