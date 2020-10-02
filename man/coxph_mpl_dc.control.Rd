@@ -116,16 +116,10 @@ Typically it would only be used in a call to coxph_mpl_dc.
 }
 \examples{
 control=coxph_mpl_dc.control(ordSp=4,
-                             binCount=40, tie='No',
+                             binCount=40,
                              tau=0.8, copula='frank',
                              pent='penalty_mspl', smpart='REML', penc='penalty_mspl', smparc='REML',
-                             maxit2=100, maxit=100000,
-                             mid=1, asy=1, ac=1, cv=1,
-                             ac.theta=1e-5, ac.gamma=1e-5, ac.Utheta=-1e-2, ac.Ugamma=-1e-2,
-                             min.theta=1e-7, min.gamma=1e-7,
-                             min.ht=1e-7, min.hc=1e-7,
-                             min.St=1e-7, min.Sc=1e-7, min.C=1e-7, min.dC=1e-7,
-                             eps=1e-5, tol.thga=1e-5, tol.bph=1e-5, cat.smpar='Yes', tol.smpar=1e-2
+                             cat.smpar='No'
                              )
 
 }
