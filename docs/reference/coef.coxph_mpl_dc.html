@@ -175,10 +175,7 @@ Statistics in Medicine 37, 2238–2251.</p>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
 
  <span class='co'>##-- Copula types</span>
- <span class='no'>copula1</span> <span class='kw'>&lt;-</span> <span class='st'>'clayton'</span>
- <span class='no'>copula2</span> <span class='kw'>&lt;-</span> <span class='st'>'gumbel'</span>
  <span class='no'>copula3</span> <span class='kw'>&lt;-</span> <span class='st'>'frank'</span>
- <span class='no'>copula4</span> <span class='kw'>&lt;-</span> <span class='st'>'independent'</span>
 
 <span class='co'>##-- A real example</span>
 <span class='co'>##-- One dataset from Prospective Research in Memory Clinics (PRIME) study</span>
@@ -196,89 +193,16 @@ Statistics in Medicine 37, 2238–2251.</p>
 #&gt;  [9] "MMSE_base"      "SMAF_base"      "ZBI_base"       "NPI_base"      
 #&gt; [13] "Benzon"         "Antiphsy"       "LivingAlone"    "MMSE_change_3m"
 #&gt; [17] "SMAF_change_3m" "NPI_change_3m" </div><div class='input'>
-<span class='co'>##-- Selecting number of knots under independent censoring assumption using AIC vs binCounts plot</span>
-<span class='no'>min.binCount</span><span class='kw'>=</span><span class='fl'>20</span>
-<span class='no'>max.binCount</span><span class='kw'>=</span><span class='fl'>200</span>
-<span class='no'>incr.binCount</span><span class='kw'>=</span><span class='fl'>20</span>
-<span class='no'>binCounts</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='no'>min.binCount</span>, <span class='no'>max.binCount</span>, <span class='no'>incr.binCount</span>)
-<span class='no'>bn</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span>(<span class='no'>binCounts</span>)
-<span class='no'>aics</span><span class='kw'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>0</span>, <span class='no'>bn</span>)
-
-<span class='kw'>for</span> (<span class='no'>j</span> <span class='kw'>in</span> <span class='fl'>1</span>:<span class='no'>bn</span>)
-{ <span class='no'>control</span><span class='kw'>=</span><span class='fu'><a href='coxph_mpl_dc.control.html'>coxph_mpl_dc.control</a></span>(<span class='kw'>ordSp</span> <span class='kw'>=</span> <span class='fl'>4</span>,
-                               <span class='kw'>binCount</span> <span class='kw'>=</span> <span class='no'>binCounts</span>[<span class='no'>j</span>], <span class='kw'>tie</span> <span class='kw'>=</span> <span class='st'>'Yes'</span>,
-                               <span class='kw'>tau</span> <span class='kw'>=</span> <span class='fl'>0.5</span>, <span class='kw'>copula</span> <span class='kw'>=</span> <span class='no'>copula3</span>,
-                               <span class='kw'>pent</span> <span class='kw'>=</span> <span class='st'>'penalty_mspl'</span>, <span class='kw'>smpart</span> <span class='kw'>=</span> <span class='fl'>0</span>,
-                               <span class='kw'>penc</span> <span class='kw'>=</span> <span class='st'>'penalty_mspl'</span>, <span class='kw'>smparc</span> <span class='kw'>=</span> <span class='fl'>0</span>,
-                               <span class='kw'>maxit2</span> <span class='kw'>=</span> <span class='fl'>100</span>, <span class='kw'>maxit</span> <span class='kw'>=</span> <span class='fl'>5000</span>,
-                               <span class='kw'>mid</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>asy</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>ac</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>cv</span> <span class='kw'>=</span> <span class='fl'>0</span>,
-                               <span class='kw'>ac.theta</span> <span class='kw'>=</span> <span class='fl'>1e-5</span>, <span class='kw'>ac.gamma</span> <span class='kw'>=</span> <span class='fl'>1e-5</span>,
-                               <span class='kw'>ac.Utheta</span> <span class='kw'>=</span> -<span class='fl'>1e-2</span>, <span class='kw'>ac.Ugamma</span> <span class='kw'>=</span> -<span class='fl'>1e-2</span>,
-                               <span class='kw'>min.theta</span> <span class='kw'>=</span> <span class='fl'>1e-7</span>, <span class='kw'>min.gamma</span> <span class='kw'>=</span> <span class='fl'>1e-7</span>,
-                               <span class='kw'>min.ht</span> <span class='kw'>=</span> <span class='fl'>1e-7</span>, <span class='kw'>min.hc</span> <span class='kw'>=</span> <span class='fl'>1e-7</span>,
-                               <span class='kw'>min.St</span> <span class='kw'>=</span> <span class='fl'>1e-7</span>, <span class='kw'>min.Sc</span> <span class='kw'>=</span> <span class='fl'>1e-7</span>, <span class='kw'>min.C</span> <span class='kw'>=</span> <span class='fl'>1e-7</span>, <span class='kw'>min.dC</span> <span class='kw'>=</span> <span class='fl'>1e-7</span>,
-                               <span class='kw'>eps</span> <span class='kw'>=</span> <span class='fl'>1e-5</span>, <span class='kw'>tol.thga</span> <span class='kw'>=</span> <span class='fl'>1e-5</span>, <span class='kw'>tol.bph</span> <span class='kw'>=</span> <span class='fl'>1e-5</span>, <span class='kw'>tol.smpar</span> <span class='kw'>=</span> <span class='fl'>1e-2</span>,
-                               <span class='kw'>cat.smpar</span> <span class='kw'>=</span> <span class='st'>'No'</span> )
-<span class='no'>aics</span>[<span class='no'>j</span>]<span class='kw'>&lt;-</span><span class='fu'><a href='coxph_mpl_dc.html'>coxph_mpl_dc</a></span>(<span class='no'>surv</span>, <span class='no'>cova</span>, <span class='no'>control</span>)$<span class='no'>mpl_aic</span>
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>j</span>) }</div><div class='output co'>#&gt; [1] 1
-#&gt; [1] 2
-#&gt; [1] 3
-#&gt; [1] 4
-#&gt; [1] 5
-#&gt; [1] 6
-#&gt; [1] 7
-#&gt; [1] 8
-#&gt; [1] 9
-#&gt; [1] 10</div><div class='input'><span class='no'>binCount</span> <span class='kw'>=</span> <span class='no'>min.binCount</span> + ( <span class='fu'><a href='https://rdrr.io/r/base/which.min.html'>which.min</a></span>( <span class='no'>aics</span> ) - <span class='fl'>1</span> )*<span class='no'>incr.binCount</span>
-<span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span>(<span class='no'>binCounts</span>, <span class='no'>aics</span>)</div><div class='img'><img src='coef.coxph_mpl_dc-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'>##--MPL estimate Cox proportional hazard model for institutionalization under independent censoring</span>
+<span class='co'>##--MPL estimate Cox proportional hazard model for institutionalization under independent censoring</span>
 <span class='no'>control</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='coxph_mpl_dc.control.html'>coxph_mpl_dc.control</a></span>(<span class='kw'>ordSp</span> <span class='kw'>=</span> <span class='fl'>4</span>,
-                                <span class='kw'>binCount</span> <span class='kw'>=</span> <span class='no'>binCount</span>, <span class='kw'>tie</span> <span class='kw'>=</span> <span class='st'>'Yes'</span>,
+                                <span class='kw'>binCount</span> <span class='kw'>=</span> <span class='fl'>200</span>, <span class='kw'>tie</span> <span class='kw'>=</span> <span class='st'>'Yes'</span>,
                                 <span class='kw'>tau</span> <span class='kw'>=</span> <span class='fl'>0.5</span>, <span class='kw'>copula</span> <span class='kw'>=</span> <span class='no'>copula3</span>,
                                 <span class='kw'>pent</span> <span class='kw'>=</span> <span class='st'>'penalty_mspl'</span>, <span class='kw'>smpart</span> <span class='kw'>=</span> <span class='st'>'REML'</span>,
                                 <span class='kw'>penc</span> <span class='kw'>=</span> <span class='st'>'penalty_mspl'</span>, <span class='kw'>smparc</span> <span class='kw'>=</span> <span class='st'>'REML'</span>,
-                                <span class='kw'>maxit2</span> <span class='kw'>=</span> <span class='fl'>100</span>, <span class='kw'>maxit</span> <span class='kw'>=</span> <span class='fl'>5000</span>,
-                                <span class='kw'>mid</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>asy</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>ac</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>cv</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-                                <span class='kw'>ac.theta</span> <span class='kw'>=</span> <span class='fl'>1e-5</span>, <span class='kw'>ac.gamma</span> <span class='kw'>=</span> <span class='fl'>1e-5</span>,
-                                <span class='kw'>ac.Utheta</span> <span class='kw'>=</span> -<span class='fl'>1e-2</span>, <span class='kw'>ac.Ugamma</span> <span class='kw'>=</span> -<span class='fl'>1e-2</span>,
-                                <span class='kw'>min.theta</span> <span class='kw'>=</span> <span class='fl'>1e-7</span>, <span class='kw'>min.gamma</span> <span class='kw'>=</span> <span class='fl'>1e-7</span>, <span class='kw'>min.ht</span> <span class='kw'>=</span> <span class='fl'>1e-7</span>, <span class='kw'>min.hc</span> <span class='kw'>=</span> <span class='fl'>1e-7</span>,
-                                <span class='kw'>min.St</span> <span class='kw'>=</span> <span class='fl'>1e-7</span>, <span class='kw'>min.Sc</span> <span class='kw'>=</span> <span class='fl'>1e-7</span>, <span class='kw'>min.C</span> <span class='kw'>=</span> <span class='fl'>1e-7</span>, <span class='kw'>min.dC</span> <span class='kw'>=</span> <span class='fl'>1e-7</span>,
-                                <span class='kw'>eps</span> <span class='kw'>=</span> <span class='fl'>1e-5</span>, <span class='kw'>tol.thga</span> <span class='kw'>=</span> <span class='fl'>1e-5</span>, <span class='kw'>tol.bph</span> <span class='kw'>=</span> <span class='fl'>1e-5</span>, <span class='kw'>tol.smpar</span> <span class='kw'>=</span> <span class='fl'>1e-2</span>,
                                 <span class='kw'>cat.smpar</span> <span class='kw'>=</span> <span class='st'>'No'</span> )
 
 <span class='no'>coxMPLests_tau</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='coxph_mpl_dc.html'>coxph_mpl_dc</a></span>(<span class='kw'>surv</span><span class='kw'>=</span><span class='no'>surv</span>, <span class='kw'>cova</span><span class='kw'>=</span><span class='no'>cova</span>, <span class='kw'>control</span><span class='kw'>=</span><span class='no'>control</span>, )
-<span class='no'>mpl_beta_phi_zp_tau</span> <span class='kw'>&lt;-</span> <span class='no'>coxMPLests_tau</span>$<span class='no'>mpl_beta_phi_zp</span>;<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>mpl_beta_phi_zp_tau</span>)</div><div class='output co'>#&gt;                         Est          SD    Z score      P value
-#&gt; Age             0.220491513 0.149803131  1.4718752 1.410546e-01
-#&gt; Gender         -0.173508031 0.157263807 -1.1032928 2.699000e-01
-#&gt; HighEdu        -0.018612660 0.160723433 -0.1158055 9.078067e-01
-#&gt; Alzheimer       0.283300000 0.162283118  1.7457146 8.086057e-02
-#&gt; CDR_base       -0.013653588 0.032011403 -0.4265226 6.697271e-01
-#&gt; MMSE_base      -0.068956188 0.016537635 -4.1696524 3.050646e-05
-#&gt; SMAF_base      -0.041281988 0.010616439 -3.8884966 1.008671e-04
-#&gt; ZBI_base       -0.001043310 0.005380041 -0.1939224 8.462366e-01
-#&gt; NPI_base        0.019656624 0.005932838  3.3131906 9.223809e-04
-#&gt; Benzon         -0.270289052 0.183928862 -1.4695304 1.416890e-01
-#&gt; Antiphsy        0.198340114 0.167210377  1.1861711 2.355547e-01
-#&gt; LivingAlone     0.644514720 0.231177788  2.7879613 5.304088e-03
-#&gt; MMSE_change_3m -0.065603526 0.024787261 -2.6466629 8.129033e-03
-#&gt; SMAF_change_3m -0.029731737 0.015334799 -1.9388409 5.252071e-02
-#&gt; NPI_change_3m   0.015133141 0.005173483  2.9251360 3.443057e-03
-#&gt; Age             0.410231400 0.156159240  2.6270069 8.613959e-03
-#&gt; Gender         -0.284812469 0.163636780 -1.7405162 8.176841e-02
-#&gt; HighEdu        -0.373203026 0.179227276 -2.0822892 3.731606e-02
-#&gt; Alzheimer       0.033200846 0.155802810  0.2130953 8.312526e-01
-#&gt; CDR_base        0.045461620 0.035407859  1.2839415 1.991624e-01
-#&gt; MMSE_base      -0.019908141 0.014147129 -1.4072213 1.593618e-01
-#&gt; SMAF_base      -0.014350879 0.011520646 -1.2456663 2.128869e-01
-#&gt; ZBI_base        0.003255042 0.005649637  0.5761506 5.645134e-01
-#&gt; NPI_base        0.009442003 0.006980107  1.3527017 1.761510e-01
-#&gt; Benzon          0.161442823 0.182681765  0.8837380 3.768376e-01
-#&gt; Antiphsy       -0.170415675 0.184663008 -0.9228468 3.560870e-01
-#&gt; LivingAlone     0.557636568 0.219232364  2.5435869 1.097208e-02
-#&gt; MMSE_change_3m -0.031436326 0.027275668 -1.1525410 2.490988e-01
-#&gt; SMAF_change_3m -0.023738873 0.015507901 -1.5307600 1.258287e-01
-#&gt; NPI_change_3m   0.010515417 0.005968539  1.7618075 7.810183e-02</div><div class='input'>
 <span class='no'>MPL_beta</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/stats/coef.html'>coef</a></span>(<span class='kw'>object</span> <span class='kw'>=</span> <span class='no'>coxMPLests_tau</span>, <span class='kw'>parameter</span> <span class='kw'>=</span> <span class='st'>"beta"</span>,)
-
 <span class='no'>MPL_phi</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/stats/coef.html'>coef</a></span>(<span class='kw'>object</span> <span class='kw'>=</span> <span class='no'>coxMPLests_tau</span>, <span class='kw'>parameter</span> <span class='kw'>=</span> <span class='st'>"phi"</span>,)
 
 <span class='co'># }</span></div></pre>
