@@ -18,4 +18,5 @@ This is a resubmission. In this version I have:
 * For each function in R folder, replaced "import copula" by "importFrom copula indepCopula claytonCopula gumbelCopula frankCopula iTau rCopula".
 * Deleted loading the packages that are imported in the R functions for the examples and testthat file.
 * Deleted par() and replaced with lines() for the plots in the examples of the R functions, testthat file and README.Rmd file.
+* Delete the for loops in the examples of R functions.
 
