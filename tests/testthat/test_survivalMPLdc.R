@@ -21,7 +21,7 @@ distr.ev <- 'weibull'
 distr.ce <- 'exponential'
 
 ##-- Real marginal baseline hazard for T
-xi=seq(0, 5.4, 0.01)
+xi<-seq(0, 5.4, 0.01)
 ht0b <- a * ( xi^ (a - 1)) / (lambda ^ a)
 
 ##-- Sample size 200
@@ -42,7 +42,7 @@ del<-surv[,2] # failure status
 eta<-surv[,3] # dependent censoring status
 
 ##-- Inputs
-control=coxph_mpl_dc.control(ordSp=1, binCount=20, tau=0.8, copula=copula3,
+control<-coxph_mpl_dc.control(ordSp=1, binCount=20, tau=0.8, copula=copula3,
                                pent='mat1', smpart="REML", penc='mat1', smparc="REML",
                                maxit2=50, maxit=5000,
                                cat.smpar='No')
