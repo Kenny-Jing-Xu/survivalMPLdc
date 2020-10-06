@@ -191,150 +191,138 @@ coxph_mpl_dc<-function(surv, cova, control,...)
 {
 
   if(missing(control)){
-    control=coxph_mpl_dc.control(...)}
+    control<-coxph_mpl_dc.control(...)}
 
-  ordSp=control$ordSp
-  binCount=control$binCount
-  tie=control$tie
-  tau=control$tau
-  copula=control$copula
-  pent=control$pent
-  smpart=control$smpart
-  penc=control$penc
-  smparc=control$smparc
-  maxit2=control$maxit2
-  maxit=control$maxit
-  mid=control$mid
-  asy=control$asy
-  ac=control$ac
-  cv=control$cv
-  ac.theta=control$ac.theta
-  ac.gamma=control$ac.gamma
-  ac.Utheta=control$ac.Utheta
-  ac.Ugamma=control$ac.Ugamma
-  min.theta=control$min.theta
-  min.gamma=control$min.gamma
-  min.ht=control$min.ht
-  min.hc=control$min.hc
-  min.St=control$min.St
-  min.Sc=control$min.Sc
-  min.C=control$min.C
-  min.dC=control$min.dC
-  eps=control$eps
-  tol.thga=control$tol.thga
-  tol.bph=control$tol.bph
-  tol.smpar=control$tol.smpar
-  cat.smpar=control$cat.smpar
+  ordSp<-control$ordSp
+  binCount<-control$binCount
+  tie<-control$tie
+  tau<-control$tau
+  copula<-control$copula
+  pent<-control$pent
+  smpart<-control$smpart
+  penc<-control$penc
+  smparc<-control$smparc
+  maxit2<-control$maxit2
+  maxit<-control$maxit
+  mid<-control$mid
+  asy<-control$asy
+  ac<-control$ac
+  cv<-control$cv
+  ac.theta<-control$ac.theta
+  ac.gamma<-control$ac.gamma
+  ac.Utheta<-control$ac.Utheta
+  ac.Ugamma<-control$ac.Ugamma
+  min.theta<-control$min.theta
+  min.gamma<-control$min.gamma
+  min.ht<-control$min.ht
+  min.hc<-control$min.hc
+  min.St<-control$min.St
+  min.Sc<-control$min.Sc
+  min.C<-control$min.C
+  min.dC<-control$min.dC
+  eps<-control$eps
+  tol.thga<-control$tol.thga
+  tol.bph<-control$tol.bph
+  tol.smpar<-control$tol.smpar
+  cat.smpar<-control$cat.smpar
 
-  if(missing(cova)){cova=matrix(0, dim(surv)[1],1)}
-  if(missing(ordSp)){ordSp=1}
-  if(missing(binCount)){binCount=1}
-  if(missing(tie)){tie='No'}
-  if(missing(tau)){tau=0}
-  if(missing(copula)){copula='independent'}
-  if(missing(pent)){pent='mat1'}
-  if(missing(penc)){penc='mat1'}
-  if(missing(smpart)){smpart=0}
-  if(missing(smparc)){smparc=0}
-  if(missing(maxit2)){maxit2=50}
-  if(missing(maxit)){maxit=5000}
-  #if(missing(inc)){inc=1}
-  if(missing(mid)){mid=1}
-  if(missing(asy)){asy=1}
-  if(missing(ac)){ac=0}
-  if(missing(cv)){cv=0}
+  if(missing(cova)){cova<-matrix(0, dim(surv)[1],1)}
+  if(missing(ordSp)){ordSp<-1}
+  if(missing(binCount)){binCount<-1}
+  if(missing(tie)){tie<-'No'}
+  if(missing(tau)){tau<-0}
+  if(missing(copula)){copula<-'independent'}
+  if(missing(pent)){pent<-'mat1'}
+  if(missing(penc)){penc<-'mat1'}
+  if(missing(smpart)){smpart<-0}
+  if(missing(smparc)){smparc<-0}
+  if(missing(maxit2)){maxit2<-50}
+  if(missing(maxit)){maxit<-5000}
+  if(missing(mid)){mid<-1}
+  if(missing(asy)){asy<-1}
+  if(missing(ac)){ac<-0}
+  if(missing(cv)){cv<-0}
 
-  if(missing(ac.theta)){ac.theta=1e-5}
-  if(missing(ac.gamma)){ac.gamma=1e-5}
-  if(missing(ac.Utheta)){ac.Utheta=-1e-2}
-  if(missing(ac.Ugamma)){ac.Ugamma=-1e-2}
-  if(missing(min.theta)){min.theta=1e-7}
-  if(missing(min.gamma)){min.gamma=1e-7}
-  if(missing(min.ht)){min.ht=1e-7}
-  if(missing(min.hc)){min.hc=1e-7}
-  if(missing(min.St)){min.St=1e-7}
-  if(missing(min.Sc)){min.Sc=1e-7}
-  if(missing(min.C)){min.C=1e-7}
-  if(missing(min.dC)){min.dC=1e-7}
-  if(missing(eps)){eps=1e-5}
-  if(missing(tol.thga)){tol.thga=1e-5}
-  if(missing(tol.bph)){tol.bph=1e-5}
-  if(missing(cat.smpar)){cat.smpar='Yes'}
-  if(missing(tol.smpar)){tol.smpar=1e-2}
+  if(missing(ac.theta)){ac.theta<-1e-5}
+  if(missing(ac.gamma)){ac.gamma<-1e-5}
+  if(missing(ac.Utheta)){ac.Utheta<--1e-2}
+  if(missing(ac.Ugamma)){ac.Ugamma<--1e-2}
+  if(missing(min.theta)){min.theta<-1e-7}
+  if(missing(min.gamma)){min.gamma<-1e-7}
+  if(missing(min.ht)){min.ht<-1e-7}
+  if(missing(min.hc)){min.hc<-1e-7}
+  if(missing(min.St)){min.St<-1e-7}
+  if(missing(min.Sc)){min.Sc<-1e-7}
+  if(missing(min.C)){min.C<-1e-7}
+  if(missing(min.dC)){min.dC<-1e-7}
+  if(missing(eps)){eps<-1e-5}
+  if(missing(tol.thga)){tol.thga<-1e-5}
+  if(missing(tol.bph)){tol.bph<-1e-5}
+  if(missing(cat.smpar)){cat.smpar<-'Yes'}
+  if(missing(tol.smpar)){tol.smpar<-1e-2}
 
-  smpart_init=smpart
-  smparc_init=smparc
+  smpart_init<-smpart
+  smparc_init<-smparc
 
-  if(smpart=='REML'){smpart=0}
-  if(smparc=='REML'){smparc=0}
+  if(smpart=='REML'){smpart<-0}
+  if(smparc=='REML'){smparc<-0}
 
   {
-    if(copula=='independent'){alpha=0}
+    if(copula=='independent'){alpha<-0}
     else if(copula=='clayton'){alpha<-iTau(claytonCopula(100), tau)} #calculate the alpha value of Clayton copula give the tau value
     else if(copula=='gumbel'){alpha<-iTau(gumbelCopula(100), tau)}
     else if (copula=='frank'){alpha<- -iTau(frankCopula(100), tau)}
     else (stop("Error! Define a proper copula function"))
   }
 
-  #eps=1e-5
-
-  #eps1=1
   del<-surv[,2]
   eta<-surv[,3]
   X<-surv[,1]
 
   discrsurvdat<-discrBinNA(surv, binCount, tie)
   groupsurvdat <- discrsurvdat$discretize
-  #T_bin<-groupsurvdat[,1] #time value for each discretized bin
-  #N_bin<-groupsurvdat[,2] #number of observations of each bin
-  #d_bin<-groupsurvdat[,3] #number of failure of each bin
-  #c_bin<-groupsurvdat[,5] #number of dependent censoring of each bin
-  #R_bin<-groupsurvdat[,4] #number of subjects at risk at the begining of each bin
   binwv<-groupsurvdat[,1] #the bin widths
   ID<-discrsurvdat$ID  #the bin ID of each subject
   binedg<-discrsurvdat$binedg
+  n<-nrow(cova)       #sample size
+  p<-ncol(cova)#number of covariates for each subject
 
-  n=nrow(cova)       #sample size
-  p=ncol(cova)#number of covariates for each subject
-  #nbins<-length(binwv) #number of discretized bins of the basedline hazard
+  numIntKnt<-length(binedg)-2
+  IntKnt<-binedg[2:(numIntKnt+1)]
+  bryKnt<-c(0, max(binedg))
+  numSp<-numIntKnt+ordSp
+  m<-numSp
 
-  numIntKnt=length(binedg)-2
-  IntKnt=binedg[2:(numIntKnt+1)]
-  bryKnt=c(0, max(binedg))
-  numSp=numIntKnt+ordSp
-  m=numSp
-
-  tcova=cova #regression covariates
-  cova = cova - t(matrix(apply(cova,2,mean),p,n))
+  tcova<-cova #regression covariates
+  cova <- cova - t(matrix(apply(cova,2,mean),p,n))
 
   if(ordSp==1)
   {
 
-    psix=psi(ID);
-    Psix=Psi(ID, binwv)
+    psix<-psi(ID);
+    Psix<-Psi(ID, binwv)
     {
-      if(pent=='mat1') Rt=mat1(psix, X, eps)
-      else if (pent=='mat2') Rt=mat2(psix, X, eps)
+      if(pent=='mat1') Rt<-mat1(psix, X, eps)
+      else if (pent=='mat2') Rt<-mat2(psix, X, eps)
       else (stop("Error! Define a proper Penalty function for T"))
     }
     {
-      if(penc=='mat1') Rc=mat1(psix, X, eps)
-      else if (penc=='mat2') Rc=mat2(psix, X, eps)
+      if(penc=='mat1') Rc<-mat1(psix, X, eps)
+      else if (penc=='mat2') Rc<-mat2(psix, X, eps)
       else (stop("Error! Define a proper Penalty function for C"))
     }
 
   }
   else
   {
-    #X2=seq(0, max(X), 0.01)
-    psix=mSpline(X, knots = IntKnt, degree = ordSp-1, intercept = TRUE, derivs=0, Boundary.knots=bryKnt )
-    Psix=iSpline(X, knots = IntKnt, degree = ordSp-1, intercept = TRUE, derivs=0, Boundary.knots=bryKnt )
+    psix<-mSpline(X, knots = IntKnt, degree = ordSp-1, intercept = TRUE, derivs=0, Boundary.knots=bryKnt )
+    Psix<-iSpline(X, knots = IntKnt, degree = ordSp-1, intercept = TRUE, derivs=0, Boundary.knots=bryKnt )
     {
-      if(pent=='penalty_mspl') Rt=penalty_mspl(numSp, ordSp, IntKnt, bryKnt)
+      if(pent=='penalty_mspl') Rt<-penalty_mspl(numSp, ordSp, IntKnt, bryKnt)
       else (stop("Error! Define a proper Penalty function for T"))
     }
     {
-      if(penc=='penalty_mspl') Rc=penalty_mspl(numSp, ordSp, IntKnt, bryKnt)
+      if(penc=='penalty_mspl') Rc<-penalty_mspl(numSp, ordSp, IntKnt, bryKnt)
       else (stop("Error! Define a proper Penalty function for C"))
     }
 
@@ -342,17 +330,17 @@ coxph_mpl_dc<-function(surv, cova, control,...)
 
   if( identical( cova, matrix( 0, n, 1 ) ) )
   {
-    beta0 = 0
-    phi0 = 0
+    beta0 <- 0
+    phi0 <- 0
   }
   else
   {
     coxpht<-coxph( Surv(surv[,1], surv[,2])~ tcova )
     beta0<-coxpht$coef
-    beta0 = rep( 0, dim(tcova)[2] )
+    beta0 <- rep( 0, dim(tcova)[2] )
     coxphc<-coxph( Surv(surv[,1], surv[,3]) ~ tcova )
     phi0<-coxphc$coef
-    phi0 = rep( 0, dim(tcova)[2] )
+    phi0 <- rep( 0, dim(tcova)[2] )
   }
 
   beta_old<-beta0 # initial estimates of the regression coefficient of the proportional hazard for failure time
@@ -363,13 +351,13 @@ coxph_mpl_dc<-function(surv, cova, control,...)
 
 
 
-  theta_old=theta0
-  gamma_old=gamma0
+  theta_old<-theta0
+  gamma_old<-gamma0
   theta_old[theta_old<min.theta]<-min.theta
   gamma_old[gamma_old<min.gamma]<-min.gamma
 
-  h0t0=baseHaz(theta_old, psix);
-  h0c0=baseHaz(gamma_old, psix)
+  h0t0<-baseHaz(theta_old, psix);
+  h0c0<-baseHaz(gamma_old, psix)
   h0t_old<-h0t0 #intital estimates of the baseline hazards for failure time
   h0c_old<-h0c0 #intital estimates of the baseline hazards for dependent censoring time
   h0t_old[h0t_old<min.ht]<-min.ht
@@ -383,9 +371,6 @@ coxph_mpl_dc<-function(surv, cova, control,...)
   regc_old<-cova%*%phi_old
   eregt_old<-exp(regt_old)
   eregc_old<-exp(regc_old)
-
-  #eregt_old[eregt_old==Inf]=max( eregt_old[eregt_old<Inf] )
-  #eregc_old[eregc_old==Inf]=max( eregc_old[eregc_old<Inf] )
 
   Hcoxt_old<-H0t_old*eregt_old
   Hcoxc_old<-H0c_old*eregc_old
@@ -421,21 +406,18 @@ coxph_mpl_dc<-function(surv, cova, control,...)
     }
     else (stop("Error! Define a proper copula function"))
   }
-  C_old[ C_old == Inf ] = 1
-  C_old[ C_old == -Inf ] = 0
+  C_old[ C_old == Inf ] <- 1
+  C_old[ C_old == -Inf ] <- 0
   dC_old[,1:3][dC_old[,1:3]<min.dC]<-min.dC
   C_old[C_old<min.C]<-min.C
 
 
-  #smpart_old=smpart
-  #smparc_old=smparc
+  Rt_star <- rbind( matrix(0, 2*p, 2*p + 2*m), cbind( matrix(0, m, 2*p), Rt, matrix(0,m,m) ), matrix(0, m, 2*p+2*m) )
+  Rc_star <- rbind( matrix(0, 2*p, 2*p + 2*m), matrix(0,m,2*p+2*m), cbind( matrix(0, m, 2*p+m), Rc ) )
 
-  Rt_star = rbind( matrix(0, 2*p, 2*p + 2*m), cbind( matrix(0, m, 2*p), Rt, matrix(0,m,m) ), matrix(0, m, 2*p+2*m) )
-  Rc_star = rbind( matrix(0, 2*p, 2*p + 2*m), matrix(0,m,2*p+2*m), cbind( matrix(0, m, 2*p+m), Rc ) )
-
-  full.iter = 0
-  dftold = m
-  dfcold = m
+  full.iter <- 0
+  dftold <- m
+  dfcold <- m
 
   for(k2 in 1: maxit2)
   {
@@ -456,12 +438,12 @@ coxph_mpl_dc<-function(surv, cova, control,...)
       Hcoef<- -rbind(cbind(Hbb, Hbp), cbind(Hpb, Hpp))
 
       if(is.positive.definite( round(Hcoef, digits = 4) )==TRUE){
-        Hcoef=Hcoef
+        Hcoef<-Hcoef
       }else{
-        Ubet_i=dplcox_dbeta_i( p, cova, Hcoxt_old, Scoxt_old, del, eta, dC_old, C_old )
-        Uph_i=dplcox_dphi_i( p, cova, Hcoxc_old, Scoxc_old, del, eta, dC_old, C_old )
-        U_i=cbind(Ubet_i, Uph_i)
-        Hcoef=t(U_i)%*%U_i
+        Ubet_i<-dplcox_dbeta_i( p, cova, Hcoxt_old, Scoxt_old, del, eta, dC_old, C_old )
+        Uph_i<-dplcox_dphi_i( p, cova, Hcoxc_old, Scoxc_old, del, eta, dC_old, C_old )
+        U_i<-cbind(Ubet_i, Uph_i)
+        Hcoef<-t(U_i)%*%U_i
       }
 
       diag(Hcoef)<-diag(Hcoef)+eps
@@ -486,7 +468,7 @@ coxph_mpl_dc<-function(surv, cova, control,...)
       {
         if(copula=='independent')
         {
-          C_new1=IndependentCopula(Scoxt_new1, Scoxc_new1)
+          C_new1<-IndependentCopula(Scoxt_new1, Scoxc_new1)
           dC_new1<-dC_ind(Scoxt_new1, Scoxc_new1)
         }
         else if(copula=='clayton')
@@ -506,8 +488,8 @@ coxph_mpl_dc<-function(surv, cova, control,...)
         }
         else (stop("Error! Define a proper copula function"))
       }
-      C_new1[ C_new1 == Inf ] = 1
-      C_new1[ C_new1 == -Inf ] = 0
+      C_new1[ C_new1 == Inf ] <- 1
+      C_new1[ C_new1 == -Inf ] <- 0
       dC_new1[,1:3][dC_new1[,1:3]<min.dC]<-min.dC
       C_new1[C_new1<min.C]<-min.C
       pllik_new1<-penlogreg_dep(del, eta, theta_old, gamma_old, h0t_old, h0c_old, regt_new, regc_new, Hcoxt_new1, Hcoxc_new1, C_new1, dC_new1, Rt, Rc, smpart, smparc)
@@ -528,9 +510,6 @@ coxph_mpl_dc<-function(surv, cova, control,...)
         eregt_new<-exp(regt_new)
         eregc_new<-exp(regc_new)
 
-        #eregt_new[eregt_new==Inf]=max( eregt_new[eregt_new<Inf] )
-        #eregc_new[eregc_new==Inf]=max( eregc_new[eregc_new<Inf] )
-
         Hcoxt_new1<-H0t_old*eregt_new
         Hcoxc_new1<-H0c_old*eregc_new
         Scoxt_new1<-exp(-Hcoxt_new1)
@@ -540,7 +519,7 @@ coxph_mpl_dc<-function(surv, cova, control,...)
         {
           if(copula=='independent')
           {
-            C_new1=IndependentCopula(Scoxt_new1, Scoxc_new1)
+            C_new1<-IndependentCopula(Scoxt_new1, Scoxc_new1)
             dC_new1<-dC_ind(Scoxt_new1, Scoxc_new1)
           }
           else if(copula=='clayton')
@@ -560,8 +539,8 @@ coxph_mpl_dc<-function(surv, cova, control,...)
           }
           else (stop("Error! Define a proper copula function"))
         }
-        C_new1[ C_new1 == Inf ] = 1
-        C_new1[ C_new1 == -Inf ] = 0
+        C_new1[ C_new1 == Inf ] <- 1
+        C_new1[ C_new1 == -Inf ] <- 0
         dC_new1[,1:3][dC_new1[,1:3]<min.dC]<-min.dC
         C_new1[C_new1<min.C]<-min.C
         pllik_new1<-penlogreg_dep(del, eta, theta_old, gamma_old, h0t_old, h0c_old, regt_new, regc_new, Hcoxt_new1, Hcoxc_new1,
@@ -580,21 +559,19 @@ coxph_mpl_dc<-function(surv, cova, control,...)
         }
       }
 
-
-
-      denomt=denomtreg(Rt, psix, Psix, theta_old, dC_new1, C_new1, Scoxt_new1, eregt_new, del, eta, smpart)
-      st=theta_old/(denomt+1e-5)   #step of function to update theta
+      denomt<-denomtreg(Rt, psix, Psix, theta_old, dC_new1, C_new1, Scoxt_new1, eregt_new, del, eta, smpart)
+      st<-theta_old/(denomt+1e-5)   #step of function to update theta
       Uth<-U_theta(psix, Psix, theta_old, h0t_old, eregt_new, Scoxt_new1, del, eta, dC_new1, C_new1, smpart, Rt) #score function respect to theta
       theta_new<-theta_old+st*Uth#updating theta using MI algorithm
-      denomc=denomcreg(Rc, psix, Psix, gamma_old, dC_new1, C_new1, Scoxc_new1, eregc_new, del, eta, smparc)
-      sc=gamma_old/(denomc++1e-5)
+      denomc<-denomcreg(Rc, psix, Psix, gamma_old, dC_new1, C_new1, Scoxc_new1, eregc_new, del, eta, smparc)
+      sc<-gamma_old/(denomc++1e-5)
       Uga<-U_gamma(psix, Psix, gamma_old, h0c_old, eregc_new, Scoxc_new1, del, eta, dC_new1, C_new1, smparc, Rc)
       gamma_new<-gamma_old+sc*Uga
       theta_new[theta_new<min.theta]<-min.theta
       gamma_new[gamma_new<min.gamma]<-min.gamma
 
-      h0t_new=baseHaz(theta_new, psix)
-      h0c_new=baseHaz(gamma_new, psix)
+      h0t_new<-baseHaz(theta_new, psix)
+      h0c_new<-baseHaz(gamma_new, psix)
       h0t_new[h0t_new<min.ht]<-min.ht
       h0c_new[h0c_new<min.hc]<-min.hc
 
@@ -635,8 +612,8 @@ coxph_mpl_dc<-function(surv, cova, control,...)
         }
         else (stop("Error! Define a proper copula function"))
       }
-      C_new2[ C_new2 == Inf ] = 1
-      C_new2[ C_new2 == -Inf ] = 0
+      C_new2[ C_new2 == Inf ] <- 1
+      C_new2[ C_new2 == -Inf ] <- 0
       dC_new2[,1:3][dC_new2[,1:3]<min.dC]<-min.dC
       C_new2[C_new2<min.C]<-min.C
 
@@ -652,8 +629,8 @@ coxph_mpl_dc<-function(surv, cova, control,...)
         theta_new[theta_new<min.theta]<-min.theta
         gamma_new[gamma_new<min.gamma]<-min.gamma
 
-        h0t_new=baseHaz(theta_new, psix)
-        h0c_new=baseHaz(gamma_new, psix)
+        h0t_new<-baseHaz(theta_new, psix)
+        h0c_new<-baseHaz(gamma_new, psix)
         h0t_new[h0t_new<min.ht]<-min.ht
         h0c_new[h0c_new<min.hc]<-min.hc
 
@@ -695,8 +672,8 @@ coxph_mpl_dc<-function(surv, cova, control,...)
           }
           else (stop("Error! Define a proper copula function"))
         }
-        C_new2[ C_new2 == Inf ] = 1
-        C_new2[ C_new2 == -Inf ] = 0
+        C_new2[ C_new2 == Inf ] <- 1
+        C_new2[ C_new2 == -Inf ] <- 0
         dC_new2[,1:3][dC_new2[,1:3]<min.dC]<-min.dC
         C_new2[C_new2<min.C]<-min.C
         pllik_new2<-penlogreg_dep(del, eta, theta_new, gamma_new, h0t_new, h0c_new, regt_new, regc_new, Hcoxt_new2, Hcoxc_new2, C_new2, dC_new2, Rt, Rc, smpart, smparc)
@@ -720,8 +697,8 @@ coxph_mpl_dc<-function(surv, cova, control,...)
       }
       else
       {
-        theta_old=theta_new
-        gamma_old=gamma_new
+        theta_old<-theta_new
+        gamma_old<-gamma_new
         h0t_old<-h0t_new
         h0c_old<-h0c_new
         beta_old<-beta_new
@@ -745,16 +722,16 @@ coxph_mpl_dc<-function(surv, cova, control,...)
       }
     }
 
-    fb=apply(tcova, 2, mean)%*%beta_new
-    fph=apply(tcova, 2, mean)%*%phi_new
+    fb<-apply(tcova, 2, mean)%*%beta_new
+    fph<-apply(tcova, 2, mean)%*%phi_new
     theta_cop<-theta_new%*%exp(-fb)
     gamma_cop<-gamma_new%*%exp(-fph)
 
     theta_cop[theta_cop<min.theta]<-min.theta
     gamma_cop[gamma_cop<min.gamma]<-min.gamma
 
-    h0t_cop=baseHaz(theta_cop, psix)
-    h0c_cop=baseHaz(gamma_cop, psix)
+    h0t_cop<-baseHaz(theta_cop, psix)
+    h0c_cop<-baseHaz(gamma_cop, psix)
 
     h0t_cop[h0t_cop<min.ht]<-min.ht
     h0c_cop[h0c_cop<min.hc]<-min.hc
@@ -765,20 +742,17 @@ coxph_mpl_dc<-function(surv, cova, control,...)
     H0c_cop<-baseCumm(gamma_cop,Psix)
     S0t_cop<-exp(-H0t_cop) #the corresonding MPL estimates of S_{0T}(x)
     S0c_cop<-exp(-H0c_cop) #the corresonding MPL estimates of S_{0C}(x)
-    regt=tcova%*%beta_cop
-    regc=tcova%*%phi_cop
-    eregt=exp(regt)
-    eregc=exp(regc)
+    regt<-tcova%*%beta_cop
+    regc<-tcova%*%phi_cop
+    eregt<-exp(regt)
+    eregc<-exp(regc)
 
-    #eregt[eregt==Inf]=max( eregt[eregt<Inf] )
-    #eregc[eregc==Inf]=max( eregc[eregc<Inf] )
-
-    hcoxt=h0t_cop*eregt #the corresonding MPL estimates of h_{T}(x)
-    hcoxc=h0c_cop*eregc #the corresonding MPL estimates of h_{C}(x)
-    Hcoxt=H0t_cop*eregt #the corresonding MPL estimates of H_{T}(x)
-    Hcoxc=H0c_cop*eregc #the corresonding MPL estimates of H_{C}(x)
-    Scoxt=exp(-Hcoxt)
-    Scoxc=exp(-Hcoxc)
+    hcoxt<-h0t_cop*eregt #the corresonding MPL estimates of h_{T}(x)
+    hcoxc<-h0c_cop*eregc #the corresonding MPL estimates of h_{C}(x)
+    Hcoxt<-H0t_cop*eregt #the corresonding MPL estimates of H_{T}(x)
+    Hcoxc<-H0c_cop*eregc #the corresonding MPL estimates of H_{C}(x)
+    Scoxt<-exp(-Hcoxt)
+    Scoxc<-exp(-Hcoxc)
     Scoxt[Scoxt<min.St]<-min.St
     Scoxc[Scoxc<min.Sc]<-min.Sc
     {
@@ -786,29 +760,29 @@ coxph_mpl_dc<-function(surv, cova, control,...)
       {
         dC3 <- dC3_ind(Scoxt, Scoxc)
         dC <- dC_ind(Scoxt, Scoxc)
-        Co= IndependentCopula(Scoxt, Scoxc)
+        Co <- IndependentCopula(Scoxt, Scoxc)
       }
       else if(copula=='clayton')
       {
         dC3 <- dC3_clay(Scoxt, Scoxc, alpha)
         dC <- dC_clay(Scoxt, Scoxc, alpha)
-        Co= ClaytonCopula(Scoxt, Scoxc, alpha)
+        Co <- ClaytonCopula(Scoxt, Scoxc, alpha)
       }
       else if(copula=='gumbel')
       {
         dC3 <- dC3_gumbel(Scoxt, Scoxc, alpha)
         dC <- dC_gumbel(Scoxt, Scoxc, alpha)
-        Co= GumbelCopula(Scoxt, Scoxc, alpha)
+        Co <- GumbelCopula(Scoxt, Scoxc, alpha)
       }
       else if (copula=='frank')
       {
         dC3 <- dC3_frank(Scoxt, Scoxc, alpha)
         dC <- dC_frank(Scoxt, Scoxc, alpha)
-        Co= FrankCopula(Scoxt, Scoxc, alpha)
+        Co <- FrankCopula(Scoxt, Scoxc, alpha)
       }
       else (stop("Error! Define a proper copula function"))
-      Co[ Co == Inf ] = 1
-      Co[ Co == -Inf ] = 0
+      Co[ Co == Inf ] <- 1
+      Co[ Co == -Inf ] <- 0
       dC[,1:3][dC[,1:3]<min.dC]<-min.dC
       Co[Co<min.C]<-min.C
     }
@@ -820,20 +794,20 @@ coxph_mpl_dc<-function(surv, cova, control,...)
 
     if(asy==0) #without compute the asymptotic standard deviation of the MPL estimates
     {
-      std_b_asy=0;std_ph_asy=0;std_th_asy=0;std_ga_asy=0;
-      cov_asy=0
-      zp_b_ph=0
-      std_ht0_asy=0
-      std_hc0_asy=0
-      std_Ht0_asy=0
-      std_Hc0_asy=0
-      std_St0_asy=0
-      std_Sc0_asy=0
+      std_b_asy<-0;std_ph_asy<-0;std_th_asy<-0;std_ga_asy<-0;
+      cov_asy<-0
+      zp_b_ph<-0
+      std_ht0_asy<-0
+      std_hc0_asy<-0
+      std_Ht0_asy<-0
+      std_Hc0_asy<-0
+      std_St0_asy<-0
+      std_Sc0_asy<-0
 
     }
     else
     {
-      asymstd=asycoxphdepcencopmpl(Co, dC, dC3,
+      asymstd<-asycoxphdepcencopmpl(Co, dC, dC3,
                                    tcova,
                                    psix, Psix,
                                    theta_cop, gamma_cop, Uth_cop, Uga_cop,
@@ -844,95 +818,93 @@ coxph_mpl_dc<-function(surv, cova, control,...)
                                    smpart, Rt, smparc, Rc,
                                    eps, mid,
                                    ac.theta, ac.gamma, ac.Utheta, ac.Ugamma)
-      std_b_asy=asymstd$asympstd_beta #asymptotic std of beta
-      std_ph_asy=asymstd$asympstd_phi #asymptotic std of phi
-      std_th_asy=asymstd$asympstd_theta #asymptotic std of theta
-      std_ga_asy=asymstd$asympstd_gamma #asymptotic std of gamma
-      cov_asy=asymstd$asympcov_est #asymptotic covaraince of the estimates
-      z_b_asy=beta_cop/std_b_asy #z score of beta
-      z_ph_asy=phi_cop/std_ph_asy #z score of phi
-      p_b_asy=2*pnorm(-abs(z_b_asy)) #p-value of beta
-      p_ph_asy=2*pnorm(-abs(z_ph_asy))  #p-value of phi
-      zp_b_ph=cbind(
+      std_b_asy<-asymstd$asympstd_beta #asymptotic std of beta
+      std_ph_asy<-asymstd$asympstd_phi #asymptotic std of phi
+      std_th_asy<-asymstd$asympstd_theta #asymptotic std of theta
+      std_ga_asy<-asymstd$asympstd_gamma #asymptotic std of gamma
+      cov_asy<-asymstd$asympcov_est #asymptotic covaraince of the estimates
+      z_b_asy<-beta_cop/std_b_asy #z score of beta
+      z_ph_asy<-phi_cop/std_ph_asy #z score of phi
+      p_b_asy<-2*pnorm(-abs(z_b_asy)) #p-value of beta
+      p_ph_asy<-2*pnorm(-abs(z_ph_asy))  #p-value of phi
+      zp_b_ph<-cbind(
         c( beta_cop, phi_cop ),
         c( std_b_asy, std_ph_asy ),
         c( z_b_asy, z_ph_asy ),
         c( p_b_asy, p_ph_asy )
       ) #regression ooefficient estimates with the corresponding standard deviations, z scores and p values
-      colnames(zp_b_ph)=c("Est", "SD", "Z score", "P value")
-      rownames(zp_b_ph)=rep(colnames(cova), 2)
-      std_ht0_asy=sqrt( diag( psix%*%( cov_asy[(2*p+1):(2*p+m),(2*p+1):(2*p+m)] )%*%t( psix ) ) )
-      std_hc0_asy=sqrt( diag( psix%*%( cov_asy[(2*p+m+1):(2*p+2*m),(2*p+m+1):(2*p+2*m)] )%*%t( psix ) ) )
+      colnames(zp_b_ph)<-c("Est", "SD", "Z score", "P value")
+      rownames(zp_b_ph)<-rep(colnames(cova), 2)
+      std_ht0_asy<-sqrt( diag( psix%*%( cov_asy[(2*p+1):(2*p+m),(2*p+1):(2*p+m)] )%*%t( psix ) ) )
+      std_hc0_asy<-sqrt( diag( psix%*%( cov_asy[(2*p+m+1):(2*p+2*m),(2*p+m+1):(2*p+2*m)] )%*%t( psix ) ) )
 
-      std_Ht0_asy=sqrt( diag( Psix%*%( cov_asy[(2*p+1):(2*p+m),(2*p+1):(2*p+m)] )%*%t( Psix ) ) )
-      std_Hc0_asy=sqrt( diag( Psix%*%( cov_asy[(2*p+m+1):(2*p+2*m),(2*p+m+1):(2*p+2*m)] )%*%t( Psix ) ) )
+      std_Ht0_asy<-sqrt( diag( Psix%*%( cov_asy[(2*p+1):(2*p+m),(2*p+1):(2*p+m)] )%*%t( Psix ) ) )
+      std_Hc0_asy<-sqrt( diag( Psix%*%( cov_asy[(2*p+m+1):(2*p+2*m),(2*p+m+1):(2*p+2*m)] )%*%t( Psix ) ) )
 
-      std_St0_asy=S0t_cop*std_Ht0_asy
-      std_Sc0_asy=S0c_cop*std_Hc0_asy
+      std_St0_asy<-S0t_cop*std_Ht0_asy
+      std_Sc0_asy<-S0c_cop*std_Hc0_asy
     }
-    if(ac==0){aic=0}
+    if(ac==0){aic<-0}
     else
     {maxpl<-max(pllik)
     aic<-2*2*(m+p)-2*maxpl}
 
-    if( identical(cova, matrix(0, n, 1)) ){noX = TRUE}else{noX = FALSE}
-    pos=c( if(noX){rep(FALSE, 2*p)}else{rep(TRUE, 2*p)}, c(theta_cop>=ac.theta, gamma_cop>=ac.gamma) | c(Uth_cop>=ac.Utheta, Uga_cop>=ac.Ugamma) )
+    if( identical(cova, matrix(0, n, 1)) ){noX <- TRUE}else{noX <- FALSE}
+    pos<-c( if(noX){rep(FALSE, 2*p)}else{rep(TRUE, 2*p)}, c(theta_cop>=ac.theta, gamma_cop>=ac.gamma) | c(Uth_cop>=ac.Utheta, Uga_cop>=ac.Ugamma) )
     H<-hesscoxphcopmpl(p, Co, dC, dC3, tcova, h0t_cop, h0c_cop, eregt, eregc, Hcoxt, Scoxt, Hcoxc, Scoxc, psix, Psix, del, eta, 0, Rt, 0, Rc)
     Hp<-hesscoxphcopmpl(p, Co, dC, dC3, tcova, h0t_cop, h0c_cop, eregt, eregc, Hcoxt, Scoxt, Hcoxc, Scoxc, psix, Psix, del, eta, smpart, Rt, smparc, Rc)
-    diag(Hp)=diag(Hp)+eps
+    diag(Hp)<-diag(Hp)+eps
     l<-penlogreg_dep(del, eta, theta_cop, gamma_cop, h0t_cop, h0c_cop, regt, regc, Hcoxt, Hcoxc, Co, dC, Rt, Rc, 0, 0)
-    if(cv==0){cvl=0}
+    if(cv==0){cvl<-0}
     else
     {
-      Hpinv=matrix(0, (2*p+2*m), (2*p+2*m))
-      Hpinv[pos,pos]=solve(Hp[pos, pos])
+      Hpinv<-matrix(0, (2*p+2*m), (2*p+2*m))
+      Hpinv[pos,pos]<-solve(Hp[pos, pos])
       cvl<-l-sum(diag(Hpinv%*%H))
     }
 
     if(smpart_init=='REML')
     {
-      HtRinv = matrix(0, 2*p + 2*m, 2*p + 2*m)
-      sigmat2_old = 1/( smpart)
-      sigmac2_old = 1/( smparc)
-      diag(H)=diag(H)+eps
-      HtRinv[pos, pos]=solve( -H[pos, pos] + ( 1/sigmat2_old )*Rt_star[pos, pos] + ( 1/sigmac2_old )*Rc_star[pos, pos] )
-      dft=m - ( sum( diag( HtRinv%*%Rt_star ) )/sigmat2_old )
-      sigmat2=c( t( theta_cop )%*%Rt%*%theta_old/( dft ) )
-      #smpart_old =ifelse( k2 > 1, smpart, -1 )
-      smpart_old =smpart
-      smpart=1/( sigmat2 )
+      HtRinv <- matrix(0, 2*p + 2*m, 2*p + 2*m)
+      sigmat2_old <- 1/( smpart)
+      sigmac2_old <- 1/( smparc)
+      diag(H)<-diag(H)+eps
+      HtRinv[pos, pos]<-solve( -H[pos, pos] + ( 1/sigmat2_old )*Rt_star[pos, pos] + ( 1/sigmac2_old )*Rc_star[pos, pos] )
+      dft<-m - ( sum( diag( HtRinv%*%Rt_star ) )/sigmat2_old )
+      sigmat2<-c( t( theta_cop )%*%Rt%*%theta_old/( dft ) )
+      smpart_old <- smpart
+      smpart <- 1/( sigmat2 )
     }
     else
     {
-      sigmat2_old = 1/( smpart)
-      sigmat2=sigmat2_old
-      smpart_old =smpart
-      smpart=1/( sigmat2 )
+      sigmat2_old <- 1/( smpart)
+      sigmat2<-sigmat2_old
+      smpart_old <- smpart
+      smpart <- 1/( sigmat2 )
       dft=m
     }
 
     if(smparc_init=='REML')
     {
-      HcRinv = matrix(0, 2*p + 2*m, 2*p + 2*m)
-      sigmat2_old = 1/( smpart)
-      sigmac2_old = 1/( smparc)
-      HcRinv[pos, pos]=solve( -H[pos, pos] + ( 1/sigmat2_old )*Rt_star[pos, pos] + ( 1/sigmac2_old )*Rc_star[pos, pos] )
-      dfc=m - ( sum( diag( HcRinv%*%Rc_star ) )/sigmac2_old )
-      sigmac2=c( t( gamma_cop )%*%Rc%*%gamma_old/( dfc ) )
-      #smpart_old =ifelse( k2 > 1, smpart, -1 )
-      smparc_old =smparc
-      smparc=1/( sigmac2 )
+      HcRinv <- matrix(0, 2*p + 2*m, 2*p + 2*m)
+      sigmat2_old <- 1/( smpart)
+      sigmac2_old <- 1/( smparc)
+      HcRinv[pos, pos] <- solve( -H[pos, pos] + ( 1/sigmat2_old )*Rt_star[pos, pos] + ( 1/sigmac2_old )*Rc_star[pos, pos] )
+      dfc <- m - ( sum( diag( HcRinv%*%Rc_star ) )/sigmac2_old )
+      sigmac2 <- c( t( gamma_cop )%*%Rc%*%gamma_old/( dfc ) )
+      smparc_old <- smparc
+      smparc <- 1/( sigmac2 )
     }
     else
     {
-      sigmac2_old = 1/( smparc)
-      sigmac2=sigmac2_old
-      smparc_old =smparc
-      smparc=1/( sigmac2 )
-      dfc=m
+      sigmac2_old <- 1/( smparc)
+      sigmac2 <- sigmac2_old
+      smparc_old <- smparc
+      smparc <- 1/( sigmac2 )
+      dfc <- m
     }
 
-    full.iter = full.iter + k
+    full.iter <- full.iter + k
 
     if(cat.smpar=='Yes'){
       cat(k2,"\tsmpart =",smpart,"\tsmparc =",smparc,"\tdft=",dft,"\tdfc=",dfc,"\titer =", k, "\n")
@@ -940,7 +912,6 @@ coxph_mpl_dc<-function(surv, cova, control,...)
 
     #print(k2)
     if( abs( smpart - smpart_old )<( tol.smpar ) & abs( smparc - smparc_old ) < ( tol.smpar ) )
-      #if( abs( df-dfold )<1e-2 )      /abs( smpart_old )
     {
       break
     }
@@ -953,17 +924,15 @@ coxph_mpl_dc<-function(surv, cova, control,...)
       sigmac2_old = sigmac2
     }
 
-    #else{smpart_old=smpart}
-
   }
-  iter=c(k2, full.iter, k)
+  iter <- c(k2, full.iter, k)
   if(k2==1)
   {
-    smpart=smpart_old
-    smparc=smparc_old
+    smpart <- smpart_old
+    smparc <- smparc_old
   }
 
-  fit = list(
+  fit <- list(
       mpl_theta=theta_cop, mpl_gamma=gamma_cop,
       mpl_Utheta=Uth_cop, mpl_Ugamma=Uga_cop,
       mpl_h0t=h0t_cop, mpl_h0c=h0c_cop,
@@ -983,7 +952,6 @@ coxph_mpl_dc<-function(surv, cova, control,...)
       mpl_St0_sd=std_St0_asy, mpl_Sc0_sd=std_Sc0_asy,
 
       mpl_est_cov=cov_asy, mpl_beta_phi_zp=zp_b_ph,
-      #T_bin=T_bin,N_bin=N_bin,d_bin=d_bin,c_bin=c_bin,R_bin=R_bin,
       binedg=binedg, binwv=binwv,ID=ID, psix=psix, Psix=Psix,
 
       numIntKnt = numIntKnt, #length(binedg)-2

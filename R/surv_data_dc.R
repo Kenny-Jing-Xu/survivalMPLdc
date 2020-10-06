@@ -83,7 +83,7 @@ surv_data_dc<-function(n, a, Z, lambda, betas, phis, cons7, cons9, tau, copula, 
   {
     if(copula=='independent')
     {
-      cop=indepCopula(2)
+      cop<-indepCopula(2)
     }
     else if(copula=='clayton')
     {
@@ -105,7 +105,7 @@ surv_data_dc<-function(n, a, Z, lambda, betas, phis, cons7, cons9, tau, copula, 
   x<-rep(0, n)
   del<-rep(0, n)
   eta<-rep(0, n)
-  expbetT=exp(Z%*%betas)
+  expbetT <- exp(Z%*%betas)
   lamT<-lambda*(exp(-Z%*%betas))^(1/a)
   lamCe<-cons7*exp(Z%*%phis)
   lamCw<-lambda*(exp(-Z%*%phis))^(1/a)
@@ -118,7 +118,7 @@ surv_data_dc<-function(n, a, Z, lambda, betas, phis, cons7, cons9, tau, copula, 
     }
     else if ( distr.ev == 'log logit' )
     {
-      ti=exp( lambda )*( cuv[1,1]^( -1/expbetT[i] ) - 1 )^( a )     #log logit distribution
+      ti <- exp( lambda )*( cuv[1,1]^( -1/expbetT[i] ) - 1 )^( a )     #log logit distribution
     }
     else ( stop("Error! Define a proper distribution type for the event time") )
     if( distr.ce=='exponential' )

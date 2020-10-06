@@ -57,12 +57,12 @@
 #'
 #' data(PRIME)
 #'
-#' surv=as.matrix(PRIME[,1:3]) #time, event and dependent censoring indicators
-#' cova=as.matrix(PRIME[, -c(1:3)]) #covariates
+#' surv<-as.matrix(PRIME[,1:3]) #time, event and dependent censoring indicators
+#' cova<-as.matrix(PRIME[, -c(1:3)]) #covariates
 #' colMeans(surv[,2:3])  #the proportions of event and dependent censoring
 #'
-#' n=dim(PRIME)[1];print(n)
-#' p=dim(PRIME)[2]-3;print(p)
+#' n<-dim(PRIME)[1];print(n)
+#' p<-dim(PRIME)[2]-3;print(p)
 #' names(PRIME)
 #'
 #' ##--MPL estimate Cox proportional hazard model for institutionalization under medium positive
@@ -124,58 +124,58 @@
 
 plot.coxph_mpl_dc<-function(x, parameter="theta", funtype="hazard", xout, se=TRUE, ltys, cols, ...)
 {
-  surv = x$surv
-  Xi=surv[,1]
-  max_Xi=max(Xi)
+  surv <- x$surv
+  Xi<-surv[,1]
+  max_Xi<-max(Xi)
 
-  if(missing(parameter)){parameter="theta"}
-  if(missing(funtype)){funtype="hazard"}
-  if(missing(xout)){ xout = seq(0, max_Xi, 0.01) }
-  if(missing(se)){se=FALSE}
-  if(missing(cols)){cols=c("black", "black")}
-  if(missing(ltys)){ltys=c(1, 2)}
+  if(missing(parameter)){parameter<-"theta"}
+  if(missing(funtype)){funtype<-"hazard"}
+  if(missing(xout)){ xout <- seq(0, max_Xi, 0.01) }
+  if(missing(se)){se<-FALSE}
+  if(missing(cols)){cols<-c("black", "black")}
+  if(missing(ltys)){ltys<-c(1, 2)}
 
   if(parameter=="theta")
   {
     if(funtype=="hazard"){
 
       mpl_h0 <- x$mpl_h0t
-      mpl_h0_sd = x$mpl_ht0_sd
+      mpl_h0_sd <- x$mpl_ht0_sd
       mpl_h0i <- approx( Xi, mpl_h0, xout = xout,
                          method="constant", rule = 2, ties = mean)$y
       mpl_h0i_sd <- approx( Xi, mpl_h0_sd, xout = xout,
                             method="constant", rule = 2, ties = mean)$y
-      yout = mpl_h0i
-      youtu = mpl_h0i + 1.96*mpl_h0i_sd
-      youtl = mpl_h0i - 1.96*mpl_h0i_sd
-      youtl[youtl<0]=0
+      yout <- mpl_h0i
+      youtu <- mpl_h0i + 1.96*mpl_h0i_sd
+      youtl <- mpl_h0i - 1.96*mpl_h0i_sd
+      youtl[youtl<0]<-0
 
     }else if(funtype=="cumhazard"){
 
       mpl_H0 <- x$mpl_H0t
-      mpl_H0_sd = x$mpl_Ht0_sd
+      mpl_H0_sd <- x$mpl_Ht0_sd
       mpl_H0i <- approx( Xi, mpl_H0, xout = xout,
                          method="constant", rule = 2, ties = mean)$y
       mpl_H0i_sd <- approx( Xi, mpl_H0_sd, xout = xout,
                             method="constant", rule = 2, ties = mean)$y
-      yout = mpl_H0i
-      youtu = mpl_H0i + 1.96*mpl_H0i_sd
-      youtl = mpl_H0i - 1.96*mpl_H0i_sd
-      youtl[youtl<0]=0
+      yout <- mpl_H0i
+      youtu <- mpl_H0i + 1.96*mpl_H0i_sd
+      youtl <- mpl_H0i - 1.96*mpl_H0i_sd
+      youtl[youtl<0]<-0
 
       }else if(funtype=="survival"){
 
         mpl_S0 <- x$mpl_S0t
-        mpl_S0_sd = x$mpl_St0_sd
+        mpl_S0_sd <- x$mpl_St0_sd
         mpl_S0i <- approx( Xi, mpl_S0, xout = xout,
                            method="constant", rule = 2, ties = mean)$y
         mpl_S0i_sd <- approx( Xi, mpl_S0_sd, xout = xout,
                               method="constant", rule = 2, ties = mean)$y
-        yout = mpl_S0i
-        youtu = mpl_S0i + 1.96*mpl_S0i_sd
-        youtl = mpl_S0i - 1.96*mpl_S0i_sd
-        youtl[youtl<0]=0
-        youtu[youtu>1]=1
+        yout <- mpl_S0i
+        youtu <- mpl_S0i + 1.96*mpl_S0i_sd
+        youtl <- mpl_S0i - 1.96*mpl_S0i_sd
+        youtl[youtl<0]<-0
+        youtu[youtu>1]<-1
 
         }else (stop("Error! Define a proper function type"))
 
@@ -184,42 +184,42 @@ plot.coxph_mpl_dc<-function(x, parameter="theta", funtype="hazard", xout, se=TRU
     if(funtype=="hazard"){
 
       mpl_h0 <- x$mpl_h0c
-      mpl_h0_sd = x$mpl_hc0_sd
+      mpl_h0_sd <- x$mpl_hc0_sd
       mpl_h0i <- approx( Xi, mpl_h0, xout = xout,
                          method="constant", rule = 2, ties = mean)$y
       mpl_h0i_sd <- approx( Xi, mpl_h0_sd, xout = xout,
                             method="constant", rule = 2, ties = mean)$y
-      yout = mpl_h0i
-      youtu = mpl_h0i + 1.96*mpl_h0i_sd
-      youtl = mpl_h0i - 1.96*mpl_h0i_sd
-      youtl[youtl<0]=0
+      yout <- mpl_h0i
+      youtu <- mpl_h0i + 1.96*mpl_h0i_sd
+      youtl <- mpl_h0i - 1.96*mpl_h0i_sd
+      youtl[youtl<0]<-0
 
     }else if(funtype=="cumhazard"){
 
       mpl_H0 <- x$mpl_H0c
-      mpl_H0_sd = x$mpl_Hc0_sd
+      mpl_H0_sd <- x$mpl_Hc0_sd
       mpl_H0i <- approx( Xi, mpl_H0, xout = xout,
                          method="constant", rule = 2, ties = mean)$y
       mpl_H0i_sd <- approx( Xi, mpl_H0_sd, xout = xout,
                             method="constant", rule = 2, ties = mean)$y
-      yout = mpl_H0i
-      youtu = mpl_H0i + 1.96*mpl_H0i_sd
-      youtl = mpl_H0i - 1.96*mpl_H0i_sd
-      youtl[youtl<0]=0
+      yout <- mpl_H0i
+      youtu <- mpl_H0i + 1.96*mpl_H0i_sd
+      youtl <- mpl_H0i - 1.96*mpl_H0i_sd
+      youtl[youtl<0]<-0
 
     }else if(funtype=="survival"){
 
       mpl_S0 <- x$mpl_S0c
-      mpl_S0_sd = x$mpl_Sc0_sd
+      mpl_S0_sd <- x$mpl_Sc0_sd
       mpl_S0i <- approx( Xi, mpl_S0, xout = xout,
                          method="constant", rule = 2, ties = mean)$y
       mpl_S0i_sd <- approx( Xi, mpl_S0_sd, xout = xout,
                             method="constant", rule = 2, ties = mean)$y
-      yout = mpl_S0i
-      youtu = mpl_S0i + 1.96*mpl_S0i_sd
-      youtl = mpl_S0i - 1.96*mpl_S0i_sd
-      youtl[youtl<0]=0
-      youtu[youtu>1]=1
+      yout <- mpl_S0i
+      youtu <- mpl_S0i + 1.96*mpl_S0i_sd
+      youtl <- mpl_S0i - 1.96*mpl_S0i_sd
+      youtl[youtl<0]<-0
+      youtu[youtu>1]<-1
 
     }else (stop("Error! Define a proper function type"))
 

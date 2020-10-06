@@ -86,7 +86,7 @@
 #' @seealso \code{\link{plot.coxph_mpl_dc}}, \code{\link{coxph_mpl_dc}}, \code{\link{coef.coxph_mpl_dc}}
 #'
 #' @examples
-#' control=coxph_mpl_dc.control(ordSp=4,
+#' control <- coxph_mpl_dc.control(ordSp=4,
 #'                              binCount=40,
 #'                              tau=0.8, copula='frank',
 #'                              pent='penalty_mspl', smpart='REML', penc='penalty_mspl', smparc='REML',
@@ -96,7 +96,7 @@
 #' @export
 
 
-coxph_mpl_dc.control=function(ordSp,
+coxph_mpl_dc.control <- function(ordSp,
                               binCount, tie,
                               tau, copula,
                               pent, smpart, penc, smparc,
@@ -107,40 +107,40 @@ coxph_mpl_dc.control=function(ordSp,
                               tol.thga, tol.bph, cat.smpar, tol.smpar
                               )
 {
-  if(missing(ordSp)){ordSp=1}
-  if(missing(binCount)){binCount=1}
-  if(missing(tie)){tie='No'}
-  if(missing(tau)){tau=0}
-  if(missing(copula)){copula='independent'}
-  if(missing(pent)){pent='mat1'}
-  if(missing(penc)){penc='mat1'}
-  if(missing(smpart)){smpart=0}
-  if(missing(smparc)){smparc=0}
-  if(missing(maxit2)){maxit2=50}
-  if(missing(maxit)){maxit=5000}
+  if(missing(ordSp)){ordSp <- 1}
+  if(missing(binCount)){binCount <- 1}
+  if(missing(tie)){tie <- 'No'}
+  if(missing(tau)){tau <- 0}
+  if(missing(copula)){copula <- 'independent'}
+  if(missing(pent)){pent <- 'mat1'}
+  if(missing(penc)){penc <- 'mat1'}
+  if(missing(smpart)){smpart <- 0}
+  if(missing(smparc)){smparc <- 0}
+  if(missing(maxit2)){maxit2 <- 50}
+  if(missing(maxit)){maxit <- 5000}
   #if(missing(inc)){inc=1}
-  if(missing(mid)){mid=1}
-  if(missing(asy)){asy=1}
-  if(missing(ac)){ac=0}
-  if(missing(cv)){cv=0}
+  if(missing(mid)){mid <- 1}
+  if(missing(asy)){asy <- 1}
+  if(missing(ac)){ac <- 0}
+  if(missing(cv)){cv <- 0}
 
-  if(missing(ac.theta)){ac.theta=1e-5}
-  if(missing(ac.gamma)){ac.gamma=1e-5}
-  if(missing(ac.Utheta)){ac.Utheta=-1e-2}
-  if(missing(ac.Ugamma)){ac.Ugamma=-1e-2}
-  if(missing(min.theta)){min.theta=1e-7}
-  if(missing(min.gamma)){min.gamma=1e-7}
-  if(missing(min.ht)){min.ht=1e-7}
-  if(missing(min.hc)){min.hc=1e-7}
-  if(missing(min.St)){min.St=1e-7}
-  if(missing(min.Sc)){min.Sc=1e-7}
-  if(missing(min.C)){min.C=1e-7}
-  if(missing(min.dC)){min.dC=1e-7}
-  if(missing(eps)){eps=1e-5}
-  if(missing(tol.thga)){tol.thga=1e-5}
-  if(missing(tol.bph)){tol.bph=1e-5}
-  if(missing(cat.smpar)){cat.smpar='Yes'}
-  if(missing(tol.smpar)){tol.smpar=1e-2}
+  if(missing(ac.theta)){ac.theta <- 1e-5}
+  if(missing(ac.gamma)){ac.gamma <- 1e-5}
+  if(missing(ac.Utheta)){ac.Utheta <- -1e-2}
+  if(missing(ac.Ugamma)){ac.Ugamma <- -1e-2}
+  if(missing(min.theta)){min.theta <- 1e-7}
+  if(missing(min.gamma)){min.gamma <- 1e-7}
+  if(missing(min.ht)){min.ht <- 1e-7}
+  if(missing(min.hc)){min.hc <- 1e-7}
+  if(missing(min.St)){min.St <- 1e-7}
+  if(missing(min.Sc)){min.Sc <- 1e-7}
+  if(missing(min.C)){min.C <- 1e-7}
+  if(missing(min.dC)){min.dC <- 1e-7}
+  if(missing(eps)){eps <- 1e-5}
+  if(missing(tol.thga)){tol.thga <- 1e-5}
+  if(missing(tol.bph)){tol.bph <- 1e-5}
+  if(missing(cat.smpar)){cat.smpar <- 'Yes'}
+  if(missing(tol.smpar)){tol.smpar <- 1e-2}
 
   out=list(
     ordSp=ordSp,
