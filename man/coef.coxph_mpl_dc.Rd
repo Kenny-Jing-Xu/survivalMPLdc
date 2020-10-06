@@ -39,12 +39,12 @@ the matrix of phi estimates with corresponding standar errors, \eqn{z}-statistic
 
 data(PRIME)
 
-surv=as.matrix(PRIME[,1:3]) #time, event and dependent censoring indicators
-cova=as.matrix(PRIME[, -c(1:3)]) #covariates
+surv<-as.matrix(PRIME[,1:3]) #time, event and dependent censoring indicators
+cova<-as.matrix(PRIME[, -c(1:3)]) #covariates
 colMeans(surv[,2:3])  #the proportions of event and dependent censoring
 
-n=dim(PRIME)[1];print(n)
-p=dim(PRIME)[2]-3;print(p)
+n<-dim(PRIME)[1];print(n)
+p<-dim(PRIME)[2]-3;print(p)
 names(PRIME)
 
 ##--MPL estimate Cox proportional hazard model for institutionalization under independent censoring
@@ -56,8 +56,8 @@ control <- coxph_mpl_dc.control(ordSp = 4,
                                 cat.smpar = 'No' )
 
 coxMPLests_tau <- coxph_mpl_dc(surv=surv, cova=cova, control=control, )
-MPL_beta=coef(object = coxMPLests_tau, parameter = "beta",)
-MPL_phi=coef(object = coxMPLests_tau, parameter = "phi",)
+MPL_beta<-coef(object = coxMPLests_tau, parameter = "beta",)
+MPL_phi<-coef(object = coxMPLests_tau, parameter = "phi",)
 
 }
 

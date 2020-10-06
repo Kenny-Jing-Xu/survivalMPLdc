@@ -115,7 +115,7 @@ This is used to set various numeric parameters controlling a Cox model fit using
 Typically it would only be used in a call to coxph_mpl_dc.
 }
 \examples{
-control=coxph_mpl_dc.control(ordSp=4,
+control <- coxph_mpl_dc.control(ordSp=4,
                              binCount=40,
                              tau=0.8, copula='frank',
                              pent='penalty_mspl', smpart='REML', penc='penalty_mspl', smparc='REML',

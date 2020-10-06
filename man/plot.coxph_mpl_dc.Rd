@@ -62,12 +62,12 @@ based on \eqn{\gamma} and xout (with the corresponding 95\% confidence interval 
 
 data(PRIME)
 
-surv=as.matrix(PRIME[,1:3]) #time, event and dependent censoring indicators
-cova=as.matrix(PRIME[, -c(1:3)]) #covariates
+surv<-as.matrix(PRIME[,1:3]) #time, event and dependent censoring indicators
+cova<-as.matrix(PRIME[, -c(1:3)]) #covariates
 colMeans(surv[,2:3])  #the proportions of event and dependent censoring
 
-n=dim(PRIME)[1];print(n)
-p=dim(PRIME)[2]-3;print(p)
+n<-dim(PRIME)[1];print(n)
+p<-dim(PRIME)[2]-3;print(p)
 names(PRIME)
 
 ##--MPL estimate Cox proportional hazard model for institutionalization under medium positive
