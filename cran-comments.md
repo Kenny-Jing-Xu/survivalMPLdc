@@ -19,4 +19,5 @@ This is a resubmission. In this version I have:
 * Deleted loading the packages that are imported in the R functions for the examples and testthat file.
 * Deleted par() and replaced with lines() for the plots in the examples of the R functions, testthat file and README.Rmd file.
 * Delete the for loops in the examples of R functions.
+*Replace "=" by "<-" for the R function files, the README.Rmd file and the testthat file.
 
