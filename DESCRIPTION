@@ -1,7 +1,7 @@
 Package: survivalMPLdc
 Type: Package
 Title: Penalised Likelihood for Survival Analysis with Dependent Censoring
-Version: 0.1.0
+Version: 0.1.1
 Authors@R: c(person("Jing", "Xu", role = c("aut", "cre"),
   email = "kenny.xu@duke-nus.edu.sg"), 
   person("Jun", "Ma", role = c("aut"),
