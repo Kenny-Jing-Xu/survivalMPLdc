@@ -1,4 +1,4 @@
 
-## survivalMPLdc 0.1.0
+## survivalMPLdc 0.1.1
 
-* First major release of the package.
+* New version from version 0.1.0 after CRAN checks.
