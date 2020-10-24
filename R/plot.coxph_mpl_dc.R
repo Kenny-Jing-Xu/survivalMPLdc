@@ -41,7 +41,7 @@
 #' @importFrom copula indepCopula claytonCopula gumbelCopula frankCopula iTau rCopula
 #' @importFrom survival coxph Surv
 #' @importFrom splines2 iSpline mSpline
-#' @importFrom graphics par
+#' @importFrom graphics plot
 #' @importFrom stats approx
 #' @importFrom graphics lines
 #'
