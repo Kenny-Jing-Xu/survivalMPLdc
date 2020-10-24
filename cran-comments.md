@@ -22,3 +22,4 @@ This is a resubmission. In this version I have:
 * Replace "=" by "<-" for the R function files, the README.Rmd file and the testthat file.
 * Delete package methods from imports in DESCRIPTION file.
 * Add @importFrom graphics plot for the R function plot.coxph_mpl_dc.R.
+* Change the version to 0.1.1.
