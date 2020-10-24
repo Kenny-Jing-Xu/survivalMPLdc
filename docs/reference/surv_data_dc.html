@@ -127,7 +127,7 @@
     <p>Generate a sample of time to event dataset with, dependent right censoring based on one of the Archimedean copulas the given Kendall's tau, sample size n and covariates matrix Z.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>surv_data_dc</span>(<span class='no'>n</span>, <span class='no'>a</span>, <span class='no'>Z</span>, <span class='no'>lambda</span>, <span class='no'>betas</span>, <span class='no'>phis</span>, <span class='no'>cons7</span>, <span class='no'>cons9</span>, <span class='no'>tau</span>, <span class='no'>copula</span>, <span class='no'>distr.ev</span>, <span class='no'>distr.ce</span>)</pre>
+    <pre class="usage"><span class='fu'>surv_data_dc</span><span class='op'>(</span><span class='va'>n</span>, <span class='va'>a</span>, <span class='va'>Z</span>, <span class='va'>lambda</span>, <span class='va'>betas</span>, <span class='va'>phis</span>, <span class='va'>cons7</span>, <span class='va'>cons9</span>, <span class='va'>tau</span>, <span class='va'>copula</span>, <span class='va'>distr.ev</span>, <span class='va'>distr.ce</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -207,36 +207,43 @@ Statistics in Medicine 37, 2238–2251.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='coxph_mpl_dc.html'>coxph_mpl_dc</a></code></p></div>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Jing Xu, Jun Ma, Thomas Fung</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'> <span class='co'>##-- Copula types</span>
- <span class='no'>copula3</span> <span class='kw'>&lt;-</span> <span class='st'>'frank'</span>
+ <span class='va'>copula3</span> <span class='op'>&lt;-</span> <span class='st'>'frank'</span>
 
  <span class='co'>##-- Marginal distribution for T, C, and A</span>
- <span class='no'>a</span> <span class='kw'>&lt;-</span> <span class='fl'>2</span>
- <span class='no'>lambda</span> <span class='kw'>&lt;-</span> <span class='fl'>2</span>
- <span class='no'>cons7</span> <span class='kw'>&lt;-</span> <span class='fl'>0.2</span>
- <span class='no'>cons9</span> <span class='kw'>&lt;-</span> <span class='fl'>10</span>
- <span class='no'>tau</span> <span class='kw'>&lt;-</span> <span class='fl'>0.8</span>
- <span class='no'>betas</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(-<span class='fl'>0.5</span>, <span class='fl'>0.1</span>)
- <span class='no'>phis</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.3</span>, <span class='fl'>0.2</span>)
- <span class='no'>distr.ev</span> <span class='kw'>&lt;-</span> <span class='st'>'weibull'</span>
- <span class='no'>distr.ce</span> <span class='kw'>&lt;-</span> <span class='st'>'exponential'</span>
+ <span class='va'>a</span> <span class='op'>&lt;-</span> <span class='fl'>2</span>
+ <span class='va'>lambda</span> <span class='op'>&lt;-</span> <span class='fl'>2</span>
+ <span class='va'>cons7</span> <span class='op'>&lt;-</span> <span class='fl'>0.2</span>
+ <span class='va'>cons9</span> <span class='op'>&lt;-</span> <span class='fl'>10</span>
+ <span class='va'>tau</span> <span class='op'>&lt;-</span> <span class='fl'>0.8</span>
+ <span class='va'>betas</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0.5</span>, <span class='fl'>0.1</span><span class='op'>)</span>
+ <span class='va'>phis</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.3</span>, <span class='fl'>0.2</span><span class='op'>)</span>
+ <span class='va'>distr.ev</span> <span class='op'>&lt;-</span> <span class='st'>'weibull'</span>
+ <span class='va'>distr.ce</span> <span class='op'>&lt;-</span> <span class='st'>'exponential'</span>
 
  <span class='co'>##-- Sample size</span>
- <span class='no'>n</span> <span class='kw'>&lt;-</span> <span class='fl'>200</span>
+ <span class='va'>n</span> <span class='op'>&lt;-</span> <span class='fl'>200</span>
 
  <span class='co'>##-- One sample Monte Carlo dataset</span>
- <span class='no'>cova</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span>(<span class='fu'><a href='https://rdrr.io/r/stats/Binomial.html'>rbinom</a></span>(<span class='no'>n</span>, <span class='fl'>1</span>, <span class='fl'>0.5</span>), <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span>(<span class='no'>n</span>, <span class='kw'>min</span><span class='kw'>=</span>-<span class='fl'>10</span>, <span class='kw'>max</span><span class='kw'>=</span><span class='fl'>10</span>))
- <span class='no'>surv</span> <span class='kw'>&lt;-</span> <span class='fu'>surv_data_dc</span>(<span class='no'>n</span>, <span class='no'>a</span>, <span class='no'>cova</span>, <span class='no'>lambda</span>, <span class='no'>betas</span>, <span class='no'>phis</span>, <span class='no'>cons7</span>, <span class='no'>cons9</span>,
-                     <span class='no'>tau</span>, <span class='no'>copula3</span>, <span class='no'>distr.ev</span>, <span class='no'>distr.ce</span>)
- <span class='no'>n</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span>(<span class='no'>cova</span>)
- <span class='no'>p</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>ncol</a></span>(<span class='no'>cova</span>)
+ <span class='va'>cova</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Binomial.html'>rbinom</a></span><span class='op'>(</span><span class='va'>n</span>, <span class='fl'>1</span>, <span class='fl'>0.5</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span><span class='op'>(</span><span class='va'>n</span>, min<span class='op'>=</span><span class='op'>-</span><span class='fl'>10</span>, max<span class='op'>=</span><span class='fl'>10</span><span class='op'>)</span><span class='op'>)</span>
+ <span class='va'>surv</span> <span class='op'>&lt;-</span> <span class='fu'>surv_data_dc</span><span class='op'>(</span><span class='va'>n</span>, <span class='va'>a</span>, <span class='va'>cova</span>, <span class='va'>lambda</span>, <span class='va'>betas</span>, <span class='va'>phis</span>, <span class='va'>cons7</span>, <span class='va'>cons9</span>,
+                     <span class='va'>tau</span>, <span class='va'>copula3</span>, <span class='va'>distr.ev</span>, <span class='va'>distr.ce</span><span class='op'>)</span>
+ <span class='va'>n</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='va'>cova</span><span class='op'>)</span>
+ <span class='va'>p</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>ncol</a></span><span class='op'>(</span><span class='va'>cova</span><span class='op'>)</span>
  <span class='co'>##-- event and dependent censoring proportions</span>
- <span class='fu'><a href='https://rdrr.io/r/base/colSums.html'>colSums</a></span>(<span class='no'>surv</span>)[<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>2</span>,<span class='fl'>3</span>)]/<span class='no'>n</span></div><div class='output co'>#&gt;   del   eta 
-#&gt; 0.480 0.325 </div><div class='input'> <span class='no'>X</span> <span class='kw'>&lt;-</span> <span class='no'>surv</span>[,<span class='fl'>1</span>] <span class='co'># Observed time</span>
- <span class='no'>del</span><span class='kw'>&lt;-</span><span class='no'>surv</span>[,<span class='fl'>2</span>] <span class='co'># failure status</span>
- <span class='no'>eta</span><span class='kw'>&lt;-</span><span class='no'>surv</span>[,<span class='fl'>3</span>] <span class='co'># dependent censoring status</span></div></pre>
+ <span class='fu'><a href='https://rdrr.io/r/base/colSums.html'>colSums</a></span><span class='op'>(</span><span class='va'>surv</span><span class='op'>)</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2</span>,<span class='fl'>3</span><span class='op'>)</span><span class='op'>]</span><span class='op'>/</span><span class='va'>n</span>
+</div><div class='output co'>#&gt;   del   eta 
+#&gt; 0.480 0.325 </div><div class='input'> <span class='va'>X</span> <span class='op'>&lt;-</span> <span class='va'>surv</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>]</span> <span class='co'># Observed time</span>
+ <span class='va'>del</span><span class='op'>&lt;-</span><span class='va'>surv</span><span class='op'>[</span>,<span class='fl'>2</span><span class='op'>]</span> <span class='co'># failure status</span>
+ <span class='va'>eta</span><span class='op'>&lt;-</span><span class='va'>surv</span><span class='op'>[</span>,<span class='fl'>3</span><span class='op'>]</span> <span class='co'># dependent censoring status</span>
+
+
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -252,7 +259,7 @@ Statistics in Medicine 37, 2238–2251.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

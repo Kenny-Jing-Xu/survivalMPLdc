@@ -130,7 +130,7 @@
     </div>
 
     <pre class="usage"><span class='co'># S3 method for coxph_mpl_dc</span>
-<span class='fu'><a href='https://rdrr.io/r/stats/coef.html'>coef</a></span>(<span class='no'>object</span>, <span class='no'>parameter</span>, <span class='no'>...</span>)</pre>
+<span class='fu'><a href='https://rdrr.io/r/stats/coef.html'>coef</a></span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>parameter</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -170,42 +170,51 @@ Statistics in Medicine 37, 2238–2251.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='plot.coxph_mpl_dc.html'>plot.coxph_mpl_dc</a></code>, <code><a href='coxph_mpl_dc.control.html'>coxph_mpl_dc.control</a></code>, <code><a href='coxph_mpl_dc.html'>coxph_mpl_dc</a></code></p></div>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Jing Xu, Jun Ma, Thomas Fung</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
 
  <span class='co'>##-- Copula types</span>
- <span class='no'>copula3</span> <span class='kw'>&lt;-</span> <span class='st'>'frank'</span>
+ <span class='va'>copula3</span> <span class='op'>&lt;-</span> <span class='st'>'frank'</span>
 
 <span class='co'>##-- A real example</span>
 <span class='co'>##-- One dataset from Prospective Research in Memory Clinics (PRIME) study</span>
 <span class='co'>##-- Refer to article Brodaty et al (2014),</span>
 <span class='co'>##   the predictors of institutionalization of dementia patients over 3-year study period</span>
 
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>PRIME</span>)
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>PRIME</span><span class='op'>)</span>
 
-<span class='no'>surv</span><span class='kw'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='no'>PRIME</span>[,<span class='fl'>1</span>:<span class='fl'>3</span>]) <span class='co'>#time, event and dependent censoring indicators</span>
-<span class='no'>cova</span><span class='kw'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='no'>PRIME</span>[, -<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>:<span class='fl'>3</span>)]) <span class='co'>#covariates</span>
-<span class='fu'><a href='https://rdrr.io/r/base/colSums.html'>colMeans</a></span>(<span class='no'>surv</span>[,<span class='fl'>2</span>:<span class='fl'>3</span>])  <span class='co'>#the proportions of event and dependent censoring</span></div><div class='output co'>#&gt;     Event    Depcen 
+<span class='va'>surv</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span><span class='op'>(</span><span class='va'>PRIME</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>]</span><span class='op'>)</span> <span class='co'>#time, event and dependent censoring indicators</span>
+<span class='va'>cova</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span><span class='op'>(</span><span class='va'>PRIME</span><span class='op'>[</span>, <span class='op'>-</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>)</span><span class='op'>]</span><span class='op'>)</span> <span class='co'>#covariates</span>
+<span class='fu'><a href='https://rdrr.io/r/base/colSums.html'>colMeans</a></span><span class='op'>(</span><span class='va'>surv</span><span class='op'>[</span>,<span class='fl'>2</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>]</span><span class='op'>)</span>  <span class='co'>#the proportions of event and dependent censoring</span>
+</div><div class='output co'>#&gt;     Event    Depcen 
 #&gt; 0.2675815 0.2504288 </div><div class='input'>
-<span class='no'>n</span><span class='kw'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span>(<span class='no'>PRIME</span>)[<span class='fl'>1</span>];<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>n</span>)</div><div class='output co'>#&gt; [1] 583</div><div class='input'><span class='no'>p</span><span class='kw'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span>(<span class='no'>PRIME</span>)[<span class='fl'>2</span>]-<span class='fl'>3</span>;<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>p</span>)</div><div class='output co'>#&gt; [1] 15</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span>(<span class='no'>PRIME</span>)</div><div class='output co'>#&gt;  [1] "Time"           "Event"          "Depcen"         "Age"           
+<span class='va'>n</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span><span class='op'>(</span><span class='va'>PRIME</span><span class='op'>)</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span>;<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>n</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] 583</div><div class='input'><span class='va'>p</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span><span class='op'>(</span><span class='va'>PRIME</span><span class='op'>)</span><span class='op'>[</span><span class='fl'>2</span><span class='op'>]</span><span class='op'>-</span><span class='fl'>3</span>;<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>p</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] 15</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>PRIME</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;  [1] "Time"           "Event"          "Depcen"         "Age"           
 #&gt;  [5] "Gender"         "HighEdu"        "Alzheimer"      "CDR_base"      
 #&gt;  [9] "MMSE_base"      "SMAF_base"      "ZBI_base"       "NPI_base"      
 #&gt; [13] "Benzon"         "Antiphsy"       "LivingAlone"    "MMSE_change_3m"
 #&gt; [17] "SMAF_change_3m" "NPI_change_3m" </div><div class='input'>
 <span class='co'>##--MPL estimate Cox proportional hazard model for institutionalization under independent censoring</span>
-<span class='no'>control</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='coxph_mpl_dc.control.html'>coxph_mpl_dc.control</a></span>(<span class='kw'>ordSp</span> <span class='kw'>=</span> <span class='fl'>4</span>,
-                                <span class='kw'>binCount</span> <span class='kw'>=</span> <span class='fl'>200</span>, <span class='kw'>tie</span> <span class='kw'>=</span> <span class='st'>'Yes'</span>,
-                                <span class='kw'>tau</span> <span class='kw'>=</span> <span class='fl'>0.5</span>, <span class='kw'>copula</span> <span class='kw'>=</span> <span class='no'>copula3</span>,
-                                <span class='kw'>pent</span> <span class='kw'>=</span> <span class='st'>'penalty_mspl'</span>, <span class='kw'>smpart</span> <span class='kw'>=</span> <span class='st'>'REML'</span>,
-                                <span class='kw'>penc</span> <span class='kw'>=</span> <span class='st'>'penalty_mspl'</span>, <span class='kw'>smparc</span> <span class='kw'>=</span> <span class='st'>'REML'</span>,
-                                <span class='kw'>cat.smpar</span> <span class='kw'>=</span> <span class='st'>'No'</span> )
+<span class='va'>control</span> <span class='op'>&lt;-</span> <span class='fu'><a href='coxph_mpl_dc.control.html'>coxph_mpl_dc.control</a></span><span class='op'>(</span>ordSp <span class='op'>=</span> <span class='fl'>4</span>,
+                                binCount <span class='op'>=</span> <span class='fl'>200</span>, tie <span class='op'>=</span> <span class='st'>'Yes'</span>,
+                                tau <span class='op'>=</span> <span class='fl'>0.5</span>, copula <span class='op'>=</span> <span class='va'>copula3</span>,
+                                pent <span class='op'>=</span> <span class='st'>'penalty_mspl'</span>, smpart <span class='op'>=</span> <span class='st'>'REML'</span>,
+                                penc <span class='op'>=</span> <span class='st'>'penalty_mspl'</span>, smparc <span class='op'>=</span> <span class='st'>'REML'</span>,
+                                cat.smpar <span class='op'>=</span> <span class='st'>'No'</span> <span class='op'>)</span>
 
-<span class='no'>coxMPLests_tau</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='coxph_mpl_dc.html'>coxph_mpl_dc</a></span>(<span class='kw'>surv</span><span class='kw'>=</span><span class='no'>surv</span>, <span class='kw'>cova</span><span class='kw'>=</span><span class='no'>cova</span>, <span class='kw'>control</span><span class='kw'>=</span><span class='no'>control</span>, )
-<span class='no'>MPL_beta</span><span class='kw'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/stats/coef.html'>coef</a></span>(<span class='kw'>object</span> <span class='kw'>=</span> <span class='no'>coxMPLests_tau</span>, <span class='kw'>parameter</span> <span class='kw'>=</span> <span class='st'>"beta"</span>,)
-<span class='no'>MPL_phi</span><span class='kw'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/stats/coef.html'>coef</a></span>(<span class='kw'>object</span> <span class='kw'>=</span> <span class='no'>coxMPLests_tau</span>, <span class='kw'>parameter</span> <span class='kw'>=</span> <span class='st'>"phi"</span>,)
+<span class='va'>coxMPLests_tau</span> <span class='op'>&lt;-</span> <span class='fu'><a href='coxph_mpl_dc.html'>coxph_mpl_dc</a></span><span class='op'>(</span>surv<span class='op'>=</span><span class='va'>surv</span>, cova<span class='op'>=</span><span class='va'>cova</span>, control<span class='op'>=</span><span class='va'>control</span>, <span class='op'>)</span>
+<span class='va'>MPL_beta</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/stats/coef.html'>coef</a></span><span class='op'>(</span>object <span class='op'>=</span> <span class='va'>coxMPLests_tau</span>, parameter <span class='op'>=</span> <span class='st'>"beta"</span>,<span class='op'>)</span>
+<span class='va'>MPL_phi</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/stats/coef.html'>coef</a></span><span class='op'>(</span>object <span class='op'>=</span> <span class='va'>coxMPLests_tau</span>, parameter <span class='op'>=</span> <span class='st'>"phi"</span>,<span class='op'>)</span>
 
-<span class='co'># }</span></div></pre>
+<span class='co'># }</span>
+
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -221,7 +230,7 @@ Statistics in Medicine 37, 2238–2251.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

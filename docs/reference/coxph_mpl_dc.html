@@ -129,7 +129,7 @@ hazard Cox models under dependent right censoring using maximum penalised likeli
 hazard Cox models under dependent right censoring using maximum penalised likelihood (MPL) and Archimedean Copulas</p>
     </div>
 
-    <pre class="usage"><span class='fu'>coxph_mpl_dc</span>(<span class='no'>surv</span>, <span class='no'>cova</span>, <span class='no'>control</span>,<span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>coxph_mpl_dc</span><span class='op'>(</span><span class='va'>surv</span>, <span class='va'>cova</span>, <span class='va'>control</span>,<span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -231,88 +231,95 @@ Statistics in Medicine 37, 2238–2251.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='plot.coxph_mpl_dc.html'>plot.coxph_mpl_dc</a></code>, <code><a href='coxph_mpl_dc.control.html'>coxph_mpl_dc.control</a></code>, <code><a href='coef.coxph_mpl_dc.html'>coef.coxph_mpl_dc</a></code></p></div>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Jing Xu, Jun Ma, Thomas Fung</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
  <span class='co'>##-- Copula types</span>
- <span class='no'>copula3</span> <span class='kw'>&lt;-</span> <span class='st'>'frank'</span>
+ <span class='va'>copula3</span> <span class='op'>&lt;-</span> <span class='st'>'frank'</span>
 
  <span class='co'>##-- Marginal distribution for T, C, and A</span>
- <span class='no'>a</span> <span class='kw'>&lt;-</span> <span class='fl'>2</span>
- <span class='no'>lambda</span> <span class='kw'>&lt;-</span> <span class='fl'>2</span>
- <span class='no'>cons7</span> <span class='kw'>&lt;-</span> <span class='fl'>0.2</span>
- <span class='no'>cons9</span> <span class='kw'>&lt;-</span> <span class='fl'>10</span>
- <span class='no'>tau</span> <span class='kw'>&lt;-</span> <span class='fl'>0.8</span>
- <span class='no'>betas</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(-<span class='fl'>0.5</span>, <span class='fl'>0.1</span>)
- <span class='no'>phis</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.3</span>, <span class='fl'>0.2</span>)
- <span class='no'>distr.ev</span> <span class='kw'>&lt;-</span> <span class='st'>'weibull'</span>
- <span class='no'>distr.ce</span> <span class='kw'>&lt;-</span> <span class='st'>'exponential'</span>
+ <span class='va'>a</span> <span class='op'>&lt;-</span> <span class='fl'>2</span>
+ <span class='va'>lambda</span> <span class='op'>&lt;-</span> <span class='fl'>2</span>
+ <span class='va'>cons7</span> <span class='op'>&lt;-</span> <span class='fl'>0.2</span>
+ <span class='va'>cons9</span> <span class='op'>&lt;-</span> <span class='fl'>10</span>
+ <span class='va'>tau</span> <span class='op'>&lt;-</span> <span class='fl'>0.8</span>
+ <span class='va'>betas</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0.5</span>, <span class='fl'>0.1</span><span class='op'>)</span>
+ <span class='va'>phis</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.3</span>, <span class='fl'>0.2</span><span class='op'>)</span>
+ <span class='va'>distr.ev</span> <span class='op'>&lt;-</span> <span class='st'>'weibull'</span>
+ <span class='va'>distr.ce</span> <span class='op'>&lt;-</span> <span class='st'>'exponential'</span>
 
  <span class='co'>##-- Sample size</span>
- <span class='no'>n</span> <span class='kw'>&lt;-</span> <span class='fl'>200</span>
+ <span class='va'>n</span> <span class='op'>&lt;-</span> <span class='fl'>200</span>
 
  <span class='co'>##-- One sample Monte Carlo dataset</span>
- <span class='no'>cova</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span>(<span class='fu'><a href='https://rdrr.io/r/stats/Binomial.html'>rbinom</a></span>(<span class='no'>n</span>, <span class='fl'>1</span>, <span class='fl'>0.5</span>), <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span>(<span class='no'>n</span>, <span class='kw'>min</span><span class='kw'>=</span>-<span class='fl'>10</span>, <span class='kw'>max</span><span class='kw'>=</span><span class='fl'>10</span>))
- <span class='no'>surv</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='surv_data_dc.html'>surv_data_dc</a></span>(<span class='no'>n</span>, <span class='no'>a</span>, <span class='no'>cova</span>, <span class='no'>lambda</span>, <span class='no'>betas</span>, <span class='no'>phis</span>, <span class='no'>cons7</span>, <span class='no'>cons9</span>, <span class='no'>tau</span>, <span class='no'>copula3</span>,
-                     <span class='no'>distr.ev</span>, <span class='no'>distr.ce</span>)
- <span class='no'>n</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span>(<span class='no'>cova</span>)
- <span class='no'>p</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>ncol</a></span>(<span class='no'>cova</span>)
+ <span class='va'>cova</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Binomial.html'>rbinom</a></span><span class='op'>(</span><span class='va'>n</span>, <span class='fl'>1</span>, <span class='fl'>0.5</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span><span class='op'>(</span><span class='va'>n</span>, min<span class='op'>=</span><span class='op'>-</span><span class='fl'>10</span>, max<span class='op'>=</span><span class='fl'>10</span><span class='op'>)</span><span class='op'>)</span>
+ <span class='va'>surv</span> <span class='op'>&lt;-</span> <span class='fu'><a href='surv_data_dc.html'>surv_data_dc</a></span><span class='op'>(</span><span class='va'>n</span>, <span class='va'>a</span>, <span class='va'>cova</span>, <span class='va'>lambda</span>, <span class='va'>betas</span>, <span class='va'>phis</span>, <span class='va'>cons7</span>, <span class='va'>cons9</span>, <span class='va'>tau</span>, <span class='va'>copula3</span>,
+                     <span class='va'>distr.ev</span>, <span class='va'>distr.ce</span><span class='op'>)</span>
+ <span class='va'>n</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='va'>cova</span><span class='op'>)</span>
+ <span class='va'>p</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>ncol</a></span><span class='op'>(</span><span class='va'>cova</span><span class='op'>)</span>
  <span class='co'>##-- event and dependent censoring proportions</span>
- <span class='fu'><a href='https://rdrr.io/r/base/colSums.html'>colSums</a></span>(<span class='no'>surv</span>)[<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>2</span>,<span class='fl'>3</span>)]/<span class='no'>n</span></div><div class='output co'>#&gt;   del   eta 
-#&gt; 0.415 0.415 </div><div class='input'> <span class='no'>X</span> <span class='kw'>&lt;-</span> <span class='no'>surv</span>[,<span class='fl'>1</span>] <span class='co'># Observed time</span>
- <span class='no'>del</span><span class='kw'>&lt;-</span><span class='no'>surv</span>[,<span class='fl'>2</span>] <span class='co'># failure status</span>
- <span class='no'>eta</span><span class='kw'>&lt;-</span><span class='no'>surv</span>[,<span class='fl'>3</span>] <span class='co'># dependent censoring status</span>
+ <span class='fu'><a href='https://rdrr.io/r/base/colSums.html'>colSums</a></span><span class='op'>(</span><span class='va'>surv</span><span class='op'>)</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2</span>,<span class='fl'>3</span><span class='op'>)</span><span class='op'>]</span><span class='op'>/</span><span class='va'>n</span>
+</div><div class='output co'>#&gt;   del   eta 
+#&gt; 0.415 0.415 </div><div class='input'> <span class='va'>X</span> <span class='op'>&lt;-</span> <span class='va'>surv</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>]</span> <span class='co'># Observed time</span>
+ <span class='va'>del</span><span class='op'>&lt;-</span><span class='va'>surv</span><span class='op'>[</span>,<span class='fl'>2</span><span class='op'>]</span> <span class='co'># failure status</span>
+ <span class='va'>eta</span><span class='op'>&lt;-</span><span class='va'>surv</span><span class='op'>[</span>,<span class='fl'>3</span><span class='op'>]</span> <span class='co'># dependent censoring status</span>
 
  <span class='co'>##-- control inputs for the coxph_mpl_dc function</span>
- <span class='no'>control</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='coxph_mpl_dc.control.html'>coxph_mpl_dc.control</a></span>(<span class='kw'>ordSp</span> <span class='kw'>=</span> <span class='fl'>4</span>,
-                             <span class='kw'>binCount</span> <span class='kw'>=</span> <span class='fl'>100</span>,
-                             <span class='kw'>tau</span> <span class='kw'>=</span> <span class='fl'>0.8</span>, <span class='kw'>copula</span> <span class='kw'>=</span> <span class='no'>copula3</span>,
-                             <span class='kw'>pent</span> <span class='kw'>=</span> <span class='st'>'penalty_mspl'</span>, <span class='kw'>smpart</span> <span class='kw'>=</span> <span class='st'>'REML'</span>,
-                             <span class='kw'>penc</span> <span class='kw'>=</span> <span class='st'>'penalty_mspl'</span>, <span class='kw'>smparc</span> <span class='kw'>=</span> <span class='st'>'REML'</span>,
-                             <span class='kw'>cat.smpar</span> <span class='kw'>=</span> <span class='st'>'No'</span> )
+ <span class='va'>control</span> <span class='op'>&lt;-</span> <span class='fu'><a href='coxph_mpl_dc.control.html'>coxph_mpl_dc.control</a></span><span class='op'>(</span>ordSp <span class='op'>=</span> <span class='fl'>4</span>,
+                             binCount <span class='op'>=</span> <span class='fl'>100</span>,
+                             tau <span class='op'>=</span> <span class='fl'>0.8</span>, copula <span class='op'>=</span> <span class='va'>copula3</span>,
+                             pent <span class='op'>=</span> <span class='st'>'penalty_mspl'</span>, smpart <span class='op'>=</span> <span class='st'>'REML'</span>,
+                             penc <span class='op'>=</span> <span class='st'>'penalty_mspl'</span>, smparc <span class='op'>=</span> <span class='st'>'REML'</span>,
+                             cat.smpar <span class='op'>=</span> <span class='st'>'No'</span> <span class='op'>)</span>
 
  <span class='co'>##-- Fitting cox ph hazard model for T using MPL and an correct copula</span>
  <span class='co'>#with REML smoothing parameters</span>
- <span class='no'>coxMPLests5</span> <span class='kw'>&lt;-</span> <span class='fu'>coxph_mpl_dc</span>(<span class='no'>surv</span>, <span class='no'>cova</span>, <span class='no'>control</span>, )
- <span class='no'>mpl_beta_phi_zp5</span> <span class='kw'>&lt;-</span> <span class='no'>coxMPLests5</span>$<span class='no'>mpl_beta_phi_zp</span>
- <span class='no'>mpl_h0t5</span> <span class='kw'>&lt;-</span> <span class='no'>coxMPLests5</span>$<span class='no'>mpl_h0t</span>
- <span class='no'>mpl_h0Ti5</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/approxfun.html'>approx</a></span>( <span class='no'>X</span>, <span class='no'>mpl_h0t5</span>, <span class='kw'>xout</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>0</span>, <span class='fl'>5.4</span>, <span class='fl'>0.01</span>),
-                    <span class='kw'>method</span><span class='kw'>=</span><span class='st'>"constant"</span>, <span class='kw'>rule</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>ties</span> <span class='kw'>=</span> <span class='no'>mean</span>)$<span class='no'>y</span>
+ <span class='va'>coxMPLests5</span> <span class='op'>&lt;-</span> <span class='fu'>coxph_mpl_dc</span><span class='op'>(</span><span class='va'>surv</span>, <span class='va'>cova</span>, <span class='va'>control</span>, <span class='op'>)</span>
+ <span class='va'>mpl_beta_phi_zp5</span> <span class='op'>&lt;-</span> <span class='va'>coxMPLests5</span><span class='op'>$</span><span class='va'>mpl_beta_phi_zp</span>
+ <span class='va'>mpl_h0t5</span> <span class='op'>&lt;-</span> <span class='va'>coxMPLests5</span><span class='op'>$</span><span class='va'>mpl_h0t</span>
+ <span class='va'>mpl_h0Ti5</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/approxfun.html'>approx</a></span><span class='op'>(</span> <span class='va'>X</span>, <span class='va'>mpl_h0t5</span>, xout <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>5.4</span>, <span class='fl'>0.01</span><span class='op'>)</span>,
+                    method<span class='op'>=</span><span class='st'>"constant"</span>, rule <span class='op'>=</span> <span class='fl'>2</span>, ties <span class='op'>=</span> <span class='va'>mean</span><span class='op'>)</span><span class='op'>$</span><span class='va'>y</span>
 
  <span class='co'>##-- Real marginal baseline hazard for T</span>
- <span class='no'>ht0b</span> <span class='kw'>&lt;-</span> <span class='no'>a</span> * (<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>0</span>, <span class='fl'>5.4</span>, <span class='fl'>0.01</span>) ^ (<span class='no'>a</span> - <span class='fl'>1</span>)) / (<span class='no'>lambda</span> ^ <span class='no'>a</span>)
+ <span class='va'>ht0b</span> <span class='op'>&lt;-</span> <span class='va'>a</span> <span class='op'>*</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>5.4</span>, <span class='fl'>0.01</span><span class='op'>)</span> <span class='op'>^</span> <span class='op'>(</span><span class='va'>a</span> <span class='op'>-</span> <span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>/</span> <span class='op'>(</span><span class='va'>lambda</span> <span class='op'>^</span> <span class='va'>a</span><span class='op'>)</span>
 
 
  <span class='co'>##-- Fitting cox ph hazard model for T using MPL and an correct copula</span>
  <span class='co'>#with zero smoothing parameters</span>
- <span class='no'>coxMPLests3</span> <span class='kw'>&lt;-</span> <span class='fu'>coxph_mpl_dc</span>(<span class='no'>surv</span>, <span class='no'>cova</span>,
-                          <span class='kw'>ordSp</span><span class='kw'>=</span><span class='fl'>4</span>, <span class='kw'>binCount</span><span class='kw'>=</span><span class='fl'>100</span>,
-                          <span class='kw'>tau</span><span class='kw'>=</span><span class='fl'>0.8</span>, <span class='kw'>copula</span><span class='kw'>=</span><span class='no'>copula3</span>,
-                          <span class='kw'>pent</span><span class='kw'>=</span><span class='st'>'penalty_mspl'</span>, <span class='kw'>smpart</span><span class='kw'>=</span><span class='fl'>0</span>, <span class='kw'>penc</span><span class='kw'>=</span><span class='st'>'penalty_mspl'</span>, <span class='kw'>smparc</span><span class='kw'>=</span><span class='fl'>0</span>,
-                          <span class='kw'>cat.smpar</span> <span class='kw'>=</span> <span class='st'>'No'</span>)
- <span class='no'>mpl_beta_phi_zp3</span> <span class='kw'>&lt;-</span> <span class='no'>coxMPLests3</span>$<span class='no'>mpl_beta_phi_zp</span>
- <span class='no'>mpl_h0t3</span> <span class='kw'>&lt;-</span> <span class='no'>coxMPLests3</span>$<span class='no'>mpl_h0t</span>
- <span class='no'>mpl_h0Ti3</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/approxfun.html'>approx</a></span>( <span class='no'>X</span>, <span class='no'>mpl_h0t3</span>, <span class='kw'>xout</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>0</span>, <span class='fl'>5.4</span>, <span class='fl'>0.01</span>),
- <span class='kw'>method</span><span class='kw'>=</span><span class='st'>"constant"</span>, <span class='kw'>rule</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>ties</span> <span class='kw'>=</span> <span class='no'>mean</span>)$<span class='no'>y</span>
+ <span class='va'>coxMPLests3</span> <span class='op'>&lt;-</span> <span class='fu'>coxph_mpl_dc</span><span class='op'>(</span><span class='va'>surv</span>, <span class='va'>cova</span>,
+                          ordSp<span class='op'>=</span><span class='fl'>4</span>, binCount<span class='op'>=</span><span class='fl'>100</span>,
+                          tau<span class='op'>=</span><span class='fl'>0.8</span>, copula<span class='op'>=</span><span class='va'>copula3</span>,
+                          pent<span class='op'>=</span><span class='st'>'penalty_mspl'</span>, smpart<span class='op'>=</span><span class='fl'>0</span>, penc<span class='op'>=</span><span class='st'>'penalty_mspl'</span>, smparc<span class='op'>=</span><span class='fl'>0</span>,
+                          cat.smpar <span class='op'>=</span> <span class='st'>'No'</span><span class='op'>)</span>
+ <span class='va'>mpl_beta_phi_zp3</span> <span class='op'>&lt;-</span> <span class='va'>coxMPLests3</span><span class='op'>$</span><span class='va'>mpl_beta_phi_zp</span>
+ <span class='va'>mpl_h0t3</span> <span class='op'>&lt;-</span> <span class='va'>coxMPLests3</span><span class='op'>$</span><span class='va'>mpl_h0t</span>
+ <span class='va'>mpl_h0Ti3</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/approxfun.html'>approx</a></span><span class='op'>(</span> <span class='va'>X</span>, <span class='va'>mpl_h0t3</span>, xout <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>5.4</span>, <span class='fl'>0.01</span><span class='op'>)</span>,
+ method<span class='op'>=</span><span class='st'>"constant"</span>, rule <span class='op'>=</span> <span class='fl'>2</span>, ties <span class='op'>=</span> <span class='va'>mean</span><span class='op'>)</span><span class='op'>$</span><span class='va'>y</span>
 
  <span class='co'>##-- Plot the true and estimated baseline hazards for T</span>
- <span class='no'>t_up</span> <span class='kw'>&lt;-</span> <span class='fl'>3.5</span>
- <span class='no'>y_uplim</span> <span class='kw'>&lt;-</span> <span class='fl'>2</span>
- <span class='no'>Ti</span><span class='kw'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>0</span>, <span class='fl'>5.4</span>, <span class='fl'>0.01</span>)[<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>0</span>, <span class='fl'>5.4</span>, <span class='fl'>0.01</span>)<span class='kw'>&lt;=</span><span class='no'>t_up</span>]
- <span class='no'>h0Ti</span><span class='kw'>&lt;-</span><span class='no'>ht0b</span>[<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>0</span>, <span class='fl'>5.4</span>, <span class='fl'>0.01</span>)<span class='kw'>&lt;=</span><span class='no'>t_up</span>]
- <span class='no'>h0Ti5</span><span class='kw'>&lt;-</span><span class='no'>mpl_h0Ti5</span>[<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>0</span>, <span class='fl'>5.4</span>, <span class='fl'>0.01</span>)<span class='kw'>&lt;=</span><span class='no'>t_up</span>]
- <span class='no'>h0Ti3</span><span class='kw'>&lt;-</span><span class='no'>mpl_h0Ti3</span>[<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>0</span>, <span class='fl'>5.4</span>, <span class='fl'>0.01</span>)<span class='kw'>&lt;=</span><span class='no'>t_up</span>]
+ <span class='va'>t_up</span> <span class='op'>&lt;-</span> <span class='fl'>3.5</span>
+ <span class='va'>y_uplim</span> <span class='op'>&lt;-</span> <span class='fl'>2</span>
+ <span class='va'>Ti</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>5.4</span>, <span class='fl'>0.01</span><span class='op'>)</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>5.4</span>, <span class='fl'>0.01</span><span class='op'>)</span><span class='op'>&lt;=</span><span class='va'>t_up</span><span class='op'>]</span>
+ <span class='va'>h0Ti</span><span class='op'>&lt;-</span><span class='va'>ht0b</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>5.4</span>, <span class='fl'>0.01</span><span class='op'>)</span><span class='op'>&lt;=</span><span class='va'>t_up</span><span class='op'>]</span>
+ <span class='va'>h0Ti5</span><span class='op'>&lt;-</span><span class='va'>mpl_h0Ti5</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>5.4</span>, <span class='fl'>0.01</span><span class='op'>)</span><span class='op'>&lt;=</span><span class='va'>t_up</span><span class='op'>]</span>
+ <span class='va'>h0Ti3</span><span class='op'>&lt;-</span><span class='va'>mpl_h0Ti3</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>5.4</span>, <span class='fl'>0.01</span><span class='op'>)</span><span class='op'>&lt;=</span><span class='va'>t_up</span><span class='op'>]</span>
 
- <span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span>( <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>Ti</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>h0Ti5</span>,
-      <span class='kw'>type</span><span class='kw'>=</span><span class='st'>"l"</span>, <span class='kw'>col</span><span class='kw'>=</span><span class='st'>"grey"</span>, <span class='kw'>lty</span><span class='kw'>=</span><span class='fl'>4</span>, <span class='kw'>lwd</span><span class='kw'>=</span><span class='fl'>3</span>, <span class='kw'>cex.axis</span><span class='kw'>=</span><span class='fl'>1.6</span>, <span class='kw'>cex.lab</span><span class='kw'>=</span><span class='fl'>1.6</span>, <span class='kw'>ylim</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='no'>y_uplim</span>),
-      <span class='kw'>xlab</span><span class='kw'>=</span><span class='st'>'Time'</span>, <span class='kw'>ylab</span><span class='kw'>=</span><span class='st'>'Hazard'</span>)</div><div class='input'> <span class='fu'><a href='https://rdrr.io/r/graphics/lines.html'>lines</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>Ti</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>h0Ti</span>,
-      <span class='kw'>col</span><span class='kw'>=</span><span class='st'>"green"</span>,
-      <span class='kw'>lty</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>lwd</span><span class='kw'>=</span><span class='fl'>3</span>, <span class='kw'>cex.axis</span><span class='kw'>=</span><span class='fl'>1.6</span>, <span class='kw'>cex.lab</span><span class='kw'>=</span><span class='fl'>1.6</span>, <span class='kw'>ylim</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='no'>y_uplim</span>)
-      )</div><div class='input'> <span class='fu'><a href='https://rdrr.io/r/graphics/lines.html'>lines</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>Ti</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>h0Ti3</span>,
-      <span class='kw'>col</span><span class='kw'>=</span><span class='st'>"blue"</span>,
-      <span class='kw'>lty</span><span class='kw'>=</span><span class='fl'>4</span>, <span class='kw'>lwd</span><span class='kw'>=</span><span class='fl'>3</span>, <span class='kw'>cex.axis</span><span class='kw'>=</span><span class='fl'>1.6</span>, <span class='kw'>cex.lab</span><span class='kw'>=</span><span class='fl'>1.6</span>, <span class='kw'>ylim</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='no'>y_uplim</span>)
-      )</div><div class='img'><img src='coxph_mpl_dc-1.png' alt='' width='700' height='433' /></div><div class='input'>
-# }
+ <span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span> x <span class='op'>=</span> <span class='va'>Ti</span>, y <span class='op'>=</span> <span class='va'>h0Ti5</span>,
+      type<span class='op'>=</span><span class='st'>"l"</span>, col<span class='op'>=</span><span class='st'>"grey"</span>, lty<span class='op'>=</span><span class='fl'>4</span>, lwd<span class='op'>=</span><span class='fl'>3</span>, cex.axis<span class='op'>=</span><span class='fl'>1.6</span>, cex.lab<span class='op'>=</span><span class='fl'>1.6</span>, ylim<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='va'>y_uplim</span><span class='op'>)</span>,
+      xlab<span class='op'>=</span><span class='st'>'Time'</span>, ylab<span class='op'>=</span><span class='st'>'Hazard'</span><span class='op'>)</span>
+</div><div class='input'> <span class='fu'><a href='https://rdrr.io/r/graphics/lines.html'>lines</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Ti</span>, y <span class='op'>=</span> <span class='va'>h0Ti</span>,
+      col<span class='op'>=</span><span class='st'>"green"</span>,
+      lty<span class='op'>=</span><span class='fl'>1</span>, lwd<span class='op'>=</span><span class='fl'>3</span>, cex.axis<span class='op'>=</span><span class='fl'>1.6</span>, cex.lab<span class='op'>=</span><span class='fl'>1.6</span>, ylim<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='va'>y_uplim</span><span class='op'>)</span>
+      <span class='op'>)</span>
+</div><div class='input'> <span class='fu'><a href='https://rdrr.io/r/graphics/lines.html'>lines</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Ti</span>, y <span class='op'>=</span> <span class='va'>h0Ti3</span>,
+      col<span class='op'>=</span><span class='st'>"blue"</span>,
+      lty<span class='op'>=</span><span class='fl'>4</span>, lwd<span class='op'>=</span><span class='fl'>3</span>, cex.axis<span class='op'>=</span><span class='fl'>1.6</span>, cex.lab<span class='op'>=</span><span class='fl'>1.6</span>, ylim<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='va'>y_uplim</span><span class='op'>)</span>
+      <span class='op'>)</span>
+</div><div class='img'><img src='coxph_mpl_dc-1.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='co'># }</span>
 
 
 
@@ -332,7 +339,7 @@ Statistics in Medicine 37, 2238–2251.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
