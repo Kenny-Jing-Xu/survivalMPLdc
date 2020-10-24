@@ -12,7 +12,7 @@ Authors@R: c(person("Jing", "Xu", role = c("aut", "cre"),
 Description: Fitting Cox proportional hazard model under dependent right censoring using copula and maximum penalised likelihood methods.
 Depends: R (>= 3.5)
 License: GPL-3
-Imports: copula, stats, methods, splines2, survival, graphics, matrixcalc
+Imports: copula, stats, splines2, survival, graphics, matrixcalc
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.1
